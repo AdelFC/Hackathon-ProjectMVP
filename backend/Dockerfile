@@ -23,11 +23,11 @@ RUN adduser --disabled-password --gecos '' appuser && \
 USER root
 
 # Expose port
-EXPOSE 3131
+EXPOSE 8000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-	CMD python -c "import requests; requests.get('http://localhost:3131/health')"
+	CMD python -c "import requests; requests.get('http://localhost:8000/health')"
 
 # Start the application
 CMD ["python", "main_v2.py"]

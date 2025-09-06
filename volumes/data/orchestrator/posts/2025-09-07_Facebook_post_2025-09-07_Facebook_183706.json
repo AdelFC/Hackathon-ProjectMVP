@@ -1,0 +1,34 @@
+{
+  "id": "post_2025-09-07_Facebook_183706",
+  "date": "2025-09-07",
+  "platform": "Facebook",
+  "post_id": "fb_20250906_183706",
+  "content_hash": "fa8bc485b3651c9c28da7d65955ffd66835967a4561647cf97237f2d2056e1ee",
+  "posting_result": {
+    "success": true,
+    "platform": "Facebook",
+    "post_id": "fb_20250906_183706",
+    "post_url": "https://facebook.com/posts/simulated_20250906",
+    "error": null,
+    "timestamp": "2025-09-06T18:37:06.934829",
+    "retry_count": 0
+  },
+  "generated_post": {
+    "platform": "Facebook",
+    "content": "Client success story: 300% ROI increase\n\nLet's discuss: Client success story: 300% ROI increase",
+    "hashtags": [
+      "##StartupSuccess",
+      "##AIInnovation",
+      "##FundingFriday",
+      "##TechTrends2024"
+    ],
+    "image_base64": null,
+    "image_url": null,
+    "character_count": 93,
+    "estimated_reach": null,
+    "metadata": {
+      "pillar": "social_proof",
+      "format": "carousel"
+    }
+  }
+}

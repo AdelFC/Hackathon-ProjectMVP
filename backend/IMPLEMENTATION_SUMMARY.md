@@ -126,7 +126,7 @@ python main_v2.py
 
 ### 2. Generate a Monthly Strategy
 ```bash
-curl -X POST http://localhost:3131/strategy/generate \
+curl -X POST http://localhost:8000/strategy/generate \
   -H "Content-Type: application/json" \
   -d '{
     "brand_name": "YourBrand",
@@ -143,7 +143,7 @@ curl -X POST http://localhost:3131/strategy/generate \
 
 ### 3. Execute Daily Orchestration
 ```bash
-curl -X POST http://localhost:3131/orchestrator/daily \
+curl -X POST http://localhost:8000/orchestrator/daily \
   -H "Content-Type: application/json" \
   -d '{
     "execute_date": "2024-01-01",
@@ -154,7 +154,7 @@ curl -X POST http://localhost:3131/orchestrator/daily \
 
 ### 4. Check Performance
 ```bash
-curl http://localhost:3131/analytics/yesterday/YourBrand
+curl http://localhost:8000/analytics/yesterday/YourBrand
 ```
 
 ## 🎯 Success Criteria Met

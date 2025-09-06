@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { ToastProvider } from './components/ui/Toast'
+import { ErrorBoundary } from './components/ErrorBoundary'
 import './index.css'
 
 // Layouts
@@ -9,9 +10,9 @@ import AppShell from './layouts/AppShell'
 
 // Pages
 import Landing from './pages/Landing'
-import Setup from './pages/Setup'
-import Strategy from './pages/Strategy'
-import Analytics from './pages/Analytics'
+import { SetupConnected } from './pages/SetupConnected'
+import StrategyEnhanced from './pages/StrategyEnhanced'
+import { AnalyticsConnected } from './pages/AnalyticsConnected'
 import Integrations from './pages/Integrations'
 import Settings from './pages/Settings'
 import NotFound from './pages/NotFound'
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/setup',
-    element: <Setup />,
+    element: <SetupConnected />,
   },
   {
     path: '/ui',
@@ -50,11 +51,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'strategy',
-        element: <Strategy />,
+        element: <StrategyEnhanced />,
       },
       {
         path: 'analytics',
-        element: <Analytics />,
+        element: <AnalyticsConnected />,
       },
       {
         path: 'integrations',
@@ -74,8 +75,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ToastProvider>
-      <RouterProvider router={router} />
-    </ToastProvider>
+    <ErrorBoundary>
+      <ToastProvider>
+        <RouterProvider router={router} />
+      </ToastProvider>
+    </ErrorBoundary>
   </React.StrictMode>,
 )

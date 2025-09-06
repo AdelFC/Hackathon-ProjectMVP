@@ -1,0 +1,229 @@
+{
+  "current_date": "2025-09-07",
+  "monthly_plan_id": "plan_zwsws_2025-09-06",
+  "posts_scheduled_today": [
+    {
+      "date": "2025-09-07",
+      "platform": "LinkedIn",
+      "base_content": {
+        "date": "2025-09-07",
+        "platform": "LinkedIn",
+        "pillar": "social_proof",
+        "topic": "Case study: 10x faster matching",
+        "key_message": "Professional perspective on Case study: 10x faster matching",
+        "variation": {
+          "angle": "storytelling",
+          "hook_style": "myth-busting",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      "signals": {
+        "news_items": [
+          "AI funding reaches record high in Q1 2024",
+          "New regulations for startup investments announced",
+          "Tech industry sees 30% growth in sponsorship deals"
+        ],
+        "yesterday_performance": {
+          "date": "2025-09-05",
+          "total_posts": 0,
+          "total_impressions": 0,
+          "total_engagements": 0,
+          "average_engagement_rate": 0,
+          "platform_breakdown": {}
+        },
+        "trending_topics": [
+          "#StartupSuccess",
+          "#AIInnovation",
+          "#FundingFriday",
+          "#TechTrends2024"
+        ],
+        "competitor_activity": [
+          "Competitor X launches new matching feature",
+          "Industry report shows 50% increase in sponsor interest"
+        ]
+      },
+      "image_prompt": "Professional image for LinkedIn: Case study: 10x faster matching. Style: modern, clean, brand colors.",
+      "posting_time": "09:00",
+      "max_retries": 3
+    },
+    {
+      "date": "2025-09-07",
+      "platform": "Facebook",
+      "base_content": {
+        "date": "2025-09-07",
+        "platform": "Facebook",
+        "pillar": "social_proof",
+        "topic": "Client success story: 300% ROI increase",
+        "key_message": "Let's discuss: Client success story: 300% ROI increase",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "statistic",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 4,
+        "image_required": true,
+        "dependencies": null
+      },
+      "signals": {
+        "news_items": [
+          "AI funding reaches record high in Q1 2024",
+          "New regulations for startup investments announced",
+          "Tech industry sees 30% growth in sponsorship deals"
+        ],
+        "yesterday_performance": {
+          "date": "2025-09-05",
+          "total_posts": 0,
+          "total_impressions": 0,
+          "total_engagements": 0,
+          "average_engagement_rate": 0,
+          "platform_breakdown": {}
+        },
+        "trending_topics": [
+          "#StartupSuccess",
+          "#AIInnovation",
+          "#FundingFriday",
+          "#TechTrends2024"
+        ],
+        "competitor_activity": [
+          "Competitor X launches new matching feature",
+          "Industry report shows 50% increase in sponsor interest"
+        ]
+      },
+      "image_prompt": "Professional image for Facebook: Client success story: 300% ROI increase. Style: modern, clean, brand colors.",
+      "posting_time": "14:00",
+      "max_retries": 3
+    },
+    {
+      "date": "2025-09-07",
+      "platform": "Twitter",
+      "base_content": {
+        "date": "2025-09-07",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Client success story: 300% ROI increase",
+        "key_message": "Quick insight: Client success story: 300% ROI increase",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "quote",
+          "cta_type": "newsletter",
+          "format": "image"
+        },
+        "hashtags_count": 4,
+        "image_required": true,
+        "dependencies": null
+      },
+      "signals": {
+        "news_items": [
+          "AI funding reaches record high in Q1 2024",
+          "New regulations for startup investments announced",
+          "Tech industry sees 30% growth in sponsorship deals"
+        ],
+        "yesterday_performance": {
+          "date": "2025-09-05",
+          "total_posts": 0,
+          "total_impressions": 0,
+          "total_engagements": 0,
+          "average_engagement_rate": 0,
+          "platform_breakdown": {}
+        },
+        "trending_topics": [
+          "#StartupSuccess",
+          "#AIInnovation",
+          "#FundingFriday",
+          "#TechTrends2024"
+        ],
+        "competitor_activity": [
+          "Competitor X launches new matching feature",
+          "Industry report shows 50% increase in sponsor interest"
+        ]
+      },
+      "image_prompt": "Professional image for Twitter: Client success story: 300% ROI increase. Style: modern, clean, brand colors.",
+      "posting_time": "12:00",
+      "max_retries": 3
+    }
+  ],
+  "posts_completed_today": [
+    {
+      "id": "post_2025-09-07_LinkedIn_183706",
+      "date": "2025-09-07",
+      "platform": "LinkedIn",
+      "post_id": "linkedin_2025-09-07_183706",
+      "content_hash": "8fd76b3c909ca2e43bc9547cd8880ca959d0e10c298becf71c0d25574a4d5f93",
+      "posting_result": {
+        "success": true,
+        "platform": "LinkedIn",
+        "post_id": "linkedin_2025-09-07_183706",
+        "post_url": "https://linkedin.com/feed",
+        "error": null,
+        "timestamp": "2025-09-06T18:37:06.928046",
+        "retry_count": 0
+      },
+      "generated_post": {
+        "platform": "LinkedIn",
+        "content": "Case study: 10x faster matching\n\nProfessional perspective on Case study: 10x faster matching",
+        "hashtags": [
+          "##StartupSuccess",
+          "##AIInnovation",
+          "##FundingFriday",
+          "##TechTrends2024"
+        ],
+        "image_base64": null,
+        "image_url": null,
+        "character_count": 90,
+        "estimated_reach": null,
+        "metadata": {
+          "pillar": "social_proof",
+          "format": "video"
+        }
+      }
+    },
+    {
+      "id": "post_2025-09-07_Facebook_183706",
+      "date": "2025-09-07",
+      "platform": "Facebook",
+      "post_id": "fb_20250906_183706",
+      "content_hash": "fa8bc485b3651c9c28da7d65955ffd66835967a4561647cf97237f2d2056e1ee",
+      "posting_result": {
+        "success": true,
+        "platform": "Facebook",
+        "post_id": "fb_20250906_183706",
+        "post_url": "https://facebook.com/posts/simulated_20250906",
+        "error": null,
+        "timestamp": "2025-09-06T18:37:06.934829",
+        "retry_count": 0
+      },
+      "generated_post": {
+        "platform": "Facebook",
+        "content": "Client success story: 300% ROI increase\n\nLet's discuss: Client success story: 300% ROI increase",
+        "hashtags": [
+          "##StartupSuccess",
+          "##AIInnovation",
+          "##FundingFriday",
+          "##TechTrends2024"
+        ],
+        "image_base64": null,
+        "image_url": null,
+        "character_count": 93,
+        "estimated_reach": null,
+        "metadata": {
+          "pillar": "social_proof",
+          "format": "carousel"
+        }
+      }
+    }
+  ],
+  "failed_posts": [
+    {
+      "platform": "Twitter",
+      "error": "'PostVariation' object has no attribute 'cta'",
+      "timestamp": "2025-09-06T18:37:06.948732"
+    }
+  ],
+  "last_execution": "2025-09-06T18:36:31.179893",
+  "is_running": false
+}

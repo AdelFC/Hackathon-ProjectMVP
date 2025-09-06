@@ -85,7 +85,7 @@ Start the main API server:
 python main_v2.py
 ```
 
-The API will be available at `http://localhost:3131`
+The API will be available at `http://localhost:8000`
 
 ### Running Tests
 
