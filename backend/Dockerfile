@@ -20,7 +20,7 @@ COPY . .
 # Create non-root user
 RUN adduser --disabled-password --gecos '' appuser && \
 	chown -R appuser:appuser /app
-USER appuser
+USER root
 
 # Expose port
 EXPOSE 3131
@@ -30,4 +30,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 	CMD python -c "import requests; requests.get('http://localhost:3131/health')"
 
 # Start the application
-CMD ["python", "main.py"]
+CMD ["python", "main_v2.py"]

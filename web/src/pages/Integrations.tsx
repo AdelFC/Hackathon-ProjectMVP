@@ -1,4 +1,4 @@
-import { useState } from 'react'
+zimport { useState, ReactNode } from 'react'
 import { OAuthConsentModal } from '../components/OAuthConsentModal'
 import { useToast } from '../components/ui/Toast'
 
@@ -7,7 +7,7 @@ interface Integration {
   name: string
   category: 'social' | 'productivity' | 'analytics'
   description: string
-  icon: React.ReactNode
+  icon: ReactNode
   color: string
   connected: boolean
   lastSync?: string
@@ -18,7 +18,7 @@ export default function Integrations() {
   const { addToast } = useToast()
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedIntegration, setSelectedIntegration] = useState<Integration | null>(null)
-  
+
   const [integrations, setIntegrations] = useState<Integration[]>([
     {
       id: 'twitter',
@@ -139,18 +139,18 @@ export default function Integrations() {
     if (selectedIntegration) {
       const now = new Date()
       const timeString = `il y a ${Math.floor(Math.random() * 5) + 1} minutes`
-      
-      setIntegrations(prev => prev.map(item => 
-        item.id === selectedIntegration.id 
-          ? { 
-              ...item, 
-              connected: true, 
+
+      setIntegrations(prev => prev.map(item =>
+        item.id === selectedIntegration.id
+          ? {
+              ...item,
+              connected: true,
               lastSync: timeString,
               accountName: `@demo_${item.id}`
             }
           : item
       ))
-      
+
       addToast(`${selectedIntegration.name} connecté avec succès!`, 'success')
     }
   }
@@ -162,8 +162,8 @@ export default function Integrations() {
   }
 
   const handleDisconnect = (integration: Integration) => {
-    setIntegrations(prev => prev.map(item => 
-      item.id === integration.id 
+    setIntegrations(prev => prev.map(item =>
+      item.id === integration.id
         ? { ...item, connected: false, lastSync: undefined, accountName: undefined }
         : item
     ))
@@ -189,14 +189,14 @@ export default function Integrations() {
 
       {categories.map(category => {
         const categoryIntegrations = integrations.filter(i => i.category === category.id)
-        
+
         return (
           <div key={category.id} className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="text-lg">{category.icon}</span>
               <h3 className="text-lg font-medium">{category.label}</h3>
             </div>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {categoryIntegrations.map((integration) => (
                 <div key={integration.id} className="card card-hover">
@@ -236,7 +236,7 @@ export default function Integrations() {
                           <button className="btn btn-outline text-sm flex-1">
                             Gérer
                           </button>
-                          <button 
+                          <button
                             onClick={() => handleDisconnect(integration)}
                             className="btn btn-ghost text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
                           >
@@ -244,7 +244,7 @@ export default function Integrations() {
                           </button>
                         </>
                       ) : (
-                        <button 
+                        <button
                           onClick={() => handleConnect(integration)}
                           className="btn btn-primary text-sm w-full"
                         >

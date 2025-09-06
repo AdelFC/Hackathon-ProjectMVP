@@ -29,7 +29,7 @@ interface BrandFormProps {
 export function BrandForm({ onSubmit }: BrandFormProps) {
   const { setBrandIdentity, brandIdentity } = useProjectStore();
   const { showToast } = useToast();
-  
+
   const [formData, setFormData] = useState<BrandFormData>({
     name: brandIdentity?.name || '',
     domain: brandIdentity?.website || '',
@@ -49,10 +49,10 @@ export function BrandForm({ onSubmit }: BrandFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       const validatedData = brandSchema.parse(formData);
-      
+
       setBrandIdentity({
         name: validatedData.name,
         industry: '',
@@ -67,18 +67,18 @@ export function BrandForm({ onSubmit }: BrandFormProps) {
           ...validatedData.hashtags
         ]
       });
-      
+
       showToast({
         title: 'Identité de marque enregistrée',
         type: 'success'
       });
-      
+
       setErrors({});
       onSubmit?.();
     } catch (error) {
       if (error instanceof z.ZodError) {
         const newErrors: Record<string, string> = {};
-        error.errors.forEach(err => {
+        error.issues.forEach((err) => {
           const path = err.path.join('.');
           newErrors[path] = err.message;
         });

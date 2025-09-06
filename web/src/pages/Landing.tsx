@@ -4,7 +4,6 @@ import { Button } from '../components/ui/Button'
 import { Card } from '../components/ui/Card'
 import { Badge } from '../components/ui/Badge'
 import { CheckCircle, BarChart3, Globe, Brain, Target, Sparkles } from 'lucide-react'
-import React from 'react'
 
 export default function Landing() {
   const { darkMode, toggleDarkMode } = usePreferencesStore()

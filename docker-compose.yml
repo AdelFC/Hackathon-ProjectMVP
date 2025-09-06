@@ -6,19 +6,84 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "3131:3131"
+      - "8000:3131"
     environment:
       - BLACKBOX_API_KEY=${BLACKBOX_API_KEY:-}
       - PORT=3131
       - ENVIRONMENT=development
+      - DATA_PATH=/app/data
+      - LOGS_PATH=/app/logs
+    volumes:
+      # Application data volumes - organized by function
+      - app_data:/app/data
+      - app_logs:/app/logs
+
+      # Development volumes (bind mounts for live editing)
+      - ./backend:/app:cached
+
+      # Persistent data bind mounts for easy access
+      - ./volumes/data:/app/data:delegated
+      - ./volumes/logs:/app/logs:delegated
+
+    working_dir: /app
     networks:
-      - dev-manager-network
+      - social-cm-network
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3131/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - social-cm-network
+    restart: unless-stopped
+    depends_on:
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Development web service (optional - uncomment for development)
+  # web-dev:
+  #   build:
+  #     context: ./web
+  #     dockerfile: Dockerfile
+  #     target: development
+  #   ports:
+  #     - "3001:3000"
+  #   environment:
+  #     - NODE_ENV=development
+  #   volumes:
+  #     - ./web:/app:cached
+  #     - /app/node_modules
+  #   networks:
+  #     - social-cm-network
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - backend
 
 networks:
-  dev-manager-network:
+  social-cm-network:
     driver: bridge
+    name: social-cm-network
 
 volumes:
-  data:
+  # Named volumes for application data
+  app_data:
     driver: local
+    name: social-cm-data
+  app_logs:
+    driver: local
+    name: social-cm-logs
