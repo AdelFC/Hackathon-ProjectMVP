@@ -85,7 +85,7 @@ def post_to_x(text: str, image_path: str = None):
 # Exemple d'utilisation
 if __name__ == "__main__":
     # Remplacez par votre texte de post
-    post_text = "Bonjour, voici un exemple de post automatique via l'API X avec une image !"
+    post_text = "..."
     # Remplacez par le chemin vers votre image (optionnel)
     image_path = "/home/ennollet/Hackathon-MVP/x_post/fond_blanc.jpg"  # Exemple: "image.jpg"
     result = post_to_x(post_text, image_path)
