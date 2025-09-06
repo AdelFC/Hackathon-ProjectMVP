@@ -12,10 +12,6 @@ services:
       - DATA_PATH=/app/data
       - LOGS_PATH=/app/logs
     volumes:
-      # Application data volumes - organized by function
-      - app_data:/app/data
-      - app_logs:/app/logs
-
       # Development volumes (bind mounts for live editing)
       - ./backend:/app:cached
 
