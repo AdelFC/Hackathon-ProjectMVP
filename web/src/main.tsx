@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+import { ToastProvider } from './components/ui/Toast'
 import './index.css'
 
 // Layouts
@@ -14,6 +15,9 @@ import Analytics from './pages/Analytics'
 import Integrations from './pages/Integrations'
 import Settings from './pages/Settings'
 import NotFound from './pages/NotFound'
+import UIShowcase from './pages/UIShowcase'
+import TestBrandForm from './pages/TestBrandForm'
+import TestAnalyzeUrl from './pages/TestAnalyzeUrl'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +27,18 @@ const router = createBrowserRouter([
   {
     path: '/setup',
     element: <Setup />,
+  },
+  {
+    path: '/ui',
+    element: <UIShowcase />,
+  },
+  {
+    path: '/test-brand-form',
+    element: <TestBrandForm />,
+  },
+  {
+    path: '/test-analyze',
+    element: <TestAnalyzeUrl />,
   },
   {
     path: '/app',
@@ -58,6 +74,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ToastProvider>
+      <RouterProvider router={router} />
+    </ToastProvider>
   </React.StrictMode>,
 )

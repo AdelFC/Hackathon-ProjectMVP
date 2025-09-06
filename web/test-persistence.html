@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Persistence</title>
+</head>
+<body>
+    <h1>Test de persistance Zustand</h1>
+    
+    <p>Ouvrez cette page dans votre navigateur pour tester:</p>
+    <ol>
+        <li>Allez sur <a href="http://localhost:3000">http://localhost:3000</a></li>
+        <li>Changez le mode dark/light avec le bouton</li>
+        <li>Allez sur /setup et configurez quelques paramètres</li>
+        <li>Connectez des réseaux sociaux (fake)</li>
+        <li>Rechargez la page (F5)</li>
+        <li>Vérifiez que le thème et les connexions sont conservés</li>
+    </ol>
+    
+    <h2>Vérification dans la console</h2>
+    <p>Dans les DevTools du navigateur (F12), onglet Application > Local Storage:</p>
+    <ul>
+        <li>preferences-storage: contient darkMode, sidebarOpen, language</li>
+        <li>project-storage: contient brandIdentity, goals, setupCompleted</li>
+        <li>integrations-storage: contient les connexions réseaux sociaux</li>
+    </ul>
+</body>
+</html>

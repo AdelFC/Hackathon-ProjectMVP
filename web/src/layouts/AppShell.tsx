@@ -1,130 +1,180 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { usePreferencesStore } from '../stores/preferencesStore'
 
 export default function AppShell() {
   const navigate = useNavigate()
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem('darkMode') === 'true'
-  })
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const { darkMode, toggleDarkMode, sidebarOpen, toggleSidebar } = usePreferencesStore()
+  const [mobileOpen, setMobileOpen] = useState(false)  // mobile drawer (sm-md)
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('darkMode', 'true')
-    } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('darkMode', 'false')
-    }
-  }, [darkMode])
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
+    const onKey = (e: KeyboardEvent) => {
       if (e.altKey) {
-        switch(e.key) {
-          case '1':
-            navigate('/app/strategy')
-            break
-          case '2':
-            navigate('/app/analytics')
-            break
-        }
+        if (e.key === '1') navigate('/app/strategy')
+        if (e.key === '2') navigate('/app/analytics')
       }
     }
-    window.addEventListener('keydown', handleKeyPress)
-    return () => window.removeEventListener('keydown', handleKeyPress)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
   }, [navigate])
 
-  const navItems = [
-    { path: '/app/strategy', label: 'Stratégie & Posts', icon: '📝', hotkey: 'Alt+1' },
-    { path: '/app/analytics', label: 'Analytics', icon: '📊', hotkey: 'Alt+2' },
-    { path: '/app/integrations', label: 'Intégrations', icon: '🔗' },
-    { path: '/app/settings', label: 'Paramètres', icon: '⚙️' },
+  useEffect(() => {
+    if (mobileOpen) document.body.classList.add('overflow-hidden')
+    else document.body.classList.remove('overflow-hidden')
+    return () => document.body.classList.remove('overflow-hidden')
+  }, [mobileOpen])
+
+  const nav = [
+    {
+      to: '/app/strategy',
+      label: 'Stratégie',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M4 7h16M4 12h10M4 17h7" />
+        </svg>
+      ),
+      hotkey: 'Alt+1',
+    },
+    {
+      to: '/app/analytics',
+      label: 'Analytics',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 3v18h18" />
+          <path d="M7 13v5M12 9v9M17 5v13" />
+        </svg>
+      ),
+      hotkey: 'Alt+2',
+    },
+    {
+      to: '/app/integrations',
+      label: 'Intégrations',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M8 7h8M3 7h2m14 0h2M8 17h8M3 17h2m14 0h2" />
+        </svg>
+      ),
+    },
+    {
+      to: '/app/settings',
+      label: 'Paramètres',
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.07a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.07a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.02 4.2l.06.06c.49.49 1.2.64 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.07c0 .67.39 1.27 1 1.51h.1c.62.31 1.33.16 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06c-.49.49-.64 1.2-.33 1.82V9c.24.61.84 1 1.51 1H21a2 2 0 1 1 0 4h-.07c-.67 0-1.27.39-1.51 1Z" />
+        </svg>
+      ),
+    },
   ]
 
+  const NavItems = ({ showLabels }: { showLabels: boolean }) => (
+    <nav className="p-2">
+      {nav.map((item) => (
+        <NavLink
+          key={item.to}
+          to={item.to}
+          onClick={() => setMobileOpen(false)}
+          className={({ isActive }) =>
+            `nav-item ${isActive ? 'nav-item-active nav-accent' : ''}`
+          }
+        >
+          <span className="flex items-center gap-3">
+            <span className="text-gray-500 dark:text-gray-400">{item.icon}</span>
+            {showLabels && <span>{item.label}</span>}
+          </span>
+          {showLabels && item.hotkey && <span className="kbd">{item.hotkey}</span>}
+        </NavLink>
+      ))}
+    </nav>
+  )
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* TopNav */}
-      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <button
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
-                aria-label="Toggle sidebar"
-              >
-                <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+    <div className="min-h-screen">
+      {/* Top Bar */}
+      <header className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+        <div className="section h-14 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                toggleSidebar()
+                setMobileOpen((v) => !v)
+              }}
+              className="btn btn-ghost px-2"
+              aria-label="Menu"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-sidebar"
+            >
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <span className="font-semibold">Social Studio</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="hidden sm:inline text-xs text-gray-500">{new Date().toLocaleDateString()}</span>
+            <button onClick={toggleDarkMode} className="btn btn-ghost px-2" aria-label="Dark mode">
+              {darkMode ? (
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
                 </svg>
-              </button>
-              <h1 className="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
-                Social Media Assistant
-              </h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                Powered by Blackbox AI
-              </span>
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                aria-label="Toggle dark mode"
-              >
-                {darkMode ? (
-                  <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                  </svg>
-                )}
-              </button>
-            </div>
+              ) : (
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                  <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" />
+                  <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41m0-14.14-1.41 1.41M6.34 17.66 4.93 19.07" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </header>
 
+      {/* Mobile drawer */}
+      {mobileOpen && (
+        <button
+          className="backdrop lg:hidden z-40"
+          aria-label="Fermer le menu"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+      <div
+        id="mobile-sidebar"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation"
+        className={`lg:hidden fixed inset-y-0 left-0 z-50 w-64 transform ${
+          mobileOpen ? 'translate-x-0' : '-translate-x-full'
+        } transition-transform duration-300 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800`}
+      >
+        <div className="p-2 border-b border-gray-200 dark:border-gray-800">
+          <div className="flex items-center justify-between px-1 py-2">
+            <span className="font-semibold">Navigation</span>
+            <button
+              className="btn btn-ghost px-2"
+              aria-label="Fermer"
+              onClick={() => setMobileOpen(false)}
+            >
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <NavItems showLabels={true} />
+      </div>
+
       <div className="flex">
-        {/* SideNav */}
+        {/* Desktop Sidebar */}
         <aside
           className={`${
-            sidebarOpen ? 'w-64' : 'w-16'
-          } bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300`}
+            sidebarOpen ? 'w-60' : 'w-16'
+          } hidden lg:block transition-all duration-300 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900`}
+          aria-label="Navigation"
         >
-          <nav className="p-4 space-y-2">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) =>
-                  `flex items-center justify-between px-3 py-2 rounded-lg transition-colors ${
-                    isActive
-                      ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300'
-                      : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
-                  }`
-                }
-              >
-                <div className="flex items-center">
-                  <span className="text-xl">{item.icon}</span>
-                  {sidebarOpen && (
-                    <span className="ml-3 text-sm font-medium">{item.label}</span>
-                  )}
-                </div>
-                {sidebarOpen && item.hotkey && (
-                  <span className="text-xs text-gray-400 dark:text-gray-500">
-                    {item.hotkey}
-                  </span>
-                )}
-              </NavLink>
-            ))}
-          </nav>
+          <NavItems showLabels={sidebarOpen} />
         </aside>
 
-        {/* Main Content */}
-        <main className="flex-1 p-6">
+        {/* Main */}
+        <main className="flex-1 section py-6">
           <Outlet />
         </main>
       </div>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test du formulaire BrandForm</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 20px;
+            background: #f3f4f6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #111827;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 6px;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 15px;
+        }
+        .test-case {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+        .test-input {
+            font-weight: 500;
+            color: #4b5563;
+            margin-bottom: 5px;
+        }
+        .test-expected {
+            color: #059669;
+            font-size: 14px;
+        }
+        .test-action {
+            color: #7c3aed;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .link:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Plan de test pour BrandForm</h1>
+        
+        <div class="test-section">
+            <div class="test-title">1. Tests de validation des champs</div>
+            
+            <div class="test-case">
+                <div class="test-input">✏️ Nom de la marque: "A"</div>
+                <div class="test-expected">❌ Erreur attendue: "Le nom doit contenir au moins 2 caractères"</div>
+            </div>
+            
+            <div class="test-case">
+                <div class="test-input">✏️ Site web: "startpost"</div>
+                <div class="test-expected">❌ Erreur attendue: "URL invalide (doit commencer par http:// ou https://)"</div>
+            </div>
+            
+            <div class="test-case">
+                <div class="test-input">✏️ Site web: vide</div>
+                <div class="test-expected">✅ Pas d'erreur (champ optionnel)</div>
+            </div>
+            
+            <div class="test-case">
+                <div class="test-input">✏️ Site web: "https://startpost.ai"</div>
+                <div class="test-expected">✅ Valide</div>
+            </div>
+            
+            <div class="test-case">
+                <div class="test-input">✏️ Description: "Court"</div>
+                <div class="test-expected">❌ Erreur attendue: "La description doit contenir au moins 10 caractères"</div>
+            </div>
+            
+            <div class="test-case">
+                <div class="test-input">✏️ Ton: "Ok"</div>
+                <div class="test-expected">❌ Erreur attendue: "Le ton doit contenir au moins 3 caractères"</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">2. Tests des listes dynamiques</div>
+            
+            <div class="test-case">
+                <div class="test-input">➕ Ajouter "Partager des insights" dans Do</div>
+                <div class="test-action">Action: Taper le texte + clic sur "Ajouter" ou Entrée</div>
+                <div class="test-expected">✅ Badge vert avec croix pour supprimer</div>
+            </div>
+            
+            <div class="test-case">
+                <div class="test-input">➕ Ajouter "Spam" dans Don't</div>
+                <div class="test-action">Action: Taper le texte + clic sur "Ajouter" ou Entrée</div>
+                <div class="test-expected">✅ Badge rouge avec croix pour supprimer</div>
+            </div>
+            
+            <div class="test-case">
+                <div class="test-input">➕ Ajouter "startup" dans Hashtags</div>
+                <div class="test-action">Action: Taper le texte + clic sur "Ajouter" ou Entrée</div>
+                <div class="test-expected">✅ Badge bleu "#startup" avec croix pour supprimer</div>
+            </div>
+            
+            <div class="test-case">
+                <div class="test-input">❌ Supprimer un item</div>
+                <div class="test-action">Action: Clic sur la croix d'un badge</div>
+                <div class="test-expected">✅ L'item disparaît</div>
+            </div>
+            
+            <div class="test-case">
+                <div class="test-input">⚠️ Soumettre sans Do/Don't/Hashtags</div>
+                <div class="test-expected">❌ Erreurs: "Ajoutez au moins une bonne pratique/pratique à éviter/un hashtag"</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">3. Test de soumission complète</div>
+            
+            <div class="test-case">
+                <div class="test-input">Données complètes:</div>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>Nom: "StartPost AI"</li>
+                    <li>Site: "https://startpost.ai"</li>
+                    <li>Description: "Le community manager AI des startups"</li>
+                    <li>Ton: "Professionnel, inspirant, accessible"</li>
+                    <li>Do: ["Partager des insights", "Être authentique"]</li>
+                    <li>Don't: ["Spam", "Jargon technique"]</li>
+                    <li>Hashtags: ["#startupfr", "#AI", "#innovation"]</li>
+                </ul>
+                <div class="test-expected">✅ Toast de succès + Données sauvegardées dans le store</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">4. Vérification du store</div>
+            
+            <div class="test-case">
+                <div class="test-action">Console du navigateur: <code>localStorage.getItem('project-store')</code></div>
+                <div class="test-expected">✅ Les données sont persistées avec features contenant DO:, DONT: et hashtags</div>
+            </div>
+        </div>
+
+        <a href="http://localhost:3001/test-brand-form" class="link" target="_blank">
+            🚀 Ouvrir la page de test
+        </a>
+    </div>
+</body>
+</html>
