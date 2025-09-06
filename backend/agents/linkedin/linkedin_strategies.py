@@ -20,7 +20,7 @@ LINKEDIN_VIRAL_STRATEGIES = """
 - Use emojis strategically (but not excessively) 🎯
 - Include a clear CTA at the end
 - Format: Hook → Story → Insight → CTA
-- Optimal length: 1300-1900 characters (shows "see more" button)
+- Optimal length: 1500-2500 characters for comprehensive value and insights
 
 ## 3. Storytelling Frameworks
 - Before/After transformation stories

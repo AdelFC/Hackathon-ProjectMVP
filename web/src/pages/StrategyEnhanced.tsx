@@ -18,23 +18,23 @@ interface ProposedPost extends DailyPost {
 
 export function StrategyEnhanced() {
   const { brandIdentity, goals } = useProjectStore();
-  const { 
-    activeStrategy: storedStrategy, 
-    setActiveStrategy, 
-    markSynced 
+  const {
+    activeStrategy: storedStrategy,
+    setActiveStrategy,
+    markSynced
   } = useStrategyStore();
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [proposedPosts, setProposedPosts] = useState<ProposedPost[]>([]);
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
   const [editContent, setEditContent] = useState<string>('');
-  
+
   // Hooks API
   const { strategy, loading: loadingGenerate, generateStrategy } = useStrategyGeneration();
   const { loading: loadingOrchestrate, runOrchestration } = useOrchestration();
-  const { 
-    strategy: apiStrategy, 
-    loading: loadingActive, 
-    fetchStrategy 
+  const {
+    strategy: apiStrategy,
+    loading: loadingActive,
+    fetchStrategy
   } = useActiveStrategy(brandIdentity?.name || '');
 
   // Charger la stratégie depuis l'API au montage
@@ -121,7 +121,9 @@ export function StrategyEnhanced() {
       duration_days: 30,
       language: 'fr-FR',
       tone: brandIdentity.voice,
-      cta_targets: ['demo', 'newsletter', 'free_trial']
+      cta_targets: ['demo', 'newsletter', 'free_trial'],
+      startup_name: brandIdentity.startupName || brandIdentity.name,  // Use brand name as fallback
+      startup_url: brandIdentity.startupUrl || brandIdentity.website   // Use website as fallback
     });
   };
 
@@ -129,12 +131,14 @@ export function StrategyEnhanced() {
     await runOrchestration({
       company_name: brandIdentity?.name,
       execute_date: selectedDate,
-      dry_run: false
+      dry_run: false,
+      startup_name: brandIdentity?.startupName || brandIdentity?.name,  // Use brand name as fallback
+      startup_url: brandIdentity?.startupUrl || brandIdentity?.website   // Use website as fallback
     });
   };
 
   const handleApprovePost = (postId: string) => {
-    setProposedPosts(prev => prev.map(post => 
+    setProposedPosts(prev => prev.map(post =>
       post.id === postId ? { ...post, status: 'approved' as const } : post
     ));
   };
@@ -152,7 +156,7 @@ export function StrategyEnhanced() {
   };
 
   const handleSaveEdit = (postId: string) => {
-    setProposedPosts(prev => prev.map(post => 
+    setProposedPosts(prev => prev.map(post =>
       post.id === postId ? { ...post, content: editContent } : post
     ));
     setEditingPostId(null);
@@ -166,12 +170,12 @@ export function StrategyEnhanced() {
 
   const handleExport = () => {
     if (!currentStrategy) return;
-    
+
     const dataStr = JSON.stringify(currentStrategy, null, 2);
     const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-    
+
     const exportFileDefaultName = `strategy_${brandIdentity?.name}_${selectedDate}.json`;
-    
+
     const linkElement = document.createElement('a');
     linkElement.setAttribute('href', dataUri);
     linkElement.setAttribute('download', exportFileDefaultName);
@@ -181,10 +185,10 @@ export function StrategyEnhanced() {
   // Obtenir les posts du calendrier pour la sidebar
   const getUpcomingPosts = () => {
     if (!currentStrategy) return [];
-    
+
     const today = new Date();
     const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-    
+
     return currentStrategy.calendar.posts
       .filter(post => {
         const postDate = new Date(post.date);
@@ -221,7 +225,7 @@ export function StrategyEnhanced() {
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-semibold">Stratégie & Posts</h2>
         <div className="hidden sm:flex items-center gap-2">
-          <button 
+          <button
             onClick={handleExport}
             className="btn btn-outline flex items-center gap-2"
             disabled={!currentStrategy}
@@ -250,7 +254,7 @@ export function StrategyEnhanced() {
           <Card className="card-hover">
             <div className="card-body">
               <h3 className="text-lg font-medium mb-2">Stratégie générée</h3>
-              
+
               {currentStrategy ? (
                 <>
                   <div className="space-y-3">
@@ -258,7 +262,7 @@ export function StrategyEnhanced() {
                       <p className="text-sm text-gray-500 dark:text-gray-400">Campagne</p>
                       <p className="font-medium">{currentStrategy.campaign_name}</p>
                     </div>
-                    
+
                     <div>
                       <p className="text-sm text-gray-500 dark:text-gray-400">Positionnement</p>
                       <p className="text-gray-700 dark:text-gray-300">
@@ -273,9 +277,9 @@ export function StrategyEnhanced() {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="divider" />
-                  
+
                   <div className="flex flex-wrap gap-2">
                     {currentStrategy.content_pillars.map((pillar, idx) => (
                       <span key={idx} className="badge">{pillar}</span>
@@ -309,7 +313,7 @@ export function StrategyEnhanced() {
                     {selectedDate} • {proposedPosts.length} posts • {approvedCount} approuvés
                   </p>
                 </div>
-                <button 
+                <button
                   onClick={handleApproveAll}
                   className="btn btn-secondary"
                   disabled={proposedPosts.length === 0}
@@ -333,7 +337,7 @@ export function StrategyEnhanced() {
               <div className="space-y-4">
                 {proposedPosts.length > 0 ? (
                   proposedPosts.map(post => (
-                    <article 
+                    <article
                       key={post.id}
                       className="rounded-xl border border-gray-200 dark:border-gray-800 p-4 transition hover:bg-gray-50 dark:hover:bg-gray-800/60"
                     >
@@ -364,13 +368,13 @@ export function StrategyEnhanced() {
                         <div className="flex items-center gap-2">
                           {editingPostId === post.id ? (
                             <>
-                              <button 
+                              <button
                                 onClick={() => handleSaveEdit(post.id)}
                                 className="btn btn-ghost px-2 py-1 text-xs"
                               >
                                 <Check className="w-3 h-3" />
                               </button>
-                              <button 
+                              <button
                                 onClick={handleCancelEdit}
                                 className="btn btn-ghost px-2 py-1 text-xs"
                               >
@@ -379,7 +383,7 @@ export function StrategyEnhanced() {
                             </>
                           ) : (
                             <>
-                              <button 
+                              <button
                                 onClick={() => handleEditPost(post.id)}
                                 className="btn btn-ghost px-2 py-1 text-xs"
                               >
@@ -387,7 +391,7 @@ export function StrategyEnhanced() {
                                 Éditer
                               </button>
                               {post.status !== 'approved' && (
-                                <button 
+                                <button
                                   onClick={() => handleApprovePost(post.id)}
                                   className="btn btn-outline px-2 py-1 text-xs"
                                 >
@@ -399,7 +403,7 @@ export function StrategyEnhanced() {
                           )}
                         </div>
                       </div>
-                      
+
                       {editingPostId === post.id ? (
                         <textarea
                           value={editContent}
@@ -412,13 +416,13 @@ export function StrategyEnhanced() {
                           <p className="text-gray-700 dark:text-gray-300 mb-3">
                             {post.content}
                           </p>
-                          
+
                           <div className="flex items-center gap-4 text-xs text-gray-500">
                             <span>Format: {post.variation.format}</span>
                             <span>CTA: {post.variation.cta_type}</span>
                             {post.image_required && <span>📷 Image requise</span>}
                           </div>
-                          
+
                           <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
                             <p className="text-xs text-gray-500">
                               <strong>Message clé:</strong> {post.key_message}
@@ -466,16 +470,16 @@ export function StrategyEnhanced() {
                 <Calendar className="w-4 h-4 inline mr-2" />
                 Calendrier éditorial
               </h3>
-              
+
               {upcomingPosts.length > 0 ? (
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   {upcomingPosts.map((post, idx) => {
                     const postDate = new Date(post.date);
                     const dayName = postDate.toLocaleDateString('fr-FR', { weekday: 'long' });
                     const dateStr = postDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
-                    
+
                     return (
-                      <li 
+                      <li
                         key={idx}
                         className="rounded-lg bg-gray-50 dark:bg-gray-800 p-3 flex items-center justify-between cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                         onClick={() => setSelectedDate(post.date)}
@@ -496,9 +500,9 @@ export function StrategyEnhanced() {
                   Aucun post programmé pour les 7 prochains jours
                 </p>
               )}
-              
+
               <div className="mt-4">
-                <button 
+                <button
                   className="btn btn-outline w-full text-xs"
                   onClick={() => setSelectedDate(new Date().toISOString().split('T')[0])}
                 >
@@ -512,27 +516,27 @@ export function StrategyEnhanced() {
           <Card className="card-hover">
             <div className="card-body">
               <h3 className="text-lg font-medium mb-4">Statistiques</h3>
-              
+
               {currentStrategy ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600 dark:text-gray-400">Total posts</span>
                     <span className="font-medium">{currentStrategy.calendar.total_posts}</span>
                   </div>
-                  
+
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600 dark:text-gray-400">Durée</span>
                     <span className="font-medium">
                       {Math.ceil(
-                        (new Date(currentStrategy.calendar.end_date).getTime() - 
-                         new Date(currentStrategy.calendar.start_date).getTime()) / 
+                        (new Date(currentStrategy.calendar.end_date).getTime() -
+                         new Date(currentStrategy.calendar.start_date).getTime()) /
                         (1000 * 60 * 60 * 24)
                       )} jours
                     </span>
                   </div>
-                  
+
                   <div className="divider my-2" />
-                  
+
                   {Object.entries(currentStrategy.calendar.posts_per_platform).map(([platform, count]) => (
                     <div key={platform} className="flex justify-between items-center">
                       <span className="text-sm text-gray-600 dark:text-gray-400">{platform}</span>
@@ -574,7 +578,7 @@ export function StrategyEnhanced() {
       {/* Actions mobiles */}
       <div className="sm:hidden">
         <div className="flex items-center gap-2">
-          <button 
+          <button
             onClick={handleExport}
             className="btn btn-outline w-full"
             disabled={!currentStrategy}

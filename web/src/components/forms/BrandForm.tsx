@@ -11,6 +11,11 @@ const brandSchema = z.object({
     (val) => !val || val === '' || /^https?:\/\/.+\..+/.test(val),
     'URL invalide (doit commencer par http:// ou https://)'
   ).optional(),
+  startupName: z.string().optional(),
+  startupUrl: z.string().refine(
+    (val) => !val || val === '' || /^https?:\/\/.+\..+/.test(val),
+    'URL invalide (doit commencer par http:// ou https://)'
+  ).optional(),
   oneLiner: z.string().min(10, 'La description doit contenir au moins 10 caractères'),
   tone: z.string().min(3, 'Le ton doit contenir au moins 3 caractères'),
   doDont: z.object({
@@ -33,6 +38,8 @@ export function BrandForm({ onSubmit }: BrandFormProps) {
   const [formData, setFormData] = useState<BrandFormData>({
     name: brandIdentity?.name || '',
     domain: brandIdentity?.website || '',
+    startupName: brandIdentity?.startupName || '',
+    startupUrl: brandIdentity?.startupUrl || '',
     oneLiner: brandIdentity?.mission || '',
     tone: brandIdentity?.voice || '',
     doDont: {
@@ -57,6 +64,8 @@ export function BrandForm({ onSubmit }: BrandFormProps) {
         name: validatedData.name,
         industry: '',
         website: validatedData.domain || '',
+        startupName: validatedData.startupName || '',
+        startupUrl: validatedData.startupUrl || '',
         mission: validatedData.oneLiner,
         targetAudience: '',
         usp: '',
@@ -175,6 +184,32 @@ export function BrandForm({ onSubmit }: BrandFormProps) {
               placeholder="https://startpost.ai"
             />
             {errors.domain && <p className="text-sm text-red-500 mt-1">{errors.domain}</p>}
+          </div>
+
+          <div>
+            <label className="label">Nom de la startup (optionnel)</label>
+            <input
+              type="text"
+              className={`field ${errors.startupName ? 'border-red-500' : ''}`}
+              value={formData.startupName}
+              onChange={(e) => setFormData(prev => ({ ...prev, startupName: e.target.value }))}
+              placeholder="Nom de votre startup pour la génération de contenu"
+            />
+            {errors.startupName && <p className="text-sm text-red-500 mt-1">{errors.startupName}</p>}
+            <p className="text-xs text-gray-500 mt-1">Ce nom sera utilisé dans le contenu généré par l'IA</p>
+          </div>
+
+          <div>
+            <label className="label">URL de la startup (optionnel)</label>
+            <input
+              type="text"
+              className={`field ${errors.startupUrl ? 'border-red-500' : ''}`}
+              value={formData.startupUrl}
+              onChange={(e) => setFormData(prev => ({ ...prev, startupUrl: e.target.value }))}
+              placeholder="https://mystartup.com"
+            />
+            {errors.startupUrl && <p className="text-sm text-red-500 mt-1">{errors.startupUrl}</p>}
+            <p className="text-xs text-gray-500 mt-1">URL pour l'analyse de la landing page et la génération de contenu personnalisé</p>
           </div>
 
           <div>

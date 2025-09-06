@@ -9,7 +9,7 @@ import { Check, ChevronLeft, ChevronRight, Loader2, Sparkles } from 'lucide-reac
 interface FormData {
   // Step 1: Analyse
   url: string
-  
+
   // Step 2: Brand
   brandName: string
   mission: string
@@ -17,12 +17,14 @@ interface FormData {
   features: string[]
   audience: string
   voice: string
-  
+  startupName: string
+  startupUrl: string
+
   // Step 3: Goals
   frequency: string
   objective: string
   platforms: string[]
-  
+
   // Step 4: Review
   generateStrategy: boolean
 }
@@ -32,7 +34,7 @@ export function SetupConnected() {
   const { addToast } = useToast()
   const { setBrandIdentity, setGoals, completeSetup } = useProjectStore()
   const { generateStrategy, loading: generatingStrategy } = useStrategyGeneration()
-  
+
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<FormData>({
     url: '',
@@ -42,6 +44,8 @@ export function SetupConnected() {
     features: [],
     audience: '',
     voice: '',
+    startupName: '',
+    startupUrl: '',
     frequency: '3/sem.',
     objective: 'Visibilité',
     platforms: ['LinkedIn', 'Facebook', 'Twitter'],
@@ -119,7 +123,9 @@ export function SetupConnected() {
           duration_days: 30,
           language: 'fr-FR',
           tone: formData.voice,
-          cta_targets: ['demo', 'newsletter', 'free_trial']
+          cta_targets: ['demo', 'newsletter', 'free_trial'],
+          startup_name: formData.startupName || undefined,
+          startup_url: formData.startupUrl || undefined
         })
 
         if (strategy) {
@@ -145,10 +151,10 @@ export function SetupConnected() {
               <div className="flex flex-col items-center">
                 <div className={`
                   w-10 h-10 rounded-full flex items-center justify-center font-semibold
-                  ${currentStep > step.id 
-                    ? 'bg-green-500 text-white' 
-                    : currentStep === step.id 
-                      ? 'bg-blue-500 text-white' 
+                  ${currentStep > step.id
+                    ? 'bg-green-500 text-white'
+                    : currentStep === step.id
+                      ? 'bg-blue-500 text-white'
                       : 'bg-gray-200 dark:bg-gray-700 text-gray-500'
                   }
                 `}>
@@ -180,7 +186,7 @@ export function SetupConnected() {
                 Entrez l'URL de votre site pour extraire automatiquement les informations de votre marque
               </p>
             </div>
-            
+
             <AnalyzeUrlPanelConnected
               url={formData.url}
               onUrlChange={(url) => setFormData(prev => ({ ...prev, url }))}
@@ -253,6 +259,30 @@ export function SetupConnected() {
                   placeholder="Ex: Professionnel, amical, innovant"
                 />
               </div>
+
+              <div>
+                <label className="label">Nom de la startup (optionnel)</label>
+                <input
+                  type="text"
+                  value={formData.startupName}
+                  onChange={(e) => setFormData(prev => ({ ...prev, startupName: e.target.value }))}
+                  className="field"
+                  placeholder="Nom pour la génération de contenu"
+                />
+                <p className="text-xs text-gray-500 mt-1">Ce nom sera utilisé dans le contenu généré</p>
+              </div>
+
+              <div>
+                <label className="label">URL de la startup (optionnel)</label>
+                <input
+                  type="text"
+                  value={formData.startupUrl}
+                  onChange={(e) => setFormData(prev => ({ ...prev, startupUrl: e.target.value }))}
+                  className="field"
+                  placeholder="https://mystartup.com"
+                />
+                <p className="text-xs text-gray-500 mt-1">Pour l'analyse de la landing page</p>
+              </div>
             </div>
           </div>
         )}
@@ -305,14 +335,14 @@ export function SetupConnected() {
                         checked={formData.platforms.includes(platform)}
                         onChange={(e) => {
                           if (e.target.checked) {
-                            setFormData(prev => ({ 
-                              ...prev, 
-                              platforms: [...prev.platforms, platform] 
+                            setFormData(prev => ({
+                              ...prev,
+                              platforms: [...prev.platforms, platform]
                             }))
                           } else {
-                            setFormData(prev => ({ 
-                              ...prev, 
-                              platforms: prev.platforms.filter(p => p !== platform) 
+                            setFormData(prev => ({
+                              ...prev,
+                              platforms: prev.platforms.filter(p => p !== platform)
                             }))
                           }
                         }}
@@ -339,7 +369,7 @@ export function SetupConnected() {
             <div className="space-y-4">
               <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <h3 className="font-semibold mb-3">Résumé de votre configuration</h3>
-                
+
                 <div className="space-y-2 text-sm">
                   <div>
                     <span className="text-gray-500">Marque:</span>
@@ -369,9 +399,9 @@ export function SetupConnected() {
                   type="checkbox"
                   id="generateStrategy"
                   checked={formData.generateStrategy}
-                  onChange={(e) => setFormData(prev => ({ 
-                    ...prev, 
-                    generateStrategy: e.target.checked 
+                  onChange={(e) => setFormData(prev => ({
+                    ...prev,
+                    generateStrategy: e.target.checked
                   }))}
                   className="rounded"
                 />

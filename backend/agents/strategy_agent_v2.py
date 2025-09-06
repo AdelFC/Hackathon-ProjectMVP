@@ -142,16 +142,145 @@ class StrategyAgentV2:
             ]
         }
 
+    def generate_startup_focused_topics(
+        self,
+        landing_page_info: Optional[str],
+        startup_name: str,
+        pillar: ContentPillar
+    ) -> List[str]:
+        """
+        Generate startup-focused topics based on landing page analysis
+
+        Args:
+            landing_page_info: Analyzed landing page information
+            startup_name: Name of the startup
+            pillar: Content pillar to focus on
+
+        Returns:
+            List of relevant topics for the startup
+        """
+        if not landing_page_info:
+            # Fallback to generic topics if no landing page info
+            return self.get_generic_topics(startup_name, pillar)
+
+        # Extract key information from landing page analysis
+        startup_topics = {
+            ContentPillar.EDUCATION: [
+                f"How {startup_name} solves industry challenges",
+                f"Understanding the problem {startup_name} addresses",
+                f"The technology behind {startup_name}",
+                f"Best practices for using {startup_name}",
+                f"Industry insights from {startup_name} team"
+            ],
+            ContentPillar.SOCIAL_PROOF: [
+                f"Success stories from {startup_name} users",
+                f"How {startup_name} transformed our clients' business",
+                f"Real results achieved with {startup_name}",
+                f"Customer testimonials about {startup_name}",
+                f"Case study: {startup_name} impact measurement"
+            ],
+            ContentPillar.PRODUCT: [
+                f"Introducing {startup_name}'s key features",
+                f"What makes {startup_name} different",
+                f"Behind the scenes: Building {startup_name}",
+                f"New updates and improvements to {startup_name}",
+                f"The vision behind {startup_name}"
+            ],
+            ContentPillar.BEHIND_THE_SCENES: [
+                f"Meet the {startup_name} team",
+                f"A day in the life at {startup_name}",
+                f"Our journey building {startup_name}",
+                f"The culture and values at {startup_name}",
+                f"Challenges we faced creating {startup_name}"
+            ],
+            ContentPillar.THOUGHT_LEADERSHIP: [
+                f"The future of the industry according to {startup_name}",
+                f"Why we built {startup_name}: Market insights",
+                f"Trends shaping {startup_name}'s industry",
+                f"Our CEO's vision for {startup_name}",
+                f"Industry predictions from {startup_name} experts"
+            ],
+            ContentPillar.COMMUNITY: [
+                f"Join the {startup_name} community",
+                f"User-generated content featuring {startup_name}",
+                f"Community spotlight: {startup_name} power users",
+                f"Events and webinars by {startup_name}",
+                f"Building a community around {startup_name}"
+            ]
+        }
+
+        # Try to extract specific information from landing page analysis
+        if "value proposition" in landing_page_info.lower():
+            # Add value proposition focused topics
+            startup_topics[pillar].extend([
+                f"The core value {startup_name} brings to market",
+                f"Why {startup_name}'s approach is revolutionary"
+            ])
+
+        if "target audience" in landing_page_info.lower():
+            # Add audience-specific topics
+            startup_topics[pillar].extend([
+                f"How {startup_name} serves its target market",
+                f"Understanding {startup_name}'s ideal customers"
+            ])
+
+        if "pricing" in landing_page_info.lower():
+            # Add pricing/business model topics
+            startup_topics[pillar].extend([
+                f"The business model behind {startup_name}",
+                f"Value for money: {startup_name}'s pricing strategy"
+            ])
+
+        return startup_topics.get(pillar, [])
+
+    def get_generic_topics(self, startup_name: str, pillar: ContentPillar) -> List[str]:
+        """Fallback generic topics when no landing page info is available"""
+        generic_topics = {
+            ContentPillar.EDUCATION: [
+                f"Key insights about {startup_name}'s industry",
+                f"How to optimize your business with {startup_name}",
+                f"Understanding innovation in {startup_name}'s space"
+            ],
+            ContentPillar.SOCIAL_PROOF: [
+                f"Success stories from {startup_name}",
+                f"Impact metrics from {startup_name}",
+                f"Client testimonials for {startup_name}"
+            ],
+            ContentPillar.PRODUCT: [
+                f"New features from {startup_name}",
+                f"How {startup_name} solves problems",
+                f"Behind the technology of {startup_name}"
+            ],
+            ContentPillar.BEHIND_THE_SCENES: [
+                f"Team spotlight at {startup_name}",
+                f"Company culture at {startup_name}",
+                f"Building {startup_name}: Our story"
+            ],
+            ContentPillar.THOUGHT_LEADERSHIP: [
+                f"The future according to {startup_name}",
+                f"Industry insights from {startup_name}",
+                f"Innovation trends in {startup_name}'s field"
+            ],
+            ContentPillar.COMMUNITY: [
+                f"Join the {startup_name} community",
+                f"User highlights from {startup_name}",
+                f"Community events by {startup_name}"
+            ]
+        }
+        return generic_topics.get(pillar, [])
+
     def generate_daily_posts(
         self,
         brand_name: str,
         start_date: datetime,
         total_days: int,
         content_pillars: List[ContentPillar],
-        cta_types: List[CTAType]
+        cta_types: List[CTAType],
+        startup_name: Optional[str] = None,
+        landing_page_info: Optional[str] = None
     ) -> List[DailyPost]:
         """
-        Generate daily posts for the calendar
+        Generate daily posts for the calendar with startup focus
 
         Args:
             brand_name: Brand name
@@ -159,6 +288,8 @@ class StrategyAgentV2:
             total_days: Number of days
             content_pillars: Available content pillars
             cta_types: Available CTA types
+            startup_name: Name of the startup for content generation
+            landing_page_info: Analyzed landing page information
 
         Returns:
             List of daily posts
@@ -167,46 +298,6 @@ class StrategyAgentV2:
         platforms = [Platform.LINKEDIN, Platform.FACEBOOK, Platform.TWITTER]
         formats = list(PostFormat)
         variations = self.generate_content_variations()
-
-        # Topics pool based on pillars
-        topic_templates = {
-            ContentPillar.EDUCATION: [
-                "5 key insights about {industry}",
-                "How to optimize your {process}",
-                "Understanding {concept} in 2024",
-                "The complete guide to {topic}"
-            ],
-            ContentPillar.SOCIAL_PROOF: [
-                "Client success story: {achievement}",
-                "Case study: {result}",
-                "Testimonial spotlight: {client}",
-                "Our impact: {metric}"
-            ],
-            ContentPillar.PRODUCT: [
-                "New feature announcement: {feature}",
-                "Product update: {improvement}",
-                "How our solution helps {problem}",
-                "Behind our technology: {aspect}"
-            ],
-            ContentPillar.BEHIND_THE_SCENES: [
-                "Team spotlight: {role}",
-                "A day in the life at {brand_name}",
-                "Our company culture: {value}",
-                "Building {brand_name}: {story}"
-            ],
-            ContentPillar.THOUGHT_LEADERSHIP: [
-                "The future of {industry}",
-                "Why {trend} matters now",
-                "Our CEO's perspective on {topic}",
-                "Industry insights: {analysis}"
-            ],
-            ContentPillar.COMMUNITY: [
-                "Community highlight: {member}",
-                "Join our {event}",
-                "User-generated content: {theme}",
-                "Community challenge: {activity}"
-            ]
-        }
 
         for day in range(total_days):
             current_date = start_date + timedelta(days=day)
@@ -217,35 +308,16 @@ class StrategyAgentV2:
                 # Rotate through content pillars
                 pillar = content_pillars[day % len(content_pillars)]
 
-                # Select topic template
-                templates = topic_templates[pillar]
-                topic_template = random.choice(templates)
-
-                # Generate specific topic
-                topic = topic_template.format(
-                    industry="startup ecosystem",
-                    process="sponsor matching",
-                    concept="AI-driven partnerships",
-                    topic="sponsor acquisition",
-                    achievement="300% ROI increase",
-                    result="10x faster matching",
-                    client="TechStartup Inc",
-                    metric="1000+ successful matches",
-                    feature="AI matching algorithm",
-                    improvement="faster processing",
-                    problem="finding sponsors",
-                    aspect="machine learning",
-                    role="Data Scientist",
-                    brand_name=brand_name,
-                    value="innovation",
-                    story="our journey",
-                    trend="AI automation",
-                    analysis="market dynamics",
-                    member="startup founder",
-                    event="webinar series",
-                    theme="success stories",
-                    activity="pitch practice"
+                # Generate startup-focused topics based on landing page analysis
+                company_name = startup_name or brand_name
+                startup_topics = self.generate_startup_focused_topics(
+                    landing_page_info,
+                    company_name,
+                    pillar
                 )
+
+                # Select a topic from startup-focused topics
+                topic = random.choice(startup_topics) if startup_topics else f"Insights about {company_name}"
 
                 # Create variation
                 variation = PostVariation(
@@ -255,18 +327,18 @@ class StrategyAgentV2:
                     format=random.choice(formats)
                 )
 
-                # Platform-specific adjustments
+                # Platform-specific adjustments with startup focus
                 if platform == Platform.TWITTER:
                     # Twitter prefers shorter, punchier content
-                    key_message = f"Quick insight: {topic[:50]}"
+                    key_message = f"🚀 {topic[:80]}... #startup #innovation"
                     hashtags_count = 3
                 elif platform == Platform.LINKEDIN:
                     # LinkedIn favors professional, detailed content
-                    key_message = f"Professional perspective on {topic}"
+                    key_message = f"💡 Professional insight: {topic}\n\nWhat's your experience with similar solutions?"
                     hashtags_count = 5
                 else:  # Facebook
                     # Facebook works well with engaging, community-focused content
-                    key_message = f"Let's discuss: {topic}"
+                    key_message = f"🌟 Let's discuss: {topic}\n\nShare your thoughts in the comments!"
                     hashtags_count = 4
 
                 # Create daily post
@@ -296,7 +368,9 @@ class StrategyAgentV2:
         duration_days: int = 30,
         language: str = "fr-FR",
         tone: str = "professional",
-        cta_targets: List[str] = None
+        cta_targets: List[str] = None,
+        startup_name: Optional[str] = None,
+        landing_page_info: Optional[str] = None
     ) -> MonthlyPlan:
         """
         Create a complete monthly plan
@@ -374,7 +448,9 @@ class StrategyAgentV2:
                 start_date=start_dt,
                 total_days=duration_days,
                 content_pillars=content_pillars,
-                cta_types=cta_types if cta_types else list(CTAType)
+                cta_types=cta_types if cta_types else list(CTAType),
+                startup_name=startup_name,
+                landing_page_info=landing_page_info
             )
 
             # Calculate posts per platform
@@ -431,7 +507,9 @@ class StrategyAgentV2:
         language: str = "fr-FR",
         tone: str = "professional",
         cta_targets: List[str] = None,
-        additional_context: str = ""
+        additional_context: str = "",
+        startup_name: Optional[str] = None,
+        landing_page_info: Optional[str] = None
     ) -> MonthlyPlan:
         """
         Create a monthly plan with AI-generated content
@@ -449,7 +527,9 @@ class StrategyAgentV2:
                 duration_days=duration_days,
                 language=language,
                 tone=tone,
-                cta_targets=cta_targets
+                cta_targets=cta_targets,
+                startup_name=startup_name,
+                landing_page_info=landing_page_info
             )
 
             # Prepare query for AI enhancement
@@ -508,7 +588,9 @@ class StrategyAgentV2:
                 duration_days=duration_days,
                 language=language,
                 tone=tone,
-                cta_targets=cta_targets
+                cta_targets=cta_targets,
+                startup_name=startup_name,
+                landing_page_info=landing_page_info
             )
 
     def get_active_plan(self, brand_name: str) -> Optional[MonthlyPlan]:
@@ -570,7 +652,9 @@ def create_monthly_strategy(
     tone: str = "professional",
     cta_targets: List[str] = None,
     use_ai: bool = False,
-    additional_context: str = ""
+    additional_context: str = "",
+    startup_name: Optional[str] = None,
+    startup_url: Optional[str] = None
 ) -> MonthlyPlan:
     """
     Create a monthly editorial strategy
@@ -587,10 +671,33 @@ def create_monthly_strategy(
         cta_targets: CTA targets
         use_ai: Whether to use AI for enhanced content generation
         additional_context: Additional context for AI
+        startup_name: Name of the startup for content generation (required)
+        startup_url: URL of the startup's landing page for analysis
 
     Returns:
         Monthly plan
+
+    Raises:
+        ValueError: If startup_name is not provided
     """
+    # Validate required startup_name
+    if not startup_name or startup_name.strip() == "":
+        raise ValueError("startup_name is required and cannot be empty")
+
+
+    # Extract landing page information if URL is provided
+    landing_page_info = None
+    if startup_url:
+        try:
+            print(f"Analyzing startup landing page: {startup_url}")
+            landing_page_info = extract_landing_page_info(startup_url)
+            print(f"Landing page analysis result: {landing_page_info[:200]}..." if landing_page_info else "No analysis result")
+            if landing_page_info:
+                additional_context += f"\n\nLanding Page Analysis:\n{landing_page_info}"
+                print("✅ Landing page analysis completed")
+        except Exception as e:
+            print(f"⚠️ Could not analyze landing page: {e}")
+
     agent = StrategyAgentV2()
 
     if use_ai:
@@ -604,7 +711,9 @@ def create_monthly_strategy(
             language=language,
             tone=tone,
             cta_targets=cta_targets,
-            additional_context=additional_context
+            additional_context=additional_context,
+            startup_name=startup_name,
+            landing_page_info=landing_page_info
         )
     else:
         plan = agent.create_monthly_plan(
@@ -616,14 +725,15 @@ def create_monthly_strategy(
             duration_days=duration_days,
             language=language,
             tone=tone,
-            cta_targets=cta_targets
+            cta_targets=cta_targets,
+            startup_name=startup_name,
+            landing_page_info=landing_page_info
         )
 
     # Display summary
     agent.display_plan_summary(plan)
 
     return plan
-
 
 # Tool for integration with orchestrator
 @tool
@@ -686,23 +796,29 @@ def invoke_strategy_agent_v2(
 # Example usage
 if __name__ == "__main__":
     # Test the strategy agent
-    plan = create_monthly_strategy(
-        brand_name="MeetSponsors",
-        positioning="AI-powered platform connecting startups with sponsors",
-        target_audience="Startups seeking funding and sponsors looking for innovation",
-        value_props=[
-            "AI-driven matching algorithm",
-            "Verified sponsor network",
-            "Streamlined communication",
-            "Data-driven insights"
-        ],
-        start_date="2024-02-01",
-        duration_days=30,
-        language="fr-FR",
-        tone="professional yet approachable",
-        cta_targets=["demo", "newsletter", "discord", "free_trial"],
-        use_ai=False
-    )
+    try:
+        plan = create_monthly_strategy(
+            brand_name="TestBrand",
+            positioning="Innovative platform connecting businesses with opportunities",
+            target_audience="Businesses seeking growth and partners looking for innovation",
+            value_props=[
+                "AI-driven matching algorithm",
+                "Verified partner network",
+                "Streamlined communication",
+                "Data-driven insights"
+            ],
+            start_date="2024-02-01",
+            duration_days=30,
+            language="fr-FR",
+            tone="professional yet approachable",
+            cta_targets=["demo", "newsletter", "discord", "free_trial"],
+            use_ai=False,
+            startup_name="TestStartup",  # Required parameter
+            startup_url="https://example.com"  # Optional parameter
+        )
 
-    print(f"\n✅ Strategy created successfully!")
-    print(f"Total posts planned: {plan.calendar.total_posts}")
+        print(f"\n✅ Strategy created successfully!")
+        print(f"Total posts planned: {plan.calendar.total_posts}")
+    except ValueError as e:
+        print(f"❌ Error: {e}")
+        print("Example of missing startup_name parameter")

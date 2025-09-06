@@ -29,7 +29,6 @@ load_dotenv()
 class TwitterPostResponse(BaseModel):
     """Response model for Twitter post generation"""
     tweet_content: str = Field(description="The main tweet content (max 280 chars)")
-    thread_tweets: List[str] = Field(description="Additional tweets for thread if needed")
     hashtags: List[str] = Field(description="List of relevant hashtags")
     mentions: List[str] = Field(description="Accounts to mention if relevant")
     media_description: str = Field(description="Description for media to attach")
@@ -39,8 +38,18 @@ class TwitterPostResponse(BaseModel):
 class TwitterAgent:
     """Twitter Agent for creating and posting content"""
 
-    def __init__(self):
-        """Initialize the Twitter Agent"""
+    def __init__(self, startup_name: Optional[str] = None, startup_url: Optional[str] = None, startup_context: Optional[str] = None):
+        """Initialize the Twitter Agent
+
+        Args:
+            startup_name: Name of the startup
+            startup_url: URL of the startup website
+            startup_context: Analyzed context from the startup's landing page
+        """
+        self.startup_name = startup_name or "Your Startup"
+        self.startup_url = startup_url
+        self.startup_context = startup_context or ""
+
         self.llm = ChatOpenAI(
             api_key=os.getenv("BLACKBOX_API_KEY"),
             base_url="https://api.blackbox.ai/v1",
@@ -53,28 +62,32 @@ class TwitterAgent:
 
         # Twitter-specific prompt
         self.prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are a Twitter content specialist creating viral tweets.
+            ("system", """You are a Twitter content specialist creating comprehensive, value-packed tweets and threads.
 
-            Twitter Best Practices:
-            1. Keep tweets concise and punchy (max 280 characters)
-            2. Use threads for complex topics (2-5 tweets max)
+            Twitter Best Practices for Longer Content:
+            1. Use FULL 280 characters per tweet for maximum value
+            2. Create detailed threads (3-7 tweets) for complex topics
             3. Include 2-3 relevant hashtags
-            4. Use line breaks for readability
-            5. Add emojis for visual appeal (but don't overdo it)
-            6. Create hooks in the first line
-            7. End with clear CTAs or questions
+            4. Use line breaks and formatting for readability
+            5. Add emojis strategically for visual appeal
+            6. Create compelling hooks that demand attention
+            7. End with strong CTAs or thought-provoking questions
+            8. Pack each tweet with actionable insights
 
             Content Requirements:
-            - Optimize for retweets and engagement
-            - Use Twitter-specific language and trends
-            - Make content easily shareable
-            - Consider thread format for educational content
-            - Keep professional but conversational
+            - Prioritize VALUE and DEPTH over brevity
+            - Create comprehensive educational threads
+            - Use storytelling to engage readers
+            - Include specific examples and data points
+            - Make content highly shareable and quotable
+            - Build anticipation between thread tweets
 
-            Character Limits:
-            - Single tweet: 280 characters
-            - Thread: 2-5 tweets, each max 280 chars
-            - Leave room for hashtags (count them in the limit)
+            Thread Strategy:
+            - Tweet 1: Hook + preview of what's coming
+            - Tweets 2-6: Detailed insights, examples, stories
+            - Final tweet: Key takeaway + strong CTA
+            - Each tweet should be 250-280 characters (use full space)
+            - Connect tweets with "🧵" or numbered format
 
             {format_instructions}"""),
             MessagesPlaceholder("chat_history", optional=True),
@@ -116,11 +129,21 @@ class TwitterAgent:
             base_content = content_package.base_content
             signals = content_package.signals
 
-            # Determine if we need a thread based on content complexity
-            needs_thread = base_content.pillar.value in ["education", "thought_leadership"]
+            # Always create threads for comprehensive content (except for very simple topics)
+            needs_thread = True  # Default to creating threads for more value
 
-            # Prepare the query
-            query = f"""Create a {'Twitter thread' if needs_thread else 'tweet'} about: {base_content.topic}
+            # Prepare the query for comprehensive content with startup context
+            startup_info = f"Startup: {self.startup_name}"
+            if self.startup_context:
+                startup_info += f"\nStartup Context: {self.startup_context}"
+            if self.startup_url:
+                startup_info += f"\nWebsite: {self.startup_url}"
+
+            print(f"\n[Twitter Agent] Startup Info:\n{startup_info}\n")
+
+            query = f"""Create a comprehensive Twitter thread about: {base_content.topic}
+
+            {startup_info}
 
             Key Message: {base_content.key_message}
             Content Pillar: {base_content.pillar.value}
@@ -129,12 +152,16 @@ class TwitterAgent:
             Tone: {base_content.tone}
 
             Requirements:
-            - {'Create a thread (2-3 tweets)' if needs_thread else 'Single impactful tweet'}
-            - Include 2-3 relevant hashtags
-            - Make it highly shareable
-            - Use line breaks for readability
-            - Include the CTA naturally
-            - Each tweet must be under 280 characters INCLUDING hashtags
+            - Create a detailed thread (4-6 tweets minimum) specifically for {self.startup_name}
+            - Use FULL 250-280 characters per tweet for maximum value
+            - Include specific examples, insights, or actionable tips relevant to {self.startup_name}
+            - Tell a compelling story that connects to the startup's context and mission
+            - Include 2-3 relevant hashtags in the final tweet only
+            - Make each tweet valuable on its own while building the narrative
+            - Use engaging formatting with emojis and line breaks
+            - Connect tweets with clear flow and anticipation
+            - End with a strong CTA that encourages engagement with {self.startup_name}
+            - Incorporate insights from the startup context to make content highly relevant
             """
 
             # Add trending topics if available
@@ -170,23 +197,27 @@ class TwitterAgent:
                     estimated_engagement="medium"
                 )
 
-            # Combine main tweet with hashtags
+            # Process main tweet content (use full character limit)
             main_content = structured_response.tweet_content
-            hashtag_text = " ".join(structured_response.hashtags[:3])  # Max 3 hashtags
 
-            # Ensure total length doesn't exceed 280
-            if len(main_content) + len(hashtag_text) + 1 > 280:
-                main_content = main_content[:280 - len(hashtag_text) - 4] + "..."
-
-            full_content = f"{main_content} {hashtag_text}"
-
-            # Format thread if exists
+            # Format comprehensive thread
             if structured_response.thread_tweets:
-                thread_content = "\n\n🧵 Thread:\n"
-                for i, tweet in enumerate(structured_response.thread_tweets[:4], 1):  # Max 4 additional tweets
-                    thread_content += f"{i+1}/ {tweet}\n"
-                full_content = f"1/ {full_content}{thread_content}"
+                # Create a comprehensive thread with proper formatting
+                thread_content = f"1/ {main_content}\n\n"
 
+                # Add all thread tweets with proper numbering
+                for i, tweet in enumerate(structured_response.thread_tweets, 2):
+                    thread_content += f"{i}/ {tweet}\n\n"
+
+                # Add hashtags only to the final tweet
+                hashtag_text = " ".join(structured_response.hashtags[:3])
+                thread_content += f"🧵 {hashtag_text}"
+
+                full_content = thread_content
+            else:
+                # Single tweet with hashtags
+                hashtag_text = " ".join(structured_response.hashtags[:3])
+                full_content = f"{main_content}\n\n{hashtag_text}"
             # Generate and incorporate image if needed
             if base_content.image_required:
                 try:
@@ -299,17 +330,24 @@ class TwitterAgent:
 
 # Tool for integration
 @tool
-def invoke_twitter_agent(content_package: Dict) -> Dict:
+def invoke_twitter_agent(content_package: Dict, startup_name: Optional[str] = None, startup_url: Optional[str] = None, startup_context: Optional[str] = None) -> Dict:
     """
     Invoke the Twitter agent to create and post content
 
     Args:
         content_package: Content package dictionary
+        startup_name: Name of the startup
+        startup_url: URL of the startup website
+        startup_context: Analyzed context from the startup's landing page
 
     Returns:
         Result of post creation and posting
     """
-    agent = TwitterAgent()
+    agent = TwitterAgent(
+        startup_name=startup_name,
+        startup_url=startup_url,
+        startup_context=startup_context
+    )
 
     # Convert dict to DailyContentPackage
     package = DailyContentPackage(**content_package)

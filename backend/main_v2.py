@@ -51,9 +51,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize agents
-strategy_agent = StrategyAgentV2()
-orchestrator_agent = OrchestratorAgentV2()
+# Initialize storage (agents will be initialized per request with startup params)
 storage = get_storage()
 
 # ---------- Root Endpoint ----------
@@ -114,9 +112,14 @@ async def generate_strategy(request: StrategyRequest):
                     brand=request.brand_name,
                     duration=request.duration_days,
                     start_date=request.start_date,
-                    language=request.language)
+                    language=request.language,
+                    startup_name=request.startup_name,
+                    startup_url=request.startup_url)
 
     try:
+        # Initialize strategy agent with startup params if provided
+        strategy_agent = StrategyAgentV2()
+
         plan = create_monthly_strategy(
             brand_name=request.brand_name,
             positioning=request.positioning,
@@ -127,8 +130,13 @@ async def generate_strategy(request: StrategyRequest):
             language=request.language,
             tone=request.tone,
             cta_targets=request.cta_targets,
-            use_ai=False  # Can be made configurable
+            use_ai=False,  # Can be made configurable
+            startup_name=request.startup_name,
+            startup_url=request.startup_url
         )
+
+        # Note: startup_name and startup_url are already passed to create_monthly_strategy
+        # so they are already included in the plan. No need to save again.
 
         logger.info(f"Strategy generated successfully for {request.brand_name}")
         log_with_context(logger, "info", "Strategy generation success",
@@ -208,16 +216,20 @@ async def execute_daily(request: OrchestratorRequest, background_tasks: Backgrou
                     date=execution_date,
                     force=request.force_execution,
                     dry_run=request.dry_run,
-                    platforms=request.platforms)
+                    platforms=request.platforms,
+                    startup_name=request.startup_name,
+                    startup_url=request.startup_url)
 
     try:
-        # Execute orchestration
+        # Execute orchestration with startup params
         result = execute_daily_orchestration(
             brand_name=request.company_name,  # Should come from auth/config
             execution_date=execution_date,
             force=request.force_execution,
             dry_run=request.dry_run,
-            platforms=[p.value for p in request.platforms] if request.platforms else None
+            platforms=[p.value for p in request.platforms] if request.platforms else None,
+            startup_name=request.startup_name,
+            startup_url=request.startup_url
         )
 
         logger.info(f"Daily orchestration completed: success={result.get('success')}")
@@ -240,6 +252,8 @@ async def get_orchestrator_status(date: Optional[str] = None):
         if not date:
             date = datetime.now().strftime("%Y-%m-%d")
 
+        # Initialize orchestrator agent (without startup params for status check)
+        orchestrator_agent = OrchestratorAgentV2()
         status = orchestrator_agent.get_execution_status(
             brand_name="DefaultBrand",  # Should come from auth/config
             date=date
@@ -250,9 +264,18 @@ async def get_orchestrator_status(date: Optional[str] = None):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/orchestrator/retry/{date}/{platform}")
-async def retry_failed_post(date: str, platform: str):
+async def retry_failed_post(
+    date: str,
+    platform: str,
+    startup_name: Optional[str] = None,
+    startup_url: Optional[str] = None
+):
     """
     Retry a failed post for a specific platform
+
+    Query parameters:
+        startup_name: Optional startup name for content generation
+        startup_url: Optional startup URL for landing page analysis
     """
     try:
         # Convert platform string to enum
@@ -263,7 +286,9 @@ async def retry_failed_post(date: str, platform: str):
             execution_date=date,
             force=True,
             dry_run=False,
-            platforms=[platform]
+            platforms=[platform],
+            startup_name=startup_name,
+            startup_url=startup_url
         )
 
         return result
@@ -403,6 +428,8 @@ async def get_system_metrics():
     try:
         today = datetime.now().strftime("%Y-%m-%d")
 
+        # Initialize orchestrator agent for metrics
+        orchestrator_agent = OrchestratorAgentV2()
         # Get today's execution status
         status = orchestrator_agent.get_execution_status("DefaultBrand", today)
 
@@ -419,9 +446,16 @@ async def get_system_metrics():
 
 # ---------- Test Endpoints ----------
 @app.post("/test/create-sample-strategy")
-async def create_sample_strategy():
+async def create_sample_strategy(
+    startup_name: Optional[str] = "Meetsponsors",
+    startup_url: Optional[str] = "https://meetsponsors.com/"
+):
     """
     Create a sample strategy for testing
+
+    Query parameters:
+        startup_name: Startup name for content generation (default: Meetsponsors)
+        startup_url: Startup URL for landing page analysis (default: https://meetsponsors.com/)
     """
     try:
         plan = create_monthly_strategy(
@@ -439,22 +473,36 @@ async def create_sample_strategy():
             language="fr-FR",
             tone="professional yet approachable",
             cta_targets=["demo", "newsletter", "discord", "free_trial"],
-            use_ai=False
+            use_ai=False,
+            startup_name=startup_name,
+            startup_url=startup_url
         )
+
+        # Note: startup_name and startup_url are already passed to create_monthly_strategy
+        # so they are already included in the plan. No need to save again.
 
         return {
             "success": True,
             "message": "Sample strategy created successfully",
             "plan_id": f"plan_TestBrand_{datetime.now().strftime('%Y-%m-%d')}",
-            "total_posts": plan.calendar.total_posts
+            "total_posts": plan.calendar.total_posts,
+            "startup_name": startup_name,
+            "startup_url": startup_url
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/test/dry-run-orchestration")
-async def test_orchestration():
+async def test_orchestration(
+    startup_name: Optional[str] = "Meetsponsors",
+    startup_url: Optional[str] = "https://meetsponsors.com/"
+):
     """
     Run a dry-run orchestration for testing
+
+    Query parameters:
+        startup_name: Startup name for content generation (default: Meetsponsors)
+        startup_url: Startup URL for landing page analysis (default: https://meetsponsors.com/)
     """
     try:
         result = execute_daily_orchestration(
@@ -462,7 +510,9 @@ async def test_orchestration():
             execution_date=datetime.now().strftime("%Y-%m-%d"),
             force=True,
             dry_run=True,
-            platforms=["LinkedIn"]
+            platforms=["LinkedIn"],
+            startup_name=startup_name,
+            startup_url=startup_url
         )
 
         return result

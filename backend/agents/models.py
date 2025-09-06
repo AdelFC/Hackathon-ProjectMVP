@@ -95,6 +95,8 @@ class MonthlyPlan(BaseModel):
     cta_targets: List[CTAType] = Field(description="CTA targets for the month")
     created_at: str = Field(description="Creation timestamp")
     version: str = Field(default="1.0", description="Plan version")
+    startup_name: Optional[str] = Field(default=None, description="Startup name for content generation")
+    startup_url: Optional[str] = Field(default=None, description="Startup URL for landing page analysis")
 
 # Daily execution models
 class SignalData(BaseModel):
@@ -113,6 +115,8 @@ class DailyContentPackage(BaseModel):
     image_prompt: Optional[str] = Field(default=None, description="Image generation prompt if needed")
     posting_time: str = Field(description="Optimal posting time")
     max_retries: int = Field(default=3, description="Maximum retry attempts")
+    startup_name: Optional[str] = Field(default=None, description="Startup name for content generation")
+    startup_url: Optional[str] = Field(default=None, description="Startup URL for landing page analysis")
 
 # Channel agent output models
 class GeneratedPost(BaseModel):
@@ -183,6 +187,8 @@ class StrategyRequest(BaseModel):
     language: str = Field(default="fr-FR", description="Content language")
     tone: str = Field(default="professional", description="Tone of voice")
     cta_targets: List[str] = Field(description="CTA targets")
+    startup_name: Optional[str] = Field(default=None, description="Startup name for content generation")
+    startup_url: Optional[str] = Field(default=None, description="Startup URL for landing page analysis")
 
 class OrchestratorRequest(BaseModel):
     """Request model for daily orchestration"""
@@ -191,6 +197,8 @@ class OrchestratorRequest(BaseModel):
     force_execution: bool = Field(default=False, description="Force execution even if already run today")
     dry_run: bool = Field(default=False, description="Simulate execution without posting")
     platforms: Optional[List[Platform]] = Field(default=None, description="Specific platforms to execute")
+    startup_name: Optional[str] = Field(default=None, description="Startup name for content generation")
+    startup_url: Optional[str] = Field(default=None, description="Startup URL for landing page analysis")
 
 class AnalyticsRequest(BaseModel):
     """Request model for analytics"""

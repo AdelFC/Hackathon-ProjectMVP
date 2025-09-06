@@ -26,9 +26,6 @@ from ..image_utils import generate_and_incorporate_image
 
 load_dotenv()
 
-STARTUP_NAME = "Meetsponsors"
-STARTUP_URL = "https://meetsponsors.com/"
-
 class LinkedinPostResponse(BaseModel):
     """Response model for LinkedIn post generation"""
     post_content: str = Field(description="The viral LinkedIn post content")
@@ -40,8 +37,16 @@ class LinkedinPostResponse(BaseModel):
 class LinkedinAgent:
     """LinkedIn Agent for creating viral posts with images and posting them"""
 
-    def __init__(self):
-        """Initialize the LinkedIn Agent with LLM and tools"""
+    def __init__(self, startup_name: Optional[str] = None, startup_url: Optional[str] = None):
+        """Initialize the LinkedIn Agent with LLM and tools
+
+        Args:
+            startup_name: Name of the startup for content generation
+            startup_url: URL of the startup's landing page for analysis
+        """
+        # Set default values if not provided
+        self.startup_name = startup_name or "Your Startup"
+        self.startup_url = startup_url
         self.llm = ChatOpenAI(
             api_key=os.getenv("BLACKBOX_API_KEY"),
             base_url="https://api.blackbox.ai/v1",
@@ -77,7 +82,7 @@ class LinkedinAgent:
             - Best posting time: {best_posting_time}
             - Trending hashtags: {trending_hashtags}
 
-            Create a LinkedIn post that will go viral. The post should be between 1300-1900 characters for optimal engagement.
+            Create a LinkedIn post that will go viral. The post should be between 1500-2500 characters for maximum value and comprehensive insights.
 
             {format_instructions}"""),
             MessagesPlaceholder("chat_history", optional=True),
@@ -114,7 +119,9 @@ class LinkedinAgent:
         topic: str,
         post_type: str = "transformation",
         startup_info: Optional[str] = None,
-        use_template: bool = True
+        use_template: bool = True,
+        startup_name: Optional[str] = None,
+        startup_url: Optional[str] = None
     ) -> Dict:
         """
         Create a viral LinkedIn post with image
@@ -124,15 +131,23 @@ class LinkedinAgent:
             post_type: Type of post template to use
             startup_info: Information about the startup
             use_template: Whether to use a template
+            startup_name: Override startup name for this post
+            startup_url: Override startup URL for this post
 
         Returns:
             Dictionary with post content, image, and metadata
         """
         try:
+            # Use provided startup info or instance defaults
+            current_startup_name = startup_name or self.startup_name
+            current_startup_url = startup_url or self.startup_url
+
             # Get startup information if not provided
-            if not startup_info:
-                print(f"Fetching startup information from {STARTUP_URL}...")
-                startup_info = extract_landing_page_info(STARTUP_URL)
+            if not startup_info and current_startup_url:
+                print(f"Fetching startup information from {current_startup_url}...")
+                startup_info = extract_landing_page_info(current_startup_url)
+            elif not startup_info:
+                startup_info = f"Information about {current_startup_name}"
 
             # Get best posting time
             posting_time = analyze_best_posting_time.invoke({"timezone": "UTC"})
@@ -160,7 +175,7 @@ class LinkedinAgent:
             # Generate the post
             response = self.agent_executor.invoke({
                 "query": query,
-                "startup_name": STARTUP_NAME,
+                "startup_name": current_startup_name,
                 "startup_info": startup_info,
                 "viral_strategies": self.viral_strategies,
                 "best_posting_time": posting_time.get("recommendation", ""),
@@ -177,7 +192,7 @@ class LinkedinAgent:
                 structured_response = LinkedinPostResponse(
                     post_content=response.get("output", ""),
                     hashtags=hashtags[:5],
-                    image_description=f"Professional image about {topic} for {STARTUP_NAME}",
+                    image_description=f"Professional image about {topic} for {current_startup_name}",
                     post_type=post_type,
                     estimated_engagement="medium"
                 )
@@ -254,7 +269,9 @@ class LinkedinAgent:
         self,
         topic: str,
         post_type: str = "transformation",
-        auto_post: bool = False
+        auto_post: bool = False,
+        startup_name: Optional[str] = None,
+        startup_url: Optional[str] = None
     ) -> Dict:
         """
         Create a viral post and optionally post it to LinkedIn
@@ -263,12 +280,19 @@ class LinkedinAgent:
             topic: The topic for the post
             post_type: Type of post to create
             auto_post: Whether to automatically post to LinkedIn
+            startup_name: Override startup name for this post
+            startup_url: Override startup URL for this post
 
         Returns:
             Dictionary with complete results
         """
         # Create the viral post
-        post_result = self.create_viral_post(topic, post_type)
+        post_result = self.create_viral_post(
+            topic,
+            post_type,
+            startup_name=startup_name,
+            startup_url=startup_url
+        )
 
         if not post_result.get("success"):
             return post_result
@@ -305,7 +329,9 @@ class LinkedinAgent:
 def create_linkedin_viral_post(
     topic: str,
     post_type: str = "transformation",
-    auto_post: bool = False
+    auto_post: bool = False,
+    startup_name: Optional[str] = None,
+    startup_url: Optional[str] = None
 ) -> Dict:
     """
     Create a viral LinkedIn post
@@ -314,22 +340,29 @@ def create_linkedin_viral_post(
         topic: Topic for the post
         post_type: Type of post (transformation, lessons_learned, controversial, case_study, storytelling)
         auto_post: Whether to automatically post to LinkedIn
+        startup_name: Name of the startup for content generation
+        startup_url: URL of the startup's landing page for analysis
 
     Returns:
         Dictionary with post content and metadata
     """
-    agent = LinkedinAgent()
+    agent = LinkedinAgent(startup_name=startup_name, startup_url=startup_url)
     return agent.create_and_post(topic, post_type, auto_post)
 
 
 # Tool for integration with other agents
 @tool
-def invoke_linkedin_agent(query: str, startup_url: Optional[str] = None) -> Dict:
+def invoke_linkedin_agent(
+    query: str,
+    startup_name: Optional[str] = None,
+    startup_url: Optional[str] = None
+) -> Dict:
     """
     Invoke the LinkedIn agent to create a viral post
 
     Args:
         query: The topic or request for the post
+        startup_name: Name of the startup for content generation
         startup_url: Optional URL to analyze for startup information
 
     Returns:
@@ -340,8 +373,8 @@ def invoke_linkedin_agent(query: str, startup_url: Optional[str] = None) -> Dict
     if startup_url:
         startup_info = extract_landing_page_info(startup_url)
 
-    # Create the agent
-    agent = LinkedinAgent()
+    # Create the agent with startup configuration
+    agent = LinkedinAgent(startup_name=startup_name, startup_url=startup_url)
 
     # Determine post type from query
     post_type = "transformation"  # Default
@@ -358,7 +391,9 @@ def invoke_linkedin_agent(query: str, startup_url: Optional[str] = None) -> Dict
     result = agent.create_viral_post(
         topic=query,
         post_type=post_type,
-        startup_info=startup_info
+        startup_info=startup_info,
+        startup_name=startup_name,
+        startup_url=startup_url
     )
 
     return result
@@ -366,11 +401,13 @@ def invoke_linkedin_agent(query: str, startup_url: Optional[str] = None) -> Dict
 
 # Example usage
 if __name__ == "__main__":
-    # Test the LinkedIn agent
+    # Test the LinkedIn agent with custom startup info
     result = create_linkedin_viral_post(
         topic="How AI is transforming startup fundraising and sponsor matching",
         post_type="transformation",
-        auto_post=False  # Set to True to actually post
+        auto_post=False,  # Set to True to actually post
+        startup_name="Meetsponsors",
+        startup_url="https://meetsponsors.com/"
     )
 
     print(f"\nPost created: {result.get('success')}")

@@ -6,6 +6,8 @@ interface BrandIdentity {
   name: string;
   industry: string;
   website: string;
+  startupName?: string;
+  startupUrl?: string;
   mission: string;
   targetAudience: string;
   usp: string;
@@ -26,7 +28,7 @@ interface ProjectStore {
   goals: ProjectGoals | null;
   setupCompleted: boolean;
   currentStep: number;
-  
+
   setBrandIdentity: (brand: BrandIdentity) => void;
   setGoals: (goals: ProjectGoals) => void;
   setCurrentStep: (step: number) => void;
@@ -41,16 +43,16 @@ export const useProjectStore = create<ProjectStore>()(
       goals: null,
       setupCompleted: false,
       currentStep: 0,
-      
+
       setBrandIdentity: (brand) => set({ brandIdentity: brand }),
       setGoals: (goals) => set({ goals }),
       setCurrentStep: (step) => set({ currentStep: step }),
       completeSetup: () => set({ setupCompleted: true }),
-      reset: () => set({ 
-        brandIdentity: null, 
-        goals: null, 
-        setupCompleted: false, 
-        currentStep: 0 
+      reset: () => set({
+        brandIdentity: null,
+        goals: null,
+        setupCompleted: false,
+        currentStep: 0
       }),
     }),
     {

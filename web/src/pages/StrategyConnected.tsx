@@ -7,23 +7,24 @@ import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Skeleton } from '../components/ui/Skeleton';
 import { EmptyState } from '../components/ui/EmptyState';
+import { DailyPost } from '../services/api';
 
 export function StrategyConnected() {
   const { brandIdentity, goals } = useProjectStore();
-  const { 
-    activeStrategy: storedStrategy, 
-    setActiveStrategy, 
-    markSynced 
+  const {
+    activeStrategy: storedStrategy,
+    setActiveStrategy,
+    markSynced
   } = useStrategyStore();
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-  
+
   // Hooks API
   const { strategy, loading: loadingGenerate, generateStrategy } = useStrategyGeneration();
   const { loading: loadingOrchestrate, runOrchestration } = useOrchestration();
-  const { 
-    strategy: apiStrategy, 
-    loading: loadingActive, 
-    fetchStrategy 
+  const {
+    strategy: apiStrategy,
+    loading: loadingActive,
+    fetchStrategy
   } = useActiveStrategy(brandIdentity?.name || '');
 
   // Charger la stratégie depuis l'API au montage
@@ -52,6 +53,27 @@ export function StrategyConnected() {
   // Utiliser la stratégie du store en priorité
   const currentStrategy = storedStrategy || strategy || apiStrategy;
 
+  // Générer le contenu d'un post basé sur ses caractéristiques
+  const generatePostContent = (post: DailyPost): string => {
+    const templates = {
+      LinkedIn: [
+        `🚀 ${post.key_message}\n\n${post.topic}\n\n#innovation #tech #startup`,
+        `Découvrez comment ${post.topic} peut transformer votre business.\n\n${post.key_message}\n\n#business #growth`
+      ],
+      Facebook: [
+        `${post.key_message} 🎯\n\n${post.topic}\n\nQu'en pensez-vous ? Partagez votre avis en commentaire !`,
+        `📣 ${post.topic}\n\n${post.key_message}\n\n👉 En savoir plus sur notre site`
+      ],
+      Twitter: [
+        `${post.key_message}\n\n${post.topic}\n\n#tech #innovation`,
+        `💡 ${post.topic}\n\n${post.key_message}`
+      ]
+    };
+
+    const platformTemplates = templates[post.platform as keyof typeof templates] || templates.Twitter;
+    return platformTemplates[Math.floor(Math.random() * platformTemplates.length)];
+  };
+
   const handleGenerateStrategy = async () => {
     if (!brandIdentity || !goals) return;
 
@@ -64,7 +86,9 @@ export function StrategyConnected() {
       duration_days: 30,
       language: 'fr-FR',
       tone: brandIdentity.voice,
-      cta_targets: ['demo', 'newsletter', 'free_trial']
+      cta_targets: ['demo', 'newsletter', 'free_trial'],
+      startup_name: brandIdentity.startupName || brandIdentity.name,  // Use brand name as fallback
+      startup_url: brandIdentity.startupUrl || brandIdentity.website   // Use website as fallback
     });
   };
 
@@ -72,7 +96,9 @@ export function StrategyConnected() {
     await runOrchestration({
       company_name: brandIdentity?.name,
       execute_date: selectedDate,
-      dry_run: false
+      dry_run: false,
+      startup_name: brandIdentity?.startupName || brandIdentity?.name,  // Use brand name as fallback
+      startup_url: brandIdentity?.startupUrl || brandIdentity?.website   // Use website as fallback
     });
   };
 
@@ -80,7 +106,9 @@ export function StrategyConnected() {
     await runOrchestration({
       company_name: brandIdentity?.name,
       execute_date: selectedDate,
-      dry_run: true
+      dry_run: true,
+      startup_name: brandIdentity?.startupName || brandIdentity?.name,  // Use brand name as fallback
+      startup_url: brandIdentity?.startupUrl || brandIdentity?.website   // Use website as fallback
     });
   };
 
@@ -119,7 +147,7 @@ export function StrategyConnected() {
               {currentStrategy ? 'Stratégie active' : 'Aucune stratégie active'}
             </p>
           </div>
-          
+
           <div className="flex gap-2">
             {!currentStrategy ? (
               <button
@@ -156,7 +184,7 @@ export function StrategyConnected() {
           {/* Vue d'ensemble de la stratégie */}
           <Card className="p-6">
             <h3 className="text-lg font-semibold mb-4">Vue d'ensemble</h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Campagne</p>
@@ -165,7 +193,7 @@ export function StrategyConnected() {
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Période</p>
                 <p className="font-medium">
-                  {new Date(currentStrategy.calendar.start_date).toLocaleDateString()} - 
+                  {new Date(currentStrategy.calendar.start_date).toLocaleDateString()} -
                   {new Date(currentStrategy.calendar.end_date).toLocaleDateString()}
                 </p>
               </div>
@@ -205,31 +233,51 @@ export function StrategyConnected() {
             {todayPosts.length > 0 ? (
               <div className="space-y-4">
                 {todayPosts.map((post, idx) => (
-                  <div key={idx} className="border rounded-lg p-4 space-y-3">
+                  <article key={idx} className="rounded-xl border border-gray-200 dark:border-gray-800 p-4 space-y-4 transition hover:bg-gray-50 dark:hover:bg-gray-800/60">
+                    {/* Header avec badges */}
                     <div className="flex items-center justify-between">
-                      <Badge variant={
-                        post.platform === 'LinkedIn' ? 'primary' :
-                        post.platform === 'Facebook' ? 'info' :
-                        'default'
-                      }>
-                        {post.platform}
-                      </Badge>
-                      <Badge variant="default">{post.pillar}</Badge>
+                      <div className="flex items-center gap-2">
+                        <Badge variant={
+                          post.platform === 'LinkedIn' ? 'primary' :
+                          post.platform === 'Facebook' ? 'info' :
+                          'default'
+                        }>
+                          {post.platform}
+                        </Badge>
+                        <Badge variant="default">{post.pillar}</Badge>
+                      </div>
                     </div>
-                    
+
+                    {/* Titre du post */}
                     <div>
-                      <p className="font-medium">{post.topic}</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                        {post.key_message}
-                      </p>
+                      <h4 className="font-semibold text-lg mb-2">{post.topic}</h4>
                     </div>
-                    
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <span>Format: {post.variation.format}</span>
-                      <span>CTA: {post.variation.cta_type}</span>
-                      {post.image_required && <span>🖼️ Image requise</span>}
+
+                    {/* Contenu généré du post */}
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                      <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        📝 Contenu du post :
+                      </h5>
+                      <div className="text-gray-800 dark:text-gray-200 whitespace-pre-line">
+                        {generatePostContent(post)}
+                      </div>
                     </div>
-                  </div>
+
+                    {/* Métadonnées */}
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-4 text-sm text-gray-500">
+                        <span>Format: {post.variation.format}</span>
+                        <span>CTA: {post.variation.cta_type}</span>
+                        {post.image_required && <span>🖼️ Image requise</span>}
+                      </div>
+
+                      <div className="pt-2 border-t border-gray-200 dark:border-gray-700">
+                        <p className="text-xs text-gray-500">
+                          <strong>Message clé:</strong> {post.key_message}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
                 ))}
               </div>
             ) : (
@@ -243,7 +291,7 @@ export function StrategyConnected() {
           {/* Guidelines éditoriales */}
           <Card className="p-6">
             <h3 className="text-lg font-semibold mb-4">Guidelines éditoriales</h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-medium text-green-600 dark:text-green-400 mb-2">
@@ -257,7 +305,7 @@ export function StrategyConnected() {
                   ))}
                 </ul>
               </div>
-              
+
               <div>
                 <h4 className="font-medium text-red-600 dark:text-red-400 mb-2">
                   ✗ À éviter

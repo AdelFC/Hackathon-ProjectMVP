@@ -38,8 +38,18 @@ class FacebookPostResponse(BaseModel):
 class FacebookAgent:
     """Facebook Agent for creating and posting content"""
 
-    def __init__(self):
-        """Initialize the Facebook Agent"""
+    def __init__(self, startup_name: Optional[str] = None, startup_url: Optional[str] = None, startup_context: Optional[str] = None):
+        """Initialize the Facebook Agent
+
+        Args:
+            startup_name: Name of the startup
+            startup_url: URL of the startup website
+            startup_context: Analyzed context from the startup's landing page
+        """
+        self.startup_name = startup_name or "Your Startup"
+        self.startup_url = startup_url
+        self.startup_context = startup_context or ""
+
         self.llm = ChatOpenAI(
             api_key=os.getenv("BLACKBOX_API_KEY"),
             base_url="https://api.blackbox.ai/v1",
@@ -52,22 +62,26 @@ class FacebookAgent:
 
         # Facebook-specific prompt
         self.prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are a Facebook content specialist creating engaging posts.
+            ("system", """You are a Facebook content specialist creating engaging, comprehensive posts.
 
-            Facebook Best Practices:
-            1. Keep posts between 40-80 characters for highest engagement
-            2. Use emojis strategically to increase engagement
-            3. Ask questions to encourage comments
-            4. Include clear CTAs
-            5. Post visual content when possible
-            6. Use 1-2 hashtags maximum
-            7. Write in a conversational, friendly tone
+            Facebook Best Practices for Longer Content:
+            1. Create posts between 200-500 characters for optimal engagement and value
+            2. Use storytelling to connect with your audience
+            3. Include specific examples and actionable insights
+            4. Ask engaging questions to encourage meaningful comments
+            5. Include clear, compelling CTAs
+            6. Use emojis strategically to enhance readability
+            7. Use 1-2 hashtags maximum (place at end)
+            8. Write in a conversational, friendly tone with personality
 
             Content Requirements:
-            - Adapt content to Facebook's audience (broader, more casual)
-            - Focus on community building and engagement
-            - Include emotional hooks
-            - Make content shareable
+            - Tell compelling stories that resonate with Facebook's diverse audience
+            - Focus on community building and meaningful engagement
+            - Include emotional hooks and personal connections
+            - Provide value through education, inspiration, or entertainment
+            - Make content highly shareable with clear takeaways
+            - Use formatting (line breaks, emojis) for easy reading
+            - Build anticipation and encourage interaction
 
             {format_instructions}"""),
             MessagesPlaceholder("chat_history", optional=True),
@@ -109,8 +123,16 @@ class FacebookAgent:
             base_content = content_package.base_content
             signals = content_package.signals
 
-            # Prepare the query
-            query = f"""Create a Facebook post about: {base_content.topic}
+            # Prepare the query for comprehensive content with startup context
+            startup_info = f"Startup: {self.startup_name}"
+            if self.startup_context:
+                startup_info += f"\nStartup Context: {self.startup_context}"
+            if self.startup_url:
+                startup_info += f"\nWebsite: {self.startup_url}"
+
+            query = f"""Create a comprehensive Facebook post about: {base_content.topic}
+
+            {startup_info}
 
             Key Message: {base_content.key_message}
             Content Pillar: {base_content.pillar.value}
@@ -119,11 +141,16 @@ class FacebookAgent:
             Tone: {base_content.tone}
 
             Requirements:
-            - Keep it engaging and shareable
-            - Include emojis where appropriate
-            - Ask a question to encourage engagement
-            - Maximum 2 hashtags
-            - Include the call to action naturally
+            - Create a detailed post (200-500 characters) with real value specifically for {self.startup_name}
+            - Tell a compelling story or share specific insights relevant to the startup's mission
+            - Include concrete examples or actionable tips that connect to {self.startup_name}'s context
+            - Use engaging formatting with emojis and line breaks
+            - Ask a thought-provoking question to encourage meaningful engagement about the startup's domain
+            - Maximum 2 hashtags (place at the end)
+            - Include the call to action naturally within the narrative, directing to {self.startup_name}
+            - Make it highly shareable with clear takeaways related to the startup's value proposition
+            - Connect emotionally with the audience using insights from the startup context
+            - Incorporate the startup's unique positioning and mission into the content
             """
 
             # Add trending topics if available
@@ -255,17 +282,24 @@ class FacebookAgent:
 
 # Tool for integration
 @tool
-def invoke_facebook_agent(content_package: Dict) -> Dict:
+def invoke_facebook_agent(content_package: Dict, startup_name: Optional[str] = None, startup_url: Optional[str] = None, startup_context: Optional[str] = None) -> Dict:
     """
     Invoke the Facebook agent to create and post content
 
     Args:
         content_package: Content package dictionary
+        startup_name: Name of the startup
+        startup_url: URL of the startup website
+        startup_context: Analyzed context from the startup's landing page
 
     Returns:
         Result of post creation and posting
     """
-    agent = FacebookAgent()
+    agent = FacebookAgent(
+        startup_name=startup_name,
+        startup_url=startup_url,
+        startup_context=startup_context
+    )
 
     # Convert dict to DailyContentPackage
     package = DailyContentPackage(**content_package)

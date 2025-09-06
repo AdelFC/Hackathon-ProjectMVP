@@ -53,6 +53,8 @@ export interface StrategyRequest {
   language?: string;
   tone?: string;
   cta_targets: string[];
+  startup_name?: string;
+  startup_url?: string;
 }
 
 export interface MonthlyPlan {
@@ -102,6 +104,8 @@ export interface OrchestratorRequest {
   force_execution?: boolean;
   dry_run?: boolean;
   platforms?: string[];
+  startup_name?: string;
+  startup_url?: string;
 }
 
 export interface PostingResult {
@@ -207,16 +211,40 @@ export const apiService = {
   },
 
   // Test endpoints
-  async createSampleStrategy(brandName: string) {
-    const response = await apiClient.post('/test/create-sample-strategy', { brand_name: brandName });
+  async createSampleStrategy(brandName: string, startupName?: string, startupUrl?: string) {
+    const params = new URLSearchParams();
+    if (startupName) params.append('startup_name', startupName);
+    if (startupUrl) params.append('startup_url', startupUrl);
+
+    const url = params.toString() ? `/test/create-sample-strategy?${params.toString()}` : '/test/create-sample-strategy';
+    const response = await apiClient.post(url, { brand_name: brandName });
     return response.data;
   },
 
-  async dryRunOrchestration(date?: string) {
-    const response = await apiClient.post('/test/dry-run-orchestration', { 
+  async dryRunOrchestration(date?: string, startupName?: string, startupUrl?: string) {
+    const params = new URLSearchParams();
+    if (startupName) params.append('startup_name', startupName);
+    if (startupUrl) params.append('startup_url', startupUrl);
+
+    const url = params.toString() ? `/test/dry-run-orchestration?${params.toString()}` : '/test/dry-run-orchestration';
+    const response = await apiClient.post(url, {
       execute_date: date,
-      dry_run: true 
+      dry_run: true
     });
+    return response.data;
+  },
+
+  // Retry post with startup parameters
+  async retryPostWithStartup(date: string, platform: string, startupName?: string, startupUrl?: string): Promise<PostingResult> {
+    const params = new URLSearchParams();
+    if (startupName) params.append('startup_name', startupName);
+    if (startupUrl) params.append('startup_url', startupUrl);
+
+    const url = params.toString()
+      ? `/orchestrator/retry/${date}/${platform}?${params.toString()}`
+      : `/orchestrator/retry/${date}/${platform}`;
+
+    const response = await apiClient.post(url);
     return response.data;
   }
 };

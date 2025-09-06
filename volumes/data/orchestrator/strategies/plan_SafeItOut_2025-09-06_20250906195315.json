@@ -1,13 +1,9 @@
 {
-  "campaign_name": "zwsws - 2025-09-06 Campaign",
-  "brand_name": "zwsws",
-  "positioning": "zzzzzzzzzzzzzzzz",
+  "campaign_name": "SafeItOut - 2025-09-06 Campaign",
+  "brand_name": "SafeItOut",
+  "positioning": "",
   "target_audience": "",
-  "value_propositions": [
-    "DO:",
-    "DONT:",
-    "#3es"
-  ],
+  "value_propositions": [],
   "content_pillars": [
     "education",
     "social_proof",
@@ -17,7 +13,7 @@
     "community"
   ],
   "editorial_guidelines": {
-    "tone": "zzz",
+    "tone": "amical",
     "do_list": [
       "Use data and statistics to support claims",
       "Include clear calls-to-action",
@@ -53,13 +49,13 @@
         "date": "2025-09-06",
         "platform": "LinkedIn",
         "pillar": "education",
-        "topic": "How to optimize your sponsor matching",
-        "key_message": "Professional perspective on How to optimize your sponsor matching",
+        "topic": "The complete guide to business development",
+        "key_message": "Professional perspective on The complete guide to business development",
         "variation": {
           "angle": "how-to",
-          "hook_style": "story",
-          "cta_type": "free_trial",
-          "format": "article"
+          "hook_style": "quote",
+          "cta_type": "newsletter",
+          "format": "story"
         },
         "hashtags_count": 5,
         "image_required": false,
@@ -69,13 +65,13 @@
         "date": "2025-09-06",
         "platform": "Facebook",
         "pillar": "education",
-        "topic": "Understanding AI-driven partnerships in 2024",
-        "key_message": "Let's discuss: Understanding AI-driven partnerships in 2024",
+        "topic": "5 key insights about SafeItOut ecosystem",
+        "key_message": "Let's discuss: 5 key insights about SafeItOut ecosystem",
         "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "tip",
+          "angle": "inspirational",
+          "hook_style": "quote",
           "cta_type": "newsletter",
-          "format": "poll"
+          "format": "article"
         },
         "hashtags_count": 4,
         "image_required": false,
@@ -85,45 +81,45 @@
         "date": "2025-09-06",
         "platform": "Twitter",
         "pillar": "education",
-        "topic": "Understanding AI-driven partnerships in 2024",
-        "key_message": "Quick insight: Understanding AI-driven partnerships in 2024",
+        "topic": "How to optimize your business growth",
+        "key_message": "Quick insight: How to optimize your business growth",
         "variation": {
-          "angle": "problem-solving",
+          "angle": "how-to",
           "hook_style": "statistic",
-          "cta_type": "free_trial",
-          "format": "image"
+          "cta_type": "demo",
+          "format": "article"
         },
         "hashtags_count": 3,
-        "image_required": true,
+        "image_required": false,
         "dependencies": null
       },
       {
         "date": "2025-09-07",
         "platform": "LinkedIn",
         "pillar": "social_proof",
-        "topic": "Case study: 10x faster matching",
-        "key_message": "Professional perspective on Case study: 10x faster matching",
+        "topic": "Case study: improved efficiency",
+        "key_message": "Professional perspective on Case study: improved efficiency",
         "variation": {
-          "angle": "how-to",
-          "hook_style": "statistic",
-          "cta_type": "free_trial",
-          "format": "video"
+          "angle": "data-driven",
+          "hook_style": "myth-busting",
+          "cta_type": "newsletter",
+          "format": "poll"
         },
         "hashtags_count": 5,
-        "image_required": true,
+        "image_required": false,
         "dependencies": null
       },
       {
         "date": "2025-09-07",
         "platform": "Facebook",
         "pillar": "social_proof",
-        "topic": "Case study: 10x faster matching",
-        "key_message": "Let's discuss: Case study: 10x faster matching",
+        "topic": "Testimonial spotlight: SafeItOut client",
+        "key_message": "Let's discuss: Testimonial spotlight: SafeItOut client",
         "variation": {
-          "angle": "data-driven",
-          "hook_style": "question",
-          "cta_type": "free_trial",
-          "format": "story"
+          "angle": "controversial",
+          "hook_style": "myth-busting",
+          "cta_type": "newsletter",
+          "format": "article"
         },
         "hashtags_count": 4,
         "image_required": false,
@@ -133,28 +129,28 @@
         "date": "2025-09-07",
         "platform": "Twitter",
         "pillar": "social_proof",
-        "topic": "Client success story: 300% ROI increase",
-        "key_message": "Quick insight: Client success story: 300% ROI increase",
+        "topic": "Our impact: successful outcomes",
+        "key_message": "Quick insight: Our impact: successful outcomes",
         "variation": {
           "angle": "controversial",
-          "hook_style": "tip",
-          "cta_type": "demo",
-          "format": "image"
+          "hook_style": "announcement",
+          "cta_type": "newsletter",
+          "format": "story"
         },
         "hashtags_count": 3,
-        "image_required": true,
+        "image_required": false,
         "dependencies": null
       },
       {
         "date": "2025-09-08",
         "platform": "LinkedIn",
         "pillar": "product",
-        "topic": "New feature announcement: AI matching algorithm",
-        "key_message": "Professional perspective on New feature announcement: AI matching algorithm",
+        "topic": "Product update: enhanced performance",
+        "key_message": "Professional perspective on Product update: enhanced performance",
         "variation": {
-          "angle": "inspirational",
+          "angle": "storytelling",
           "hook_style": "tip",
-          "cta_type": "free_trial",
+          "cta_type": "demo",
           "format": "poll"
         },
         "hashtags_count": 5,
@@ -165,11 +161,11 @@
         "date": "2025-09-08",
         "platform": "Facebook",
         "pillar": "product",
-        "topic": "How our solution helps finding sponsors",
-        "key_message": "Let's discuss: How our solution helps finding sponsors",
+        "topic": "Behind our technology: technology",
+        "key_message": "Let's discuss: Behind our technology: technology",
         "variation": {
-          "angle": "inspirational",
-          "hook_style": "story",
+          "angle": "storytelling",
+          "hook_style": "challenge",
           "cta_type": "demo",
           "format": "article"
         },
@@ -181,61 +177,61 @@
         "date": "2025-09-08",
         "platform": "Twitter",
         "pillar": "product",
-        "topic": "How our solution helps finding sponsors",
-        "key_message": "Quick insight: How our solution helps finding sponsors",
+        "topic": "New feature announcement: key feature",
+        "key_message": "Quick insight: New feature announcement: key feature",
         "variation": {
-          "angle": "educational",
-          "hook_style": "tip",
-          "cta_type": "newsletter",
-          "format": "story"
+          "angle": "data-driven",
+          "hook_style": "quote",
+          "cta_type": "free_trial",
+          "format": "image"
         },
         "hashtags_count": 3,
-        "image_required": false,
+        "image_required": true,
         "dependencies": null
       },
       {
         "date": "2025-09-09",
         "platform": "LinkedIn",
         "pillar": "behind_the_scenes",
-        "topic": "A day in the life at zwsws",
-        "key_message": "Professional perspective on A day in the life at zwsws",
+        "topic": "A day in the life at SafeItOut",
+        "key_message": "Professional perspective on A day in the life at SafeItOut",
         "variation": {
-          "angle": "educational",
-          "hook_style": "story",
+          "angle": "data-driven",
+          "hook_style": "myth-busting",
           "cta_type": "free_trial",
-          "format": "video"
+          "format": "poll"
         },
         "hashtags_count": 5,
-        "image_required": true,
+        "image_required": false,
         "dependencies": null
       },
       {
         "date": "2025-09-09",
         "platform": "Facebook",
         "pillar": "behind_the_scenes",
-        "topic": "A day in the life at zwsws",
-        "key_message": "Let's discuss: A day in the life at zwsws",
+        "topic": "Our company culture: excellence",
+        "key_message": "Let's discuss: Our company culture: excellence",
         "variation": {
           "angle": "data-driven",
-          "hook_style": "announcement",
+          "hook_style": "tip",
           "cta_type": "newsletter",
-          "format": "image"
+          "format": "story"
         },
         "hashtags_count": 4,
-        "image_required": true,
+        "image_required": false,
         "dependencies": null
       },
       {
         "date": "2025-09-09",
         "platform": "Twitter",
         "pillar": "behind_the_scenes",
-        "topic": "Our company culture: innovation",
-        "key_message": "Quick insight: Our company culture: innovation",
+        "topic": "Our company culture: excellence",
+        "key_message": "Quick insight: Our company culture: excellence",
         "variation": {
           "angle": "data-driven",
-          "hook_style": "tip",
-          "cta_type": "free_trial",
-          "format": "text"
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "story"
         },
         "hashtags_count": 3,
         "image_required": false,
@@ -245,29 +241,29 @@
         "date": "2025-09-10",
         "platform": "LinkedIn",
         "pillar": "thought_leadership",
-        "topic": "Industry insights: market dynamics",
-        "key_message": "Professional perspective on Industry insights: market dynamics",
+        "topic": "The future of SafeItOut ecosystem",
+        "key_message": "Professional perspective on The future of SafeItOut ecosystem",
         "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "statistic",
-          "cta_type": "newsletter",
-          "format": "story"
+          "angle": "storytelling",
+          "hook_style": "tip",
+          "cta_type": "demo",
+          "format": "image"
         },
         "hashtags_count": 5,
-        "image_required": false,
+        "image_required": true,
         "dependencies": null
       },
       {
         "date": "2025-09-10",
         "platform": "Facebook",
         "pillar": "thought_leadership",
-        "topic": "The future of startup ecosystem",
-        "key_message": "Let's discuss: The future of startup ecosystem",
+        "topic": "Why industry innovation matters now",
+        "key_message": "Let's discuss: Why industry innovation matters now",
         "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "myth-busting",
+          "angle": "how-to",
+          "hook_style": "story",
           "cta_type": "demo",
-          "format": "story"
+          "format": "article"
         },
         "hashtags_count": 4,
         "image_required": false,
@@ -277,604 +273,28 @@
         "date": "2025-09-10",
         "platform": "Twitter",
         "pillar": "thought_leadership",
-        "topic": "Why AI automation matters now",
-        "key_message": "Quick insight: Why AI automation matters now",
-        "variation": {
-          "angle": "educational",
-          "hook_style": "quote",
-          "cta_type": "demo",
-          "format": "carousel"
-        },
-        "hashtags_count": 3,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-11",
-        "platform": "LinkedIn",
-        "pillar": "community",
-        "topic": "Community challenge: pitch practice",
-        "key_message": "Professional perspective on Community challenge: pitch practice",
-        "variation": {
-          "angle": "problem-solving",
-          "hook_style": "challenge",
-          "cta_type": "demo",
-          "format": "image"
-        },
-        "hashtags_count": 5,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-11",
-        "platform": "Facebook",
-        "pillar": "community",
-        "topic": "User-generated content: success stories",
-        "key_message": "Let's discuss: User-generated content: success stories",
-        "variation": {
-          "angle": "educational",
-          "hook_style": "myth-busting",
-          "cta_type": "demo",
-          "format": "image"
-        },
-        "hashtags_count": 4,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-11",
-        "platform": "Twitter",
-        "pillar": "community",
-        "topic": "Community highlight: startup founder",
-        "key_message": "Quick insight: Community highlight: startup founder",
-        "variation": {
-          "angle": "controversial",
-          "hook_style": "tip",
-          "cta_type": "newsletter",
-          "format": "poll"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-12",
-        "platform": "LinkedIn",
-        "pillar": "education",
-        "topic": "The complete guide to sponsor acquisition",
-        "key_message": "Professional perspective on The complete guide to sponsor acquisition",
-        "variation": {
-          "angle": "controversial",
-          "hook_style": "question",
-          "cta_type": "demo",
-          "format": "video"
-        },
-        "hashtags_count": 5,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-12",
-        "platform": "Facebook",
-        "pillar": "education",
-        "topic": "5 key insights about startup ecosystem",
-        "key_message": "Let's discuss: 5 key insights about startup ecosystem",
-        "variation": {
-          "angle": "how-to",
-          "hook_style": "myth-busting",
-          "cta_type": "newsletter",
-          "format": "story"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-12",
-        "platform": "Twitter",
-        "pillar": "education",
-        "topic": "Understanding AI-driven partnerships in 2024",
-        "key_message": "Quick insight: Understanding AI-driven partnerships in 2024",
-        "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "quote",
-          "cta_type": "free_trial",
-          "format": "carousel"
-        },
-        "hashtags_count": 3,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-13",
-        "platform": "LinkedIn",
-        "pillar": "social_proof",
-        "topic": "Our impact: 1000+ successful matches",
-        "key_message": "Professional perspective on Our impact: 1000+ successful matches",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "statistic",
-          "cta_type": "newsletter",
-          "format": "image"
-        },
-        "hashtags_count": 5,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-13",
-        "platform": "Facebook",
-        "pillar": "social_proof",
-        "topic": "Our impact: 1000+ successful matches",
-        "key_message": "Let's discuss: Our impact: 1000+ successful matches",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "challenge",
-          "cta_type": "free_trial",
-          "format": "video"
-        },
-        "hashtags_count": 4,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-13",
-        "platform": "Twitter",
-        "pillar": "social_proof",
-        "topic": "Case study: 10x faster matching",
-        "key_message": "Quick insight: Case study: 10x faster matching",
-        "variation": {
-          "angle": "how-to",
-          "hook_style": "question",
-          "cta_type": "free_trial",
-          "format": "poll"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-14",
-        "platform": "LinkedIn",
-        "pillar": "product",
-        "topic": "How our solution helps finding sponsors",
-        "key_message": "Professional perspective on How our solution helps finding sponsors",
-        "variation": {
-          "angle": "data-driven",
-          "hook_style": "quote",
-          "cta_type": "newsletter",
-          "format": "story"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-14",
-        "platform": "Facebook",
-        "pillar": "product",
-        "topic": "New feature announcement: AI matching algorithm",
-        "key_message": "Let's discuss: New feature announcement: AI matching algorithm",
+        "topic": "Industry insights: market insights",
+        "key_message": "Quick insight: Industry insights: market insights",
         "variation": {
           "angle": "inspirational",
-          "hook_style": "myth-busting",
-          "cta_type": "newsletter",
-          "format": "text"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-14",
-        "platform": "Twitter",
-        "pillar": "product",
-        "topic": "Behind our technology: machine learning",
-        "key_message": "Quick insight: Behind our technology: machine learning",
-        "variation": {
-          "angle": "educational",
           "hook_style": "quote",
-          "cta_type": "newsletter",
-          "format": "video"
-        },
-        "hashtags_count": 3,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-15",
-        "platform": "LinkedIn",
-        "pillar": "behind_the_scenes",
-        "topic": "Team spotlight: Data Scientist",
-        "key_message": "Professional perspective on Team spotlight: Data Scientist",
-        "variation": {
-          "angle": "problem-solving",
-          "hook_style": "announcement",
-          "cta_type": "newsletter",
-          "format": "article"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-15",
-        "platform": "Facebook",
-        "pillar": "behind_the_scenes",
-        "topic": "A day in the life at zwsws",
-        "key_message": "Let's discuss: A day in the life at zwsws",
-        "variation": {
-          "angle": "problem-solving",
-          "hook_style": "challenge",
-          "cta_type": "newsletter",
-          "format": "story"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-15",
-        "platform": "Twitter",
-        "pillar": "behind_the_scenes",
-        "topic": "Our company culture: innovation",
-        "key_message": "Quick insight: Our company culture: innovation",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "tip",
-          "cta_type": "free_trial",
-          "format": "poll"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-16",
-        "platform": "LinkedIn",
-        "pillar": "thought_leadership",
-        "topic": "Industry insights: market dynamics",
-        "key_message": "Professional perspective on Industry insights: market dynamics",
-        "variation": {
-          "angle": "problem-solving",
-          "hook_style": "question",
-          "cta_type": "demo",
-          "format": "carousel"
-        },
-        "hashtags_count": 5,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-16",
-        "platform": "Facebook",
-        "pillar": "thought_leadership",
-        "topic": "The future of startup ecosystem",
-        "key_message": "Let's discuss: The future of startup ecosystem",
-        "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "quote",
-          "cta_type": "newsletter",
-          "format": "article"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-16",
-        "platform": "Twitter",
-        "pillar": "thought_leadership",
-        "topic": "Industry insights: market dynamics",
-        "key_message": "Quick insight: Industry insights: market dynamics",
-        "variation": {
-          "angle": "data-driven",
-          "hook_style": "statistic",
-          "cta_type": "demo",
-          "format": "image"
-        },
-        "hashtags_count": 3,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-17",
-        "platform": "LinkedIn",
-        "pillar": "community",
-        "topic": "Join our webinar series",
-        "key_message": "Professional perspective on Join our webinar series",
-        "variation": {
-          "angle": "how-to",
-          "hook_style": "question",
-          "cta_type": "free_trial",
-          "format": "text"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-17",
-        "platform": "Facebook",
-        "pillar": "community",
-        "topic": "Community challenge: pitch practice",
-        "key_message": "Let's discuss: Community challenge: pitch practice",
-        "variation": {
-          "angle": "controversial",
-          "hook_style": "question",
-          "cta_type": "newsletter",
-          "format": "story"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-17",
-        "platform": "Twitter",
-        "pillar": "community",
-        "topic": "Join our webinar series",
-        "key_message": "Quick insight: Join our webinar series",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "story",
-          "cta_type": "demo",
-          "format": "story"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-18",
-        "platform": "LinkedIn",
-        "pillar": "education",
-        "topic": "5 key insights about startup ecosystem",
-        "key_message": "Professional perspective on 5 key insights about startup ecosystem",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "challenge",
-          "cta_type": "demo",
-          "format": "video"
-        },
-        "hashtags_count": 5,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-18",
-        "platform": "Facebook",
-        "pillar": "education",
-        "topic": "5 key insights about startup ecosystem",
-        "key_message": "Let's discuss: 5 key insights about startup ecosystem",
-        "variation": {
-          "angle": "how-to",
-          "hook_style": "challenge",
-          "cta_type": "free_trial",
-          "format": "story"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-18",
-        "platform": "Twitter",
-        "pillar": "education",
-        "topic": "The complete guide to sponsor acquisition",
-        "key_message": "Quick insight: The complete guide to sponsor acquisition",
-        "variation": {
-          "angle": "controversial",
-          "hook_style": "announcement",
-          "cta_type": "free_trial",
-          "format": "text"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-19",
-        "platform": "LinkedIn",
-        "pillar": "social_proof",
-        "topic": "Client success story: 300% ROI increase",
-        "key_message": "Professional perspective on Client success story: 300% ROI increase",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "myth-busting",
-          "cta_type": "newsletter",
-          "format": "text"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-19",
-        "platform": "Facebook",
-        "pillar": "social_proof",
-        "topic": "Our impact: 1000+ successful matches",
-        "key_message": "Let's discuss: Our impact: 1000+ successful matches",
-        "variation": {
-          "angle": "how-to",
-          "hook_style": "myth-busting",
-          "cta_type": "demo",
-          "format": "poll"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-19",
-        "platform": "Twitter",
-        "pillar": "social_proof",
-        "topic": "Testimonial spotlight: TechStartup Inc",
-        "key_message": "Quick insight: Testimonial spotlight: TechStartup Inc",
-        "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "question",
-          "cta_type": "newsletter",
-          "format": "article"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-20",
-        "platform": "LinkedIn",
-        "pillar": "product",
-        "topic": "Product update: faster processing",
-        "key_message": "Professional perspective on Product update: faster processing",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "statistic",
-          "cta_type": "newsletter",
-          "format": "text"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-20",
-        "platform": "Facebook",
-        "pillar": "product",
-        "topic": "How our solution helps finding sponsors",
-        "key_message": "Let's discuss: How our solution helps finding sponsors",
-        "variation": {
-          "angle": "problem-solving",
-          "hook_style": "story",
-          "cta_type": "demo",
-          "format": "poll"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-20",
-        "platform": "Twitter",
-        "pillar": "product",
-        "topic": "New feature announcement: AI matching algorithm",
-        "key_message": "Quick insight: New feature announcement: AI matching algorithm",
-        "variation": {
-          "angle": "inspirational",
-          "hook_style": "question",
-          "cta_type": "demo",
-          "format": "image"
-        },
-        "hashtags_count": 3,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-21",
-        "platform": "LinkedIn",
-        "pillar": "behind_the_scenes",
-        "topic": "Building zwsws: our journey",
-        "key_message": "Professional perspective on Building zwsws: our journey",
-        "variation": {
-          "angle": "data-driven",
-          "hook_style": "statistic",
-          "cta_type": "demo",
-          "format": "image"
-        },
-        "hashtags_count": 5,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-21",
-        "platform": "Facebook",
-        "pillar": "behind_the_scenes",
-        "topic": "Building zwsws: our journey",
-        "key_message": "Let's discuss: Building zwsws: our journey",
-        "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "statistic",
-          "cta_type": "free_trial",
-          "format": "text"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-21",
-        "platform": "Twitter",
-        "pillar": "behind_the_scenes",
-        "topic": "Our company culture: innovation",
-        "key_message": "Quick insight: Our company culture: innovation",
-        "variation": {
-          "angle": "data-driven",
-          "hook_style": "statistic",
-          "cta_type": "demo",
-          "format": "video"
-        },
-        "hashtags_count": 3,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-22",
-        "platform": "LinkedIn",
-        "pillar": "thought_leadership",
-        "topic": "The future of startup ecosystem",
-        "key_message": "Professional perspective on The future of startup ecosystem",
-        "variation": {
-          "angle": "educational",
-          "hook_style": "challenge",
           "cta_type": "free_trial",
           "format": "image"
         },
-        "hashtags_count": 5,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-22",
-        "platform": "Facebook",
-        "pillar": "thought_leadership",
-        "topic": "Why AI automation matters now",
-        "key_message": "Let's discuss: Why AI automation matters now",
-        "variation": {
-          "angle": "problem-solving",
-          "hook_style": "tip",
-          "cta_type": "newsletter",
-          "format": "video"
-        },
-        "hashtags_count": 4,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-22",
-        "platform": "Twitter",
-        "pillar": "thought_leadership",
-        "topic": "Industry insights: market dynamics",
-        "key_message": "Quick insight: Industry insights: market dynamics",
-        "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "announcement",
-          "cta_type": "newsletter",
-          "format": "image"
-        },
         "hashtags_count": 3,
         "image_required": true,
         "dependencies": null
       },
       {
-        "date": "2025-09-23",
+        "date": "2025-09-11",
         "platform": "LinkedIn",
         "pillar": "community",
         "topic": "User-generated content: success stories",
         "key_message": "Professional perspective on User-generated content: success stories",
         "variation": {
-          "angle": "controversial",
-          "hook_style": "announcement",
-          "cta_type": "free_trial",
+          "angle": "storytelling",
+          "hook_style": "myth-busting",
+          "cta_type": "newsletter",
           "format": "image"
         },
         "hashtags_count": 5,
@@ -882,109 +302,253 @@
         "dependencies": null
       },
       {
-        "date": "2025-09-23",
+        "date": "2025-09-11",
         "platform": "Facebook",
         "pillar": "community",
-        "topic": "Community challenge: pitch practice",
-        "key_message": "Let's discuss: Community challenge: pitch practice",
+        "topic": "Community challenge: team activity",
+        "key_message": "Let's discuss: Community challenge: team activity",
         "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "tip",
-          "cta_type": "newsletter",
-          "format": "carousel"
+          "angle": "problem-solving",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "article"
         },
         "hashtags_count": 4,
-        "image_required": true,
+        "image_required": false,
         "dependencies": null
       },
       {
-        "date": "2025-09-23",
+        "date": "2025-09-11",
         "platform": "Twitter",
         "pillar": "community",
-        "topic": "Join our webinar series",
-        "key_message": "Quick insight: Join our webinar series",
+        "topic": "Community challenge: team activity",
+        "key_message": "Quick insight: Community challenge: team activity",
         "variation": {
-          "angle": "inspirational",
-          "hook_style": "story",
-          "cta_type": "demo",
-          "format": "article"
+          "angle": "data-driven",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "text"
         },
         "hashtags_count": 3,
         "image_required": false,
         "dependencies": null
       },
       {
-        "date": "2025-09-24",
+        "date": "2025-09-12",
         "platform": "LinkedIn",
         "pillar": "education",
-        "topic": "5 key insights about startup ecosystem",
-        "key_message": "Professional perspective on 5 key insights about startup ecosystem",
+        "topic": "The complete guide to business development",
+        "key_message": "Professional perspective on The complete guide to business development",
         "variation": {
-          "angle": "educational",
-          "hook_style": "question",
+          "angle": "how-to",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "article"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-12",
+        "platform": "Facebook",
+        "pillar": "education",
+        "topic": "The complete guide to business development",
+        "key_message": "Let's discuss: The complete guide to business development",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "statistic",
           "cta_type": "newsletter",
           "format": "video"
         },
+        "hashtags_count": 4,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-12",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "How to optimize your business growth",
+        "key_message": "Quick insight: How to optimize your business growth",
+        "variation": {
+          "angle": "behind-the-scenes",
+          "hook_style": "quote",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-13",
+        "platform": "LinkedIn",
+        "pillar": "social_proof",
+        "topic": "Client success story: significant growth",
+        "key_message": "Professional perspective on Client success story: significant growth",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "carousel"
+        },
         "hashtags_count": 5,
         "image_required": true,
         "dependencies": null
       },
       {
-        "date": "2025-09-24",
+        "date": "2025-09-13",
         "platform": "Facebook",
-        "pillar": "education",
-        "topic": "Understanding AI-driven partnerships in 2024",
-        "key_message": "Let's discuss: Understanding AI-driven partnerships in 2024",
+        "pillar": "social_proof",
+        "topic": "Our impact: successful outcomes",
+        "key_message": "Let's discuss: Our impact: successful outcomes",
         "variation": {
-          "angle": "storytelling",
-          "hook_style": "myth-busting",
-          "cta_type": "free_trial",
-          "format": "poll"
+          "angle": "problem-solving",
+          "hook_style": "announcement",
+          "cta_type": "newsletter",
+          "format": "video"
         },
         "hashtags_count": 4,
-        "image_required": false,
+        "image_required": true,
         "dependencies": null
       },
       {
-        "date": "2025-09-24",
+        "date": "2025-09-13",
         "platform": "Twitter",
-        "pillar": "education",
-        "topic": "5 key insights about startup ecosystem",
-        "key_message": "Quick insight: 5 key insights about startup ecosystem",
+        "pillar": "social_proof",
+        "topic": "Testimonial spotlight: SafeItOut client",
+        "key_message": "Quick insight: Testimonial spotlight: SafeItOut client",
         "variation": {
-          "angle": "educational",
+          "angle": "inspirational",
           "hook_style": "quote",
           "cta_type": "free_trial",
-          "format": "article"
+          "format": "story"
         },
         "hashtags_count": 3,
         "image_required": false,
         "dependencies": null
       },
       {
-        "date": "2025-09-25",
+        "date": "2025-09-14",
         "platform": "LinkedIn",
-        "pillar": "social_proof",
-        "topic": "Case study: 10x faster matching",
-        "key_message": "Professional perspective on Case study: 10x faster matching",
+        "pillar": "product",
+        "topic": "How our solution helps business challenges",
+        "key_message": "Professional perspective on How our solution helps business challenges",
         "variation": {
-          "angle": "inspirational",
+          "angle": "educational",
           "hook_style": "story",
           "cta_type": "demo",
-          "format": "story"
+          "format": "poll"
         },
         "hashtags_count": 5,
         "image_required": false,
         "dependencies": null
       },
       {
-        "date": "2025-09-25",
+        "date": "2025-09-14",
         "platform": "Facebook",
-        "pillar": "social_proof",
-        "topic": "Our impact: 1000+ successful matches",
-        "key_message": "Let's discuss: Our impact: 1000+ successful matches",
+        "pillar": "product",
+        "topic": "Product update: enhanced performance",
+        "key_message": "Let's discuss: Product update: enhanced performance",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "myth-busting",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-14",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Product update: enhanced performance",
+        "key_message": "Quick insight: Product update: enhanced performance",
         "variation": {
           "angle": "educational",
+          "hook_style": "announcement",
+          "cta_type": "demo",
+          "format": "image"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-15",
+        "platform": "LinkedIn",
+        "pillar": "behind_the_scenes",
+        "topic": "Our company culture: excellence",
+        "key_message": "Professional perspective on Our company culture: excellence",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "question",
+          "cta_type": "demo",
+          "format": "poll"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-15",
+        "platform": "Facebook",
+        "pillar": "behind_the_scenes",
+        "topic": "Our company culture: excellence",
+        "key_message": "Let's discuss: Our company culture: excellence",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "announcement",
+          "cta_type": "demo",
+          "format": "story"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-15",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "A day in the life at SafeItOut",
+        "key_message": "Quick insight: A day in the life at SafeItOut",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-16",
+        "platform": "LinkedIn",
+        "pillar": "thought_leadership",
+        "topic": "Why industry innovation matters now",
+        "key_message": "Professional perspective on Why industry innovation matters now",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "challenge",
+          "cta_type": "newsletter",
+          "format": "image"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-16",
+        "platform": "Facebook",
+        "pillar": "thought_leadership",
+        "topic": "Why industry innovation matters now",
+        "key_message": "Let's discuss: Why industry innovation matters now",
+        "variation": {
+          "angle": "inspirational",
           "hook_style": "statistic",
           "cta_type": "demo",
           "format": "image"
@@ -994,123 +558,27 @@
         "dependencies": null
       },
       {
-        "date": "2025-09-25",
+        "date": "2025-09-16",
         "platform": "Twitter",
-        "pillar": "social_proof",
-        "topic": "Case study: 10x faster matching",
-        "key_message": "Quick insight: Case study: 10x faster matching",
-        "variation": {
-          "angle": "inspirational",
-          "hook_style": "question",
-          "cta_type": "newsletter",
-          "format": "carousel"
-        },
-        "hashtags_count": 3,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-26",
-        "platform": "LinkedIn",
-        "pillar": "product",
-        "topic": "Product update: faster processing",
-        "key_message": "Professional perspective on Product update: faster processing",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "story",
-          "cta_type": "free_trial",
-          "format": "text"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-26",
-        "platform": "Facebook",
-        "pillar": "product",
-        "topic": "Behind our technology: machine learning",
-        "key_message": "Let's discuss: Behind our technology: machine learning",
-        "variation": {
-          "angle": "how-to",
-          "hook_style": "challenge",
-          "cta_type": "free_trial",
-          "format": "article"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-26",
-        "platform": "Twitter",
-        "pillar": "product",
-        "topic": "New feature announcement: AI matching algorithm",
-        "key_message": "Quick insight: New feature announcement: AI matching algorithm",
-        "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "quote",
-          "cta_type": "newsletter",
-          "format": "text"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-27",
-        "platform": "LinkedIn",
-        "pillar": "behind_the_scenes",
-        "topic": "Our company culture: innovation",
-        "key_message": "Professional perspective on Our company culture: innovation",
-        "variation": {
-          "angle": "data-driven",
-          "hook_style": "story",
-          "cta_type": "demo",
-          "format": "article"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-27",
-        "platform": "Facebook",
-        "pillar": "behind_the_scenes",
-        "topic": "Our company culture: innovation",
-        "key_message": "Let's discuss: Our company culture: innovation",
-        "variation": {
-          "angle": "controversial",
-          "hook_style": "myth-busting",
-          "cta_type": "newsletter",
-          "format": "image"
-        },
-        "hashtags_count": 4,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-27",
-        "platform": "Twitter",
-        "pillar": "behind_the_scenes",
-        "topic": "Team spotlight: Data Scientist",
-        "key_message": "Quick insight: Team spotlight: Data Scientist",
-        "variation": {
-          "angle": "controversial",
-          "hook_style": "announcement",
-          "cta_type": "demo",
-          "format": "video"
-        },
-        "hashtags_count": 3,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-28",
-        "platform": "LinkedIn",
         "pillar": "thought_leadership",
-        "topic": "Why AI automation matters now",
-        "key_message": "Professional perspective on Why AI automation matters now",
+        "topic": "Why industry innovation matters now",
+        "key_message": "Quick insight: Why industry innovation matters now",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "challenge",
+          "cta_type": "newsletter",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-17",
+        "platform": "LinkedIn",
+        "pillar": "community",
+        "topic": "Community highlight: community member",
+        "key_message": "Professional perspective on Community highlight: community member",
         "variation": {
           "angle": "educational",
           "hook_style": "tip",
@@ -1122,30 +590,78 @@
         "dependencies": null
       },
       {
-        "date": "2025-09-28",
+        "date": "2025-09-17",
         "platform": "Facebook",
-        "pillar": "thought_leadership",
-        "topic": "Our CEO's perspective on sponsor acquisition",
-        "key_message": "Let's discuss: Our CEO's perspective on sponsor acquisition",
+        "pillar": "community",
+        "topic": "Community challenge: team activity",
+        "key_message": "Let's discuss: Community challenge: team activity",
         "variation": {
-          "angle": "inspirational",
+          "angle": "how-to",
+          "hook_style": "question",
+          "cta_type": "demo",
+          "format": "article"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-17",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Join our company event",
+        "key_message": "Quick insight: Join our company event",
+        "variation": {
+          "angle": "behind-the-scenes",
           "hook_style": "myth-busting",
+          "cta_type": "newsletter",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-18",
+        "platform": "LinkedIn",
+        "pillar": "education",
+        "topic": "5 key insights about SafeItOut ecosystem",
+        "key_message": "Professional perspective on 5 key insights about SafeItOut ecosystem",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "tip",
           "cta_type": "newsletter",
           "format": "video"
         },
-        "hashtags_count": 4,
+        "hashtags_count": 5,
         "image_required": true,
         "dependencies": null
       },
       {
-        "date": "2025-09-28",
-        "platform": "Twitter",
-        "pillar": "thought_leadership",
-        "topic": "Why AI automation matters now",
-        "key_message": "Quick insight: Why AI automation matters now",
+        "date": "2025-09-18",
+        "platform": "Facebook",
+        "pillar": "education",
+        "topic": "How to optimize your business growth",
+        "key_message": "Let's discuss: How to optimize your business growth",
         "variation": {
-          "angle": "educational",
-          "hook_style": "quote",
+          "angle": "data-driven",
+          "hook_style": "announcement",
+          "cta_type": "free_trial",
+          "format": "article"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-18",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "How to optimize your business growth",
+        "key_message": "Quick insight: How to optimize your business growth",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "challenge",
           "cta_type": "demo",
           "format": "story"
         },
@@ -1154,127 +670,799 @@
         "dependencies": null
       },
       {
+        "date": "2025-09-19",
+        "platform": "LinkedIn",
+        "pillar": "social_proof",
+        "topic": "Our impact: successful outcomes",
+        "key_message": "Professional perspective on Our impact: successful outcomes",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "announcement",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-19",
+        "platform": "Facebook",
+        "pillar": "social_proof",
+        "topic": "Testimonial spotlight: SafeItOut client",
+        "key_message": "Let's discuss: Testimonial spotlight: SafeItOut client",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "poll"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-19",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Client success story: significant growth",
+        "key_message": "Quick insight: Client success story: significant growth",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "announcement",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-20",
+        "platform": "LinkedIn",
+        "pillar": "product",
+        "topic": "How our solution helps business challenges",
+        "key_message": "Professional perspective on How our solution helps business challenges",
+        "variation": {
+          "angle": "behind-the-scenes",
+          "hook_style": "challenge",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-20",
+        "platform": "Facebook",
+        "pillar": "product",
+        "topic": "Product update: enhanced performance",
+        "key_message": "Let's discuss: Product update: enhanced performance",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "tip",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 4,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-20",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Product update: enhanced performance",
+        "key_message": "Quick insight: Product update: enhanced performance",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "quote",
+          "cta_type": "newsletter",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-21",
+        "platform": "LinkedIn",
+        "pillar": "behind_the_scenes",
+        "topic": "Our company culture: excellence",
+        "key_message": "Professional perspective on Our company culture: excellence",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "challenge",
+          "cta_type": "newsletter",
+          "format": "image"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-21",
+        "platform": "Facebook",
+        "pillar": "behind_the_scenes",
+        "topic": "Team spotlight: team member",
+        "key_message": "Let's discuss: Team spotlight: team member",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "quote",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-21",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Team spotlight: team member",
+        "key_message": "Quick insight: Team spotlight: team member",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "myth-busting",
+          "cta_type": "newsletter",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-22",
+        "platform": "LinkedIn",
+        "pillar": "thought_leadership",
+        "topic": "Industry insights: market insights",
+        "key_message": "Professional perspective on Industry insights: market insights",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "announcement",
+          "cta_type": "newsletter",
+          "format": "story"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-22",
+        "platform": "Facebook",
+        "pillar": "thought_leadership",
+        "topic": "Why industry innovation matters now",
+        "key_message": "Let's discuss: Why industry innovation matters now",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "statistic",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-22",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Industry insights: market insights",
+        "key_message": "Quick insight: Industry insights: market insights",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "story"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-23",
+        "platform": "LinkedIn",
+        "pillar": "community",
+        "topic": "Community challenge: team activity",
+        "key_message": "Professional perspective on Community challenge: team activity",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "challenge",
+          "cta_type": "demo",
+          "format": "article"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-23",
+        "platform": "Facebook",
+        "pillar": "community",
+        "topic": "Join our company event",
+        "key_message": "Let's discuss: Join our company event",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "article"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-23",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "User-generated content: success stories",
+        "key_message": "Quick insight: User-generated content: success stories",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "quote",
+          "cta_type": "newsletter",
+          "format": "poll"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-24",
+        "platform": "LinkedIn",
+        "pillar": "education",
+        "topic": "How to optimize your business growth",
+        "key_message": "Professional perspective on How to optimize your business growth",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "article"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-24",
+        "platform": "Facebook",
+        "pillar": "education",
+        "topic": "How to optimize your business growth",
+        "key_message": "Let's discuss: How to optimize your business growth",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "myth-busting",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 4,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-24",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "5 key insights about SafeItOut ecosystem",
+        "key_message": "Quick insight: 5 key insights about SafeItOut ecosystem",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "myth-busting",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-25",
+        "platform": "LinkedIn",
+        "pillar": "social_proof",
+        "topic": "Client success story: significant growth",
+        "key_message": "Professional perspective on Client success story: significant growth",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "image"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-25",
+        "platform": "Facebook",
+        "pillar": "social_proof",
+        "topic": "Client success story: significant growth",
+        "key_message": "Let's discuss: Client success story: significant growth",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "challenge",
+          "cta_type": "free_trial",
+          "format": "carousel"
+        },
+        "hashtags_count": 4,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-25",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Case study: improved efficiency",
+        "key_message": "Quick insight: Case study: improved efficiency",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "quote",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-26",
+        "platform": "LinkedIn",
+        "pillar": "product",
+        "topic": "How our solution helps business challenges",
+        "key_message": "Professional perspective on How our solution helps business challenges",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "announcement",
+          "cta_type": "free_trial",
+          "format": "story"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-26",
+        "platform": "Facebook",
+        "pillar": "product",
+        "topic": "How our solution helps business challenges",
+        "key_message": "Let's discuss: How our solution helps business challenges",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-26",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Behind our technology: technology",
+        "key_message": "Quick insight: Behind our technology: technology",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-27",
+        "platform": "LinkedIn",
+        "pillar": "behind_the_scenes",
+        "topic": "Team spotlight: team member",
+        "key_message": "Professional perspective on Team spotlight: team member",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "myth-busting",
+          "cta_type": "demo",
+          "format": "carousel"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-27",
+        "platform": "Facebook",
+        "pillar": "behind_the_scenes",
+        "topic": "A day in the life at SafeItOut",
+        "key_message": "Let's discuss: A day in the life at SafeItOut",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "announcement",
+          "cta_type": "free_trial",
+          "format": "carousel"
+        },
+        "hashtags_count": 4,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-27",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "A day in the life at SafeItOut",
+        "key_message": "Quick insight: A day in the life at SafeItOut",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "tip",
+          "cta_type": "free_trial",
+          "format": "story"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-28",
+        "platform": "LinkedIn",
+        "pillar": "thought_leadership",
+        "topic": "Our CEO's perspective on business development",
+        "key_message": "Professional perspective on Our CEO's perspective on business development",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "announcement",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-28",
+        "platform": "Facebook",
+        "pillar": "thought_leadership",
+        "topic": "Industry insights: market insights",
+        "key_message": "Let's discuss: Industry insights: market insights",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "challenge",
+          "cta_type": "demo",
+          "format": "story"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-28",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "The future of SafeItOut ecosystem",
+        "key_message": "Quick insight: The future of SafeItOut ecosystem",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "announcement",
+          "cta_type": "newsletter",
+          "format": "story"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
         "date": "2025-09-29",
+        "platform": "LinkedIn",
+        "pillar": "community",
+        "topic": "Community challenge: team activity",
+        "key_message": "Professional perspective on Community challenge: team activity",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "quote",
+          "cta_type": "newsletter",
+          "format": "article"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-29",
+        "platform": "Facebook",
+        "pillar": "community",
+        "topic": "Community highlight: community member",
+        "key_message": "Let's discuss: Community highlight: community member",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-29",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "User-generated content: success stories",
+        "key_message": "Quick insight: User-generated content: success stories",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "myth-busting",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-30",
+        "platform": "LinkedIn",
+        "pillar": "education",
+        "topic": "The complete guide to business development",
+        "key_message": "Professional perspective on The complete guide to business development",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "quote",
+          "cta_type": "free_trial",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-30",
+        "platform": "Facebook",
+        "pillar": "education",
+        "topic": "5 key insights about SafeItOut ecosystem",
+        "key_message": "Let's discuss: 5 key insights about SafeItOut ecosystem",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "myth-busting",
+          "cta_type": "newsletter",
+          "format": "story"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-30",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "5 key insights about SafeItOut ecosystem",
+        "key_message": "Quick insight: 5 key insights about SafeItOut ecosystem",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "challenge",
+          "cta_type": "demo",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-01",
+        "platform": "LinkedIn",
+        "pillar": "social_proof",
+        "topic": "Our impact: successful outcomes",
+        "key_message": "Professional perspective on Our impact: successful outcomes",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "challenge",
+          "cta_type": "free_trial",
+          "format": "carousel"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-01",
+        "platform": "Facebook",
+        "pillar": "social_proof",
+        "topic": "Our impact: successful outcomes",
+        "key_message": "Let's discuss: Our impact: successful outcomes",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "image"
+        },
+        "hashtags_count": 4,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-01",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Client success story: significant growth",
+        "key_message": "Quick insight: Client success story: significant growth",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "announcement",
+          "cta_type": "free_trial",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-02",
+        "platform": "LinkedIn",
+        "pillar": "product",
+        "topic": "Product update: enhanced performance",
+        "key_message": "Professional perspective on Product update: enhanced performance",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-02",
+        "platform": "Facebook",
+        "pillar": "product",
+        "topic": "How our solution helps business challenges",
+        "key_message": "Let's discuss: How our solution helps business challenges",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "myth-busting",
+          "cta_type": "free_trial",
+          "format": "article"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-02",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Behind our technology: technology",
+        "key_message": "Quick insight: Behind our technology: technology",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "myth-busting",
+          "cta_type": "demo",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-03",
+        "platform": "LinkedIn",
+        "pillar": "behind_the_scenes",
+        "topic": "A day in the life at SafeItOut",
+        "key_message": "Professional perspective on A day in the life at SafeItOut",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-03",
+        "platform": "Facebook",
+        "pillar": "behind_the_scenes",
+        "topic": "Team spotlight: team member",
+        "key_message": "Let's discuss: Team spotlight: team member",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "tip",
+          "cta_type": "free_trial",
+          "format": "poll"
+        },
+        "hashtags_count": 4,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-03",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Team spotlight: team member",
+        "key_message": "Quick insight: Team spotlight: team member",
+        "variation": {
+          "angle": "behind-the-scenes",
+          "hook_style": "question",
+          "cta_type": "demo",
+          "format": "poll"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-04",
+        "platform": "LinkedIn",
+        "pillar": "thought_leadership",
+        "topic": "The future of SafeItOut ecosystem",
+        "key_message": "Professional perspective on The future of SafeItOut ecosystem",
+        "variation": {
+          "angle": "behind-the-scenes",
+          "hook_style": "challenge",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-04",
+        "platform": "Facebook",
+        "pillar": "thought_leadership",
+        "topic": "Industry insights: market insights",
+        "key_message": "Let's discuss: Industry insights: market insights",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "challenge",
+          "cta_type": "free_trial",
+          "format": "carousel"
+        },
+        "hashtags_count": 4,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-04",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Our CEO's perspective on business development",
+        "key_message": "Quick insight: Our CEO's perspective on business development",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "quote",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-05",
         "platform": "LinkedIn",
         "pillar": "community",
         "topic": "User-generated content: success stories",
         "key_message": "Professional perspective on User-generated content: success stories",
         "variation": {
-          "angle": "controversial",
-          "hook_style": "challenge",
-          "cta_type": "free_trial",
-          "format": "video"
-        },
-        "hashtags_count": 5,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-29",
-        "platform": "Facebook",
-        "pillar": "community",
-        "topic": "Join our webinar series",
-        "key_message": "Let's discuss: Join our webinar series",
-        "variation": {
-          "angle": "data-driven",
-          "hook_style": "myth-busting",
-          "cta_type": "newsletter",
-          "format": "article"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-29",
-        "platform": "Twitter",
-        "pillar": "community",
-        "topic": "Join our webinar series",
-        "key_message": "Quick insight: Join our webinar series",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "myth-busting",
-          "cta_type": "demo",
-          "format": "article"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-30",
-        "platform": "LinkedIn",
-        "pillar": "education",
-        "topic": "Understanding AI-driven partnerships in 2024",
-        "key_message": "Professional perspective on Understanding AI-driven partnerships in 2024",
-        "variation": {
-          "angle": "data-driven",
-          "hook_style": "statistic",
-          "cta_type": "free_trial",
-          "format": "text"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-30",
-        "platform": "Facebook",
-        "pillar": "education",
-        "topic": "5 key insights about startup ecosystem",
-        "key_message": "Let's discuss: 5 key insights about startup ecosystem",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "announcement",
-          "cta_type": "free_trial",
-          "format": "article"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-09-30",
-        "platform": "Twitter",
-        "pillar": "education",
-        "topic": "How to optimize your sponsor matching",
-        "key_message": "Quick insight: How to optimize your sponsor matching",
-        "variation": {
-          "angle": "educational",
-          "hook_style": "story",
-          "cta_type": "free_trial",
-          "format": "text"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-01",
-        "platform": "LinkedIn",
-        "pillar": "social_proof",
-        "topic": "Testimonial spotlight: TechStartup Inc",
-        "key_message": "Professional perspective on Testimonial spotlight: TechStartup Inc",
-        "variation": {
-          "angle": "inspirational",
+          "angle": "behind-the-scenes",
           "hook_style": "question",
           "cta_type": "newsletter",
-          "format": "story"
+          "format": "article"
         },
         "hashtags_count": 5,
         "image_required": false,
         "dependencies": null
       },
       {
-        "date": "2025-10-01",
+        "date": "2025-10-05",
         "platform": "Facebook",
-        "pillar": "social_proof",
-        "topic": "Client success story: 300% ROI increase",
-        "key_message": "Let's discuss: Client success story: 300% ROI increase",
+        "pillar": "community",
+        "topic": "Community challenge: team activity",
+        "key_message": "Let's discuss: Community challenge: team activity",
         "variation": {
-          "angle": "storytelling",
-          "hook_style": "quote",
-          "cta_type": "newsletter",
+          "angle": "problem-solving",
+          "hook_style": "challenge",
+          "cta_type": "demo",
           "format": "carousel"
         },
         "hashtags_count": 4,
@@ -1282,208 +1470,16 @@
         "dependencies": null
       },
       {
-        "date": "2025-10-01",
+        "date": "2025-10-05",
         "platform": "Twitter",
-        "pillar": "social_proof",
-        "topic": "Client success story: 300% ROI increase",
-        "key_message": "Quick insight: Client success story: 300% ROI increase",
-        "variation": {
-          "angle": "controversial",
-          "hook_style": "statistic",
-          "cta_type": "newsletter",
-          "format": "story"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-02",
-        "platform": "LinkedIn",
-        "pillar": "product",
-        "topic": "How our solution helps finding sponsors",
-        "key_message": "Professional perspective on How our solution helps finding sponsors",
-        "variation": {
-          "angle": "how-to",
-          "hook_style": "story",
-          "cta_type": "demo",
-          "format": "poll"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-02",
-        "platform": "Facebook",
-        "pillar": "product",
-        "topic": "New feature announcement: AI matching algorithm",
-        "key_message": "Let's discuss: New feature announcement: AI matching algorithm",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "challenge",
-          "cta_type": "free_trial",
-          "format": "video"
-        },
-        "hashtags_count": 4,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-02",
-        "platform": "Twitter",
-        "pillar": "product",
-        "topic": "Product update: faster processing",
-        "key_message": "Quick insight: Product update: faster processing",
-        "variation": {
-          "angle": "data-driven",
-          "hook_style": "question",
-          "cta_type": "free_trial",
-          "format": "story"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-03",
-        "platform": "LinkedIn",
-        "pillar": "behind_the_scenes",
-        "topic": "Building zwsws: our journey",
-        "key_message": "Professional perspective on Building zwsws: our journey",
-        "variation": {
-          "angle": "problem-solving",
-          "hook_style": "story",
-          "cta_type": "demo",
-          "format": "article"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-03",
-        "platform": "Facebook",
-        "pillar": "behind_the_scenes",
-        "topic": "Building zwsws: our journey",
-        "key_message": "Let's discuss: Building zwsws: our journey",
+        "pillar": "community",
+        "topic": "Community challenge: team activity",
+        "key_message": "Quick insight: Community challenge: team activity",
         "variation": {
           "angle": "educational",
-          "hook_style": "challenge",
-          "cta_type": "newsletter",
-          "format": "video"
-        },
-        "hashtags_count": 4,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-03",
-        "platform": "Twitter",
-        "pillar": "behind_the_scenes",
-        "topic": "Building zwsws: our journey",
-        "key_message": "Quick insight: Building zwsws: our journey",
-        "variation": {
-          "angle": "data-driven",
-          "hook_style": "question",
+          "hook_style": "announcement",
           "cta_type": "demo",
-          "format": "text"
-        },
-        "hashtags_count": 3,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-04",
-        "platform": "LinkedIn",
-        "pillar": "thought_leadership",
-        "topic": "The future of startup ecosystem",
-        "key_message": "Professional perspective on The future of startup ecosystem",
-        "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "challenge",
-          "cta_type": "free_trial",
-          "format": "story"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-04",
-        "platform": "Facebook",
-        "pillar": "thought_leadership",
-        "topic": "Why AI automation matters now",
-        "key_message": "Let's discuss: Why AI automation matters now",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "challenge",
-          "cta_type": "newsletter",
-          "format": "poll"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-04",
-        "platform": "Twitter",
-        "pillar": "thought_leadership",
-        "topic": "Why AI automation matters now",
-        "key_message": "Quick insight: Why AI automation matters now",
-        "variation": {
-          "angle": "problem-solving",
-          "hook_style": "tip",
-          "cta_type": "free_trial",
-          "format": "image"
-        },
-        "hashtags_count": 3,
-        "image_required": true,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-05",
-        "platform": "LinkedIn",
-        "pillar": "community",
-        "topic": "Community challenge: pitch practice",
-        "key_message": "Professional perspective on Community challenge: pitch practice",
-        "variation": {
-          "angle": "behind-the-scenes",
-          "hook_style": "story",
-          "cta_type": "newsletter",
           "format": "article"
-        },
-        "hashtags_count": 5,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-05",
-        "platform": "Facebook",
-        "pillar": "community",
-        "topic": "User-generated content: success stories",
-        "key_message": "Let's discuss: User-generated content: success stories",
-        "variation": {
-          "angle": "storytelling",
-          "hook_style": "statistic",
-          "cta_type": "free_trial",
-          "format": "text"
-        },
-        "hashtags_count": 4,
-        "image_required": false,
-        "dependencies": null
-      },
-      {
-        "date": "2025-10-05",
-        "platform": "Twitter",
-        "pillar": "community",
-        "topic": "Community highlight: startup founder",
-        "key_message": "Quick insight: Community highlight: startup founder",
-        "variation": {
-          "angle": "problem-solving",
-          "hook_style": "story",
-          "cta_type": "demo",
-          "format": "poll"
         },
         "hashtags_count": 3,
         "image_required": false,
@@ -1534,6 +1530,8 @@
     "newsletter",
     "free_trial"
   ],
-  "created_at": "2025-09-06T18:37:58.046744",
-  "version": "1.0"
+  "created_at": "2025-09-06T19:53:15.478570",
+  "version": "1.0",
+  "startup_name": null,
+  "startup_url": null
 }
