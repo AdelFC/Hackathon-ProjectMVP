@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3131:3131"
+    environment:
+      - BLACKBOX_API_KEY=${BLACKBOX_API_KEY:-}
+      - PORT=3131
+      - ENVIRONMENT=development
+    networks:
+      - dev-manager-network
+    restart: unless-stopped
+
+networks:
+  dev-manager-network:
+    driver: bridge
+
+volumes:
+  data:
+    driver: local
