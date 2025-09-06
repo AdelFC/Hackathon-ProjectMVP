@@ -4,6 +4,7 @@ import { Button } from '../components/ui/Button'
 import { Card } from '../components/ui/Card'
 import { Badge } from '../components/ui/Badge'
 import { CheckCircle, BarChart3, Globe, Brain, Target, Sparkles } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 export default function Landing() {
   const { darkMode, toggleDarkMode } = usePreferencesStore()
@@ -60,10 +61,7 @@ export default function Landing() {
       <header className="sticky top-0 z-40 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div
-              className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500"
-              aria-hidden="true"
-            />
+            <img src={logo} alt="StartPost Agent" className="h-8 w-auto" />
             <span className="font-semibold text-lg">StartPost Agent</span>
           </div>
           <div className="flex items-center gap-3">
@@ -279,7 +277,7 @@ export default function Landing() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-emerald-500 to-teal-500" aria-hidden="true" />
+              <img src={logo} alt="StartPost Agent" className="h-6 w-auto" />
               <span className="text-sm text-gray-600 dark:text-gray-400">
                 © 2025 StartPost Agent. Community Manager IA pour startups.
               </span>
