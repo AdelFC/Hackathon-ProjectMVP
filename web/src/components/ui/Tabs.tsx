@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, createContext, useContext, useState } from 'react'
+import { HTMLAttributes, createContext, useContext, useState } from 'react'
 import { clsx } from 'clsx'
 
 interface TabsContextValue {

@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, useState, useRef, useEffect } from 'react'
+import { ReactNode, useState, useRef, useEffect } from 'react'
 import { clsx } from 'clsx'
 import { createPortal } from 'react-dom'
 
@@ -20,7 +20,7 @@ export function Tooltip({
   const [isVisible, setIsVisible] = useState(false)
   const [coords, setCoords] = useState({ x: 0, y: 0 })
   const triggerRef = useRef<HTMLDivElement>(null)
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
   
   const handleMouseEnter = () => {
     if (delay > 0) {

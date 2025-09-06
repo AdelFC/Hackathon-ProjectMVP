@@ -137,7 +137,6 @@ export default function Integrations() {
 
   const handleAuthorize = () => {
     if (selectedIntegration) {
-      const now = new Date()
       const timeString = `il y a ${Math.floor(Math.random() * 5) + 1} minutes`
 
       setIntegrations(prev => prev.map(item =>

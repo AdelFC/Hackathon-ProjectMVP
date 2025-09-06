@@ -28,7 +28,7 @@ interface BrandFormProps {
 
 export function BrandForm({ onSubmit }: BrandFormProps) {
   const { setBrandIdentity, brandIdentity } = useProjectStore();
-  const { showToast } = useToast();
+  const { addToast } = useToast();
 
   const [formData, setFormData] = useState<BrandFormData>({
     name: brandIdentity?.name || '',
@@ -68,10 +68,7 @@ export function BrandForm({ onSubmit }: BrandFormProps) {
         ]
       });
 
-      showToast({
-        title: 'Identité de marque enregistrée',
-        type: 'success'
-      });
+      addToast('Identité de marque enregistrée', 'success');
 
       setErrors({});
       onSubmit?.();

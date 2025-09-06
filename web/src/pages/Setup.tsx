@@ -46,7 +46,9 @@ export default function Setup() {
       setGoals({
         cadence: cadenceMap[formData.frequency] || 'weekly',
         objectives: [formData.objective],
-        kpis: ['engagement', 'reach', 'conversions']
+        kpis: ['ER', 'CTR', 'growth'],
+        targetKpi: 'ER',
+        enabledNetworks: ['facebook', 'instagram', 'linkedin']
       })
       completeSetup()
       addToast('Configuration terminée avec succès!', 'success')

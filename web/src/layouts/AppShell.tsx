@@ -1,6 +1,7 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { usePreferencesStore } from '../stores/preferencesStore'
+import logo from '../assets/logo.png'
 
 export default function AppShell() {
   const navigate = useNavigate()
@@ -108,6 +109,7 @@ export default function AppShell() {
                 <path d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
+            <img src={logo} alt="Social Studio" className="h-8 w-auto" />
             <span className="font-semibold">Social Studio</span>
           </div>
           <div className="flex items-center gap-2">

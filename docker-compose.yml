@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   backend:
     build:
@@ -41,7 +39,7 @@ services:
       dockerfile: Dockerfile
       target: production
     ports:
-      - "3000:80"
+      - "3001:80"
     environment:
       - NODE_ENV=production
     networks:
