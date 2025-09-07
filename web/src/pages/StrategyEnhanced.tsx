@@ -264,34 +264,95 @@ export function StrategyEnhanced() {
     const brandVoice = brandIdentity?.voice || 'professional';
     const brandMission = brandIdentity?.mission || '';
     const brandTargetAudience = brandIdentity?.targetAudience || '';
-    const brandFeatures = Array.isArray(brandIdentity?.features) ? brandIdentity.features.join(', ') : '';
-    const brandHashtags = Array.isArray(brandIdentity?.hashtags) ? brandIdentity.hashtags : [];
+    
+    // Extraire les value props correctement
+    let brandValueProps: string[] = [];
+    if (brandIdentity?.valueProps) {
+      if (typeof brandIdentity.valueProps === 'string') {
+        brandValueProps = brandIdentity.valueProps.split(',').map(v => v.trim()).filter(v => v);
+      } else if (Array.isArray(brandIdentity.valueProps)) {
+        brandValueProps = brandIdentity.valueProps;
+      }
+    }
+    const brandFeatures = brandValueProps.join(', ') || 'Innovation, Qualité, Service';
+    
+    // Utiliser les hashtags du store ou par défaut
+    const brandHashtags = Array.isArray(brandIdentity?.hashtags) ? brandIdentity.hashtags : ['#startup', '#innovation', '#tech'];
     const brandGuidelines = brandIdentity?.guidelines || {};
     
     // Extract specific guidelines
     const doGuidelines = brandGuidelines.do || [];
     const dontGuidelines = brandGuidelines.dont || [];
     
-    // Create hashtag string
-    const hashtagString = brandHashtags.length > 0 ? brandHashtags.map(tag => `#${tag.replace('#', '')}`).join(' ') : '#innovation #tech #startup';
+    // Create hashtag string - assurer que tous ont le #
+    const hashtagString = brandHashtags.map(tag => {
+      const cleanTag = tag.replace('#', '').trim();
+      return cleanTag ? `#${cleanTag}` : '';
+    }).filter(t => t).join(' ') || '#innovation #tech #startup';
     
+    // Templates améliorés selon le nouveau prompt stratégique
     const templates = {
-      LinkedIn: [
-        `🚀 ${post.key_message}\n\n${post.topic}\n\nNotre solution ${brandName} ${brandMission ? `aide à ${brandMission}` : 'transforme votre approche'}.\n\n${brandFeatures ? `✅ ${brandFeatures.split(',')[0]?.trim() || ''}` : ''}\n\n${hashtagString}`,
-        `${brandTargetAudience ? `Pour ${brandTargetAudience},` : ''} découvrez comment ${post.topic} peut transformer votre activité.\n\n${post.key_message}\n\n${brandName} vous accompagne avec ${brandFeatures && brandFeatures.includes(',') ? brandFeatures.split(',').slice(0, 2).join(' et ') : (brandFeatures || 'des solutions innovantes')}.\n\n${hashtagString}`
-      ],
-      Facebook: [
-        `${post.key_message} 🎯\n\n${post.topic}\n\n${brandName} ${brandMission ? brandMission : 'innove pour vous'}.\n\n${brandTargetAudience ? `Conçu spécialement pour ${brandTargetAudience}` : ''}\n\nQu'en pensez-vous ? Partagez votre avis en commentaire !\n\n${hashtagString}`,
-        `📣 ${post.topic}\n\n${post.key_message}\n\n${brandFeatures ? `Avec ${brandName}: ${brandFeatures.split(',')[0]?.trim() || ''}` : ''}\n\n👉 En savoir plus sur notre site\n\n${hashtagString}`
-      ],
-      Twitter: [
-        `${post.key_message}\n\n${brandName}: ${post.topic}\n\n${brandTargetAudience && brandTargetAudience.includes(',') ? `Pour ${brandTargetAudience.split(',')[0]?.trim() || ''}` : (brandTargetAudience ? `Pour ${brandTargetAudience}` : '')}\n\n${hashtagString}`,
-        `💡 ${post.topic}\n\n${post.key_message}\n\n${brandFeatures && brandFeatures.includes(',') ? brandFeatures.split(',')[0]?.trim() || '' : brandFeatures}\n\n${hashtagString}`
-      ]
+      LinkedIn: {
+        education: [
+          `💡 ${post.topic}\n\n${post.key_message}\n\n${brandName} ${brandMission ? `révolutionne ${brandMission}` : 'transforme votre industrie'} grâce à ${brandFeatures ? brandFeatures.split(',')[0]?.trim() : 'l\'innovation'}.\n\n👉 Qu'en pensez-vous ? Partagez votre expérience en commentaire.\n\n${hashtagString}`,
+          `[Insight du jour] ${post.topic}\n\n${post.key_message}\n\nChez ${brandName}, nous croyons que ${brandMission || 'l\'innovation est clé'}.\n\n✅ ${brandFeatures ? brandFeatures.split(',').slice(0, 2).join('\n✅ ') : 'Solutions innovantes'}\n\n${hashtagString}`
+        ],
+        social_proof: [
+          `📊 Case Study: ${post.topic}\n\n${post.key_message}\n\nRésultats concrets avec ${brandName}:\n${brandFeatures ? '→ ' + brandFeatures.split(',')[0] : '→ ROI prouvé'}\n\nDécouvrez comment nous aidons ${brandTargetAudience || 'nos clients'} à exceller.\n\n${hashtagString}`,
+          `🎯 ${post.topic}\n\n"${post.key_message}"\n\n- Un client ${brandName} satisfait\n\nRejoignez ${brandTargetAudience || 'des entreprises leaders'} qui nous font confiance.\n\n${hashtagString}`
+        ],
+        thought_leadership: [
+          `🔮 ${post.topic}\n\n${post.key_message}\n\nMon analyse en tant que leader chez ${brandName}:\n\n${brandMission ? `Notre mission de ${brandMission} nous positionne uniquement pour...` : 'L\'avenir appartient à ceux qui innovent...'}\n\nQuel est votre point de vue?\n\n${hashtagString}`
+        ]
+      },
+      Facebook: {
+        community: [
+          `🙌 ${post.topic}\n\n${post.key_message}\n\n${brandName} c'est avant tout une communauté de ${brandTargetAudience || 'passionnés'}!\n\n💬 Partagez votre histoire avec nous dans les commentaires!\n\n${hashtagString}`,
+          `📢 Question du jour: ${post.topic}\n\n${post.key_message}\n\nChez ${brandName}, on veut connaître VOTRE avis!\n\nRéagissez avec:\n❤️ si vous êtes d'accord\n👍 si c'est pertinent\n🤔 si vous voulez en savoir plus\n\n${hashtagString}`
+        ],
+        product: [
+          `✨ Nouveauté ${brandName}!\n\n${post.topic}\n\n${post.key_message}\n\n${brandFeatures ? '🚀 ' + brandFeatures.split(',')[0] : '🚀 Innovation'}\n\n👉 Découvrez comment ${brandMission || 'transformer votre quotidien'}.\n\n${hashtagString}`,
+        ],
+        behind_the_scenes: [
+          `🎬 Dans les coulisses de ${brandName}\n\n${post.topic}\n\n${post.key_message}\n\nNotre équipe travaille chaque jour pour ${brandMission || 'vous servir au mieux'}.\n\n❤️ si vous appréciez la transparence!\n\n${hashtagString}`
+        ]
+      },
+      Twitter: {
+        education: [
+          `${post.key_message.substring(0, 100)}...\n\n${brandName} tip: ${post.topic.substring(0, 50)}\n\n🧵 Thread 👇\n\n${hashtagString}`,
+          `💡 ${post.topic.substring(0, 60)}\n\n${post.key_message.substring(0, 120)}\n\n- L'équipe ${brandName}\n\n${hashtagString}`
+        ],
+        social_proof: [
+          `📈 ${post.topic.substring(0, 50)}\n\n"${post.key_message.substring(0, 100)}"\n\nVia ${brandName}\n\n${hashtagString}`,
+        ],
+        product: [
+          `🚀 ${brandName}: ${post.topic.substring(0, 50)}\n\n${post.key_message.substring(0, 100)}\n\n${hashtagString}`,
+        ]
+      }
     };
 
-    const platformTemplates = templates[post.platform as keyof typeof templates] || templates.Twitter;
-    let content = platformTemplates[Math.floor(Math.random() * platformTemplates.length)];
+    // Sélectionner le template en fonction de la plateforme ET du pilier
+    const platformTemplates = templates[post.platform as keyof typeof templates];
+    let availableTemplates: string[] = [];
+    
+    if (platformTemplates) {
+      // Chercher les templates pour le pilier spécifique
+      const pillarKey = post.pillar?.toLowerCase().replace(' ', '_') || 'education';
+      if (platformTemplates[pillarKey as keyof typeof platformTemplates]) {
+        availableTemplates = platformTemplates[pillarKey as keyof typeof platformTemplates] as string[];
+      } else {
+        // Fallback: prendre le premier pilier disponible
+        const firstPillar = Object.keys(platformTemplates)[0];
+        availableTemplates = platformTemplates[firstPillar as keyof typeof platformTemplates] as string[];
+      }
+    }
+    
+    // Si pas de templates trouvés, utiliser un template par défaut
+    if (availableTemplates.length === 0) {
+      availableTemplates = [`${post.key_message}\n\n${brandName}: ${post.topic}\n\n${hashtagString}`];
+    }
+    
+    let content = availableTemplates[Math.floor(Math.random() * availableTemplates.length)];
     
     // Apply voice tone adjustments
     if (brandVoice === 'casual') {
@@ -316,22 +377,44 @@ export function StrategyEnhanced() {
   const handleGenerateStrategy = async () => {
     if (!brandIdentity || !goals) return;
 
-    // Get enabled platforms from goals
-    const enabledPlatforms = goals.enabledNetworks?.map(n => n.charAt(0).toUpperCase() + n.slice(1)) || [];
+    // Get enabled platforms from goals - capitalize first letter
+    const enabledPlatforms = goals.enabledNetworks?.map(n => {
+      // Normalise: linkedin -> LinkedIn, twitter -> Twitter, facebook -> Facebook
+      return n.charAt(0).toUpperCase() + n.slice(1).toLowerCase();
+    }) || [];
+
+    // Prepare value propositions array
+    const valuePropsArray: string[] = [];
+    if (brandIdentity.valueProps) {
+      // Si valueProps est une string avec des virgules, on split
+      if (typeof brandIdentity.valueProps === 'string') {
+        valuePropsArray.push(...brandIdentity.valueProps.split(',').map(v => v.trim()).filter(v => v));
+      } else if (Array.isArray(brandIdentity.valueProps)) {
+        valuePropsArray.push(...(brandIdentity.valueProps as string[]));
+      }
+    }
+    // Ajouter les features si pas de valueProps
+    if (valuePropsArray.length === 0 && Array.isArray(brandIdentity.features)) {
+      valuePropsArray.push(...brandIdentity.features.filter(f => !f.startsWith('DO:') && !f.startsWith('DONT:') && !f.startsWith('#')));
+    }
+    // Valeur par défaut si toujours vide
+    if (valuePropsArray.length === 0) {
+      valuePropsArray.push('Innovation', 'Qualité', 'Service client');
+    }
 
     await generateStrategy({
       brand_name: brandIdentity.name,
       positioning: brandIdentity.mission,
-      target_audience: brandIdentity.targetAudience || '',
-      value_props: brandIdentity.valueProps ? [brandIdentity.valueProps] : (Array.isArray(brandIdentity.features) ? brandIdentity.features : []),
+      target_audience: brandIdentity.targetAudience || 'Startups et PME',
+      value_props: valuePropsArray,
       start_date: new Date().toISOString().split('T')[0],
       duration_days: 30,
       language: 'fr-FR',
-      tone: brandIdentity.voice,
+      tone: brandIdentity.voice || 'professionnel',
       cta_targets: ['demo', 'newsletter', 'free_trial'],
-      platforms: enabledPlatforms.length > 0 ? enabledPlatforms : undefined,
+      platforms: enabledPlatforms.length > 0 ? enabledPlatforms : ['LinkedIn', 'Twitter', 'Facebook'],
       startup_name: brandIdentity.startupName || brandIdentity.name,
-      startup_url: brandIdentity.startupUrl || brandIdentity.website
+      startup_url: brandIdentity.startupUrl || brandIdentity.website || ''
     });
   };
 
@@ -484,14 +567,6 @@ export function StrategyEnhanced() {
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-semibold">Stratégie & Posts</h2>
         <div className="hidden sm:flex items-center gap-2">
-          <button
-            onClick={handleExport}
-            className="btn btn-outline flex items-center gap-2"
-            disabled={!currentStrategy}
-          >
-            <Download className="w-4 h-4" />
-            {t.app.strategy.export}
-          </button>
           <button
             onClick={handleGenerateStrategy}
             disabled={loadingGenerate}
@@ -814,48 +889,18 @@ export function StrategyEnhanced() {
               )}
             </div>
           </Card>
-
-          {/* Raccourcis */}
-          <Card className="card-hover">
-            <div className="card-body">
-              <h3 className="text-lg font-medium mb-4">Raccourcis</h3>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center justify-between">
-                  <span>Générer stratégie</span>
-                  <span className="kbd">Ctrl+G</span>
-                </li>
-                <li className="flex items-center justify-between">
-                  <span>Approuver tout</span>
-                  <span className="kbd">Ctrl+A</span>
-                </li>
-                <li className="flex items-center justify-between">
-                  <span>Publier</span>
-                  <span className="kbd">Ctrl+Enter</span>
-                </li>
-              </ul>
-            </div>
-          </Card>
         </aside>
       </div>
 
       {/* Actions mobiles */}
       <div className="sm:hidden">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={handleExport}
-            className="btn btn-outline w-full"
-            disabled={!currentStrategy}
-          >
-            {t.app.strategy.export}
-          </button>
-          <button
-            onClick={handleGenerateStrategy}
-            disabled={loadingGenerate}
-            className="btn btn-primary w-full"
-          >
-            {t.app.strategy.generateStrategy}
-          </button>
-        </div>
+        <button
+          onClick={handleGenerateStrategy}
+          disabled={loadingGenerate}
+          className="btn btn-primary w-full"
+        >
+          {t.app.strategy.generateStrategy}
+        </button>
       </div>
     </div>
   );

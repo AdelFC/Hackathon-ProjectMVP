@@ -58,8 +58,8 @@ def generate_image_url(prompt: str, style: str = "professional", platform: str =
         f"Create a high-quality {platform_specs.get(platform, platform_specs['general'])}. "
         f"Style: {style_snippets.get(style, style_snippets['professional'])}. "
         f"Theme and content: {prompt}. "
-        f"Brand identity: Include 'MeetSponsors' branding subtly and professionally. "
-        f"Footer: Add 'meetsponsors.com' website in small, elegant text at the bottom. "
+        f"Brand identity: Include branding subtly and professionally. "
+        f"Footer: Add website URL in small, elegant text at the bottom. "
         f"Requirements: Clean design, high quality rendering, crisp typography, professional appearance, "
         f"suitable for business audience, visually balanced composition, corporate-friendly aesthetic."
     )

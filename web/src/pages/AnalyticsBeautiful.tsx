@@ -219,23 +219,8 @@ export default function AnalyticsBeautiful() {
         {/* Header */}
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Analytics Dashboard</h1>
-            <p className="text-gray-600 mt-1">Track your social media performance across all platforms</p>
-          </div>
-          <div className="flex gap-2">
-            {['7d', '30d', '90d'].map((period) => (
-              <button
-                key={period}
-                onClick={() => setSelectedPeriod(period)}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  selectedPeriod === period
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                {period === '7d' ? 'Week' : period === '30d' ? 'Month' : 'Quarter'}
-              </button>
-            ))}
+            <h1 className="text-3xl font-bold text-gray-900">Tableau de bord Analytics</h1>
+            <p className="text-gray-600 mt-1">Suivez vos performances sur tous les réseaux sociaux</p>
           </div>
         </div>
 
@@ -243,33 +228,33 @@ export default function AnalyticsBeautiful() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <MetricCard
             icon={<Eye className="w-5 h-5 text-blue-600" />}
-            title="Total Impressions"
+            title="Impressions totales"
             value={totalImpressions.toLocaleString()}
-            change="vs last period"
+            change="vs période précédente"
             trend={12.5}
             color="bg-blue-100"
           />
           <MetricCard
             icon={<Heart className="w-5 h-5 text-red-600" />}
-            title="Total Engagement"
+            title="Engagement total"
             value={totalEngagement.toLocaleString()}
-            change={`${avgEngagementRate}% rate`}
+            change={`Taux: ${avgEngagementRate}%`}
             trend={8.3}
             color="bg-red-100"
           />
           <MetricCard
             icon={<Users className="w-5 h-5 text-green-600" />}
-            title="New Followers"
+            title="Nouveaux abonnés"
             value={`+${totalFollowers.toLocaleString()}`}
-            change="30 days growth"
+            change="Croissance 30 jours"
             trend={15.2}
             color="bg-green-100"
           />
           <MetricCard
             icon={<Target className="w-5 h-5 text-purple-600" />}
-            title="Click Rate"
+            title="Taux de clic"
             value={`${((totalClicks / totalImpressions) * 100).toFixed(2)}%`}
-            change={`${totalClicks.toLocaleString()} clicks`}
+            change={`${totalClicks.toLocaleString()} clics`}
             trend={-2.1}
             color="bg-purple-100"
           />
@@ -279,7 +264,7 @@ export default function AnalyticsBeautiful() {
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Performance Trends */}
           <div className="bg-white rounded-xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold mb-4">Performance Trends</h3>
+            <h3 className="text-lg font-semibold mb-4">Tendances de performance</h3>
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={data.performanceData}>
                 <defs>
