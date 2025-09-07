@@ -189,10 +189,12 @@ export function SetupConnected() {
               </p>
             </div>
 
-            <AnalyzeUrlPanelConnected
-              url={formData.url}
-              onUrlChange={(url) => setFormData(prev => ({ ...prev, url }))}
-              onAnalysisComplete={handleAnalysisComplete}
+            <input
+              type="url"
+              value={formData.url}
+              onChange={(e) => setFormData(prev => ({ ...prev, url: e.target.value }))}
+              placeholder="https://example.com"
+              className="field w-full"
             />
           </div>
         )}
