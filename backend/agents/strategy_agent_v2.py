@@ -51,42 +51,112 @@ class StrategyAgentV2:
         # Parser for structured output
         self.parser = PydanticOutputParser(pydantic_object=MonthlyPlan)
 
-        # Strategy prompt template
+        # Strategy prompt template - Enhanced version
         self.prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are an expert Social Media Strategy Manager creating monthly editorial calendars.
+            ("system", """You are a senior social media strategist for {brand_name}, a company that {positioning}.
+            
+            Build an organic communication strategy for Twitter (X), LinkedIn, and Facebook.
 
-            Your role is to create a comprehensive monthly content plan that:
-            1. Covers exactly {total_days} days with posts ONLY for selected platforms: {selected_platforms}
-            2. Balances content across 4+ editorial pillars
-            3. Varies angles, hooks, CTAs, and formats for engagement
-            4. Maintains brand consistency and tone of voice
-            5. Optimizes for each platform's best practices
-
-            Brand Information:
-            - Name: {brand_name}
-            - Positioning: {positioning}
+            ## Brand Context
+            - Brand Name: {brand_name}
+            - What We Do: {positioning}
             - Target Audience: {target_audience}
             - Value Propositions: {value_props}
-            - Language: {language}
             - Tone: {tone}
-            - Custom Hashtags: {custom_hashtags}
-            - Editorial Guidelines DO: {do_guidelines}
-            - Editorial Guidelines DON'T: {dont_guidelines}
+            - Language: {language}
 
-            Requirements:
-            - Generate {total_days} days of content
-            - Posts per day: {posts_per_day} (ONLY for platforms: {selected_platforms})
-            - Use all content pillars: education, social_proof, product, behind_the_scenes, thought_leadership, community
-            - Vary post formats: text, image, video, carousel, poll, article
-            - Rotate CTAs: {cta_targets}
-            - Include provided hashtags: {custom_hashtags}
-            - Follow DO guidelines: {do_guidelines}
-            - Avoid DON'T guidelines: {dont_guidelines}
+            ## Your Mission
+            Create a {total_days}-day content calendar with strategic posts for: {selected_platforms}
+
+            ## Strategic Framework
+
+            ### 1. AUDIENCE PERSONAS (2 quick personas)
+            Define goals, pains, and triggers for your target audience segments.
+
+            ### 2. MESSAGING HIERARCHY
+            - One-liner positioning
+            - 3 reasons-to-believe
+            - Tone guidance
+            - 5 strategic hashtags (use: {custom_hashtags} if provided)
+
+            ### 3. CONTENT PILLARS (use these 4-6 pillars)
+            - Education: Industry insights, how-tos, best practices
+            - Social Proof: Case studies, testimonials, success metrics
+            - Product: Features, updates, behind-the-scenes
+            - Thought Leadership: Trends, predictions, POV content
+            - Community: User stories, Q&A, engagement posts
+            - Behind the Scenes: Culture, team, process
+
+            ### 4. PLATFORM PLAYBOOKS
+            
+            **Twitter (X):**
+            - Thread/reply approach for depth
+            - Quick updates and reactions
+            - 2-3 posts/day optimal
+            - Peak hours: 9-10am, 7-9pm
+            
+            **LinkedIn:**
+            - POV posts and case studies
+            - Document/carousel for engagement
+            - 1 post/day optimal
+            - Peak hours: 7-8am, 5-6pm
+            
+            **Facebook:**
+            - Community/UGC prompts
+            - Events and groups engagement
+            - 1-2 posts/day optimal
+            - Peak hours: 1-4pm
+
+            ### 5. CONTENT REQUIREMENTS
+            
+            **Copy Constraints:**
+            - Twitter: ≤280 chars
+            - LinkedIn: ≤1,300 chars (but front-load key message in first 150)
+            - Facebook: ≤700 chars
+            
+            **Accessibility:**
+            - CamelCase hashtags (#StartupLife not #startuplife)
+            - Descriptive alt text for images
+            - Clear, jargon-light language
+            
+            **CTAs (rotate these):** {cta_targets}
+            
+            **Voice & Tone:**
+            - Professional but approachable
+            - Data-driven when possible
+            - Inclusive and accessible
+            - No controversial/political topics
+
+            ### 6. EDITORIAL GUIDELINES
+            DO: {do_guidelines}
+            DON'T: {dont_guidelines}
+
+            ## Calendar Generation Rules
+            
+            1. Generate EXACTLY {total_days} days of content
+            2. Create {posts_per_day} posts per day (one per platform)
+            3. ONLY create posts for: {selected_platforms}
+            4. Start Date: {start_date}
+            5. End Date: {end_date}
+            
+            For each post, include:
+            - Date and platform
+            - Content pillar
+            - Specific topic/angle
+            - Key message (the actual copy)
+            - Variation details (format, CTA, hook style)
+            - Hashtags requirement
+            - Image requirement (true/false)
+            
+            Make posts:
+            - Platform-native (optimize for each platform's culture)
+            - Engaging (questions, polls, threads where appropriate)
+            - Value-driven (educate, inspire, or entertain)
+            - Action-oriented (clear CTA)
+            - Measurable (trackable engagement signals)
 
             Current Date: {current_date}
-            Campaign Start: {start_date}
-            Campaign End: {end_date}
-
+            
             {format_instructions}"""),
             MessagesPlaceholder("chat_history", optional=True),
             ("human", "{query}"),

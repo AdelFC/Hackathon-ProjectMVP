@@ -406,8 +406,8 @@ if __name__ == "__main__":
         topic="How AI is transforming startup fundraising and sponsor matching",
         post_type="transformation",
         auto_post=False,  # Set to True to actually post
-        startup_name="Meetsponsors",
-        startup_url="https://meetsponsors.com/"
+        startup_name="TestStartup",
+        startup_url="https://example.com"
     )
 
     print(f"\nPost created: {result.get('success')}")

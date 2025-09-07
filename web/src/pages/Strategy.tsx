@@ -86,22 +86,6 @@ export default function Strategy() {
               </ul>
             </div>
           </section>
-
-          <section className="card card-hover">
-            <div className="card-body">
-              <h3 className="text-lg font-medium mb-4">Raccourcis</h3>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center justify-between">
-                  <span>Aller à Stratégie</span>
-                  <span className="kbd">Alt+1</span>
-                </li>
-                <li className="flex items-center justify-between">
-                  <span>Aller à Analytics</span>
-                  <span className="kbd">Alt+2</span>
-                </li>
-              </ul>
-            </div>
-          </section>
         </aside>
       </div>
 

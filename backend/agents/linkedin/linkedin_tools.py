@@ -154,7 +154,7 @@ def get_trending_hashtags(industry: str = "tech") -> list:
     # Get industry-specific hashtags
     industry_hashtags = hashtags_db.get(industry.lower(), hashtags_db["general"])
 
-    # Always include some startup hashtags for MeetSponsors
+    # Always include some startup hashtags
     startup_hashtags = hashtags_db["startup"]
 
     # Combine and deduplicate

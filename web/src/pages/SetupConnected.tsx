@@ -106,16 +106,24 @@ export function SetupConnected() {
   }
 
   const handleFinish = async () => {
-    // Sauvegarder dans le store
+    // Sauvegarder dans le store avec cohérence
     setBrandIdentity({
       name: formData.brandName,
-      industry: 'Technology', // Valeur par défaut, à améliorer
+      industry: 'Technology', // Valeur par défaut
       website: formData.url,
+      startupName: formData.brandName, // Utilise le nom de marque comme nom de startup par défaut
+      startupUrl: formData.url, // Utilise l'URL comme URL de startup par défaut
       mission: formData.mission,
       targetAudience: formData.audience,
+      valueProps: formData.usp, // Stocke la proposition de valeur unique
       usp: formData.usp,
       voice: formData.voice,
-      features: formData.features
+      features: formData.features,
+      hashtags: ['#startup', '#innovation', '#tech'], // Hashtags par défaut
+      guidelines: {
+        do: ['Partager des insights', 'Être authentique'],
+        dont: ['Spam', 'Contenu générique']
+      }
     })
 
     const cadenceMap: Record<string, 'daily' | 'weekly' | 'biweekly'> = {
@@ -130,7 +138,16 @@ export function SetupConnected() {
       objectives: [formData.objective],
       kpis: ['ER', 'CTR', 'growth'],
       targetKpi: 'ER',
-      enabledNetworks: formData.platforms.map(p => p.toLowerCase() as any)
+      enabledNetworks: formData.platforms.map(p => {
+        // Normalise les noms de plateformes en lowercase
+        const platformMap: Record<string, any> = {
+          'LinkedIn': 'linkedin',
+          'Facebook': 'facebook',
+          'Twitter': 'twitter',
+          'X': 'twitter'
+        };
+        return platformMap[p] || p.toLowerCase();
+      }) as any
     })
 
     // Remove automatic strategy generation logic

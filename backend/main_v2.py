@@ -478,15 +478,15 @@ async def get_system_metrics():
 # ---------- Test Endpoints ----------
 @app.post("/test/create-sample-strategy")
 async def create_sample_strategy(
-    startup_name: Optional[str] = "Meetsponsors",
-    startup_url: Optional[str] = "https://meetsponsors.com/"
+    startup_name: Optional[str] = "TestStartup",
+    startup_url: Optional[str] = "https://example.com"
 ):
     """
     Create a sample strategy for testing
 
     Query parameters:
-        startup_name: Startup name for content generation (default: Meetsponsors)
-        startup_url: Startup URL for landing page analysis (default: https://meetsponsors.com/)
+        startup_name: Startup name for content generation (default: TestStartup)
+        startup_url: Startup URL for landing page analysis (default: https://example.com)
     """
     try:
         plan = create_monthly_strategy(
@@ -525,15 +525,15 @@ async def create_sample_strategy(
 
 @app.post("/test/dry-run-orchestration")
 async def test_orchestration(
-    startup_name: Optional[str] = "Meetsponsors",
-    startup_url: Optional[str] = "https://meetsponsors.com/"
+    startup_name: Optional[str] = "TestStartup",
+    startup_url: Optional[str] = "https://example.com"
 ):
     """
     Run a dry-run orchestration for testing
 
     Query parameters:
-        startup_name: Startup name for content generation (default: Meetsponsors)
-        startup_url: Startup URL for landing page analysis (default: https://meetsponsors.com/)
+        startup_name: Startup name for content generation (default: TestStartup)
+        startup_url: Startup URL for landing page analysis (default: https://example.com)
     """
     try:
         result = execute_daily_orchestration(
