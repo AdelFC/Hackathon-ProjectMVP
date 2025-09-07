@@ -21,8 +21,7 @@ StartPost Agent est une plateforme SaaS qui utilise des **agents IA intelligents
 ## 🚀 Installation & Lancement
 
 ### Prérequis
-- Node.js 18+
-- Python 3.9+
+- Docker
 - Git
 
 ### Installation Rapide
@@ -33,22 +32,6 @@ git clone <repository-url>
 
 # 4. Lancement de l'app
 ./start.sh
-```
-
-### Lancement Manuel
-
-```bash
-# Backend
-cd backend
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python -m uvicorn app.main:app --reload --port 8000
-
-# Frontend (nouveau terminal)
-cd web
-npm install
-npm run dev
 ```
 
 ### Accès
@@ -75,16 +58,6 @@ Le projet utilise plusieurs agents IA spécialisés qui travaillent ensemble pou
 - Création de calendriers éditoriaux
 - Recommandations de fréquence de publication
 - Analyse des meilleures pratiques
-
-## 📁 Structure du Projet
-
-```
-startpost-agent/
-├── backend/          # API FastAPI avec agents IA
-├── web/             # Interface React
-├── scripts/         # Scripts d'automatisation
-└── README.md
-```
 
 ## 📊 Utilisation
 
