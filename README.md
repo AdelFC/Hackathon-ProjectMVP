@@ -11,6 +11,8 @@ StartPost Agent est une plateforme SaaS qui utilise des **agents IA intelligents
 - **Calendrier éditorial** intelligent
 - **Analytics** en temps réel
 
+![Schéma des agents IA](screens/Screenshot from 2025-09-07 17-09-20.png)
+
 ## 🛠️ Technologies
 
 - **Frontend**: React 19 + TypeScript + Vite + Tailwind CSS
