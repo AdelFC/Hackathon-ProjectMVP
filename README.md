@@ -4,6 +4,8 @@
 
 StartPost Agent est une plateforme SaaS qui utilise des **agents IA intelligents** pour aider les PME à créer et optimiser leur stratégie de contenu social media. L'IA analyse automatiquement votre marque, génère du contenu personnalisé et optimise vos publications pour maximiser l'engagement.
 
+![Landing Page](<screens/Screenshot from 2025-09-07 17-07-47.png>)
+
 ### ✨ Fonctionnalités Clés
 - **Analyse IA** automatique de votre site web et marque
 - **Génération de contenu** personnalisé par IA
@@ -11,7 +13,7 @@ StartPost Agent est une plateforme SaaS qui utilise des **agents IA intelligents
 - **Calendrier éditorial** intelligent
 - **Analytics** en temps réel
 
-![Schéma des agents IA](screens/Screenshot from 2025-09-07 17-09-20.png)
+![Analitics](<screens/Screenshot from 2025-09-07 17-09-20.png>)
 
 ## 🛠️ Technologies
 
@@ -71,6 +73,8 @@ Le projet utilise plusieurs agents IA spécialisés qui travaillent ensemble pou
 ## 🔗 Liens utiles
 
 - **Démo Twitter**: [https://x.com/HackathonB844](https://x.com/HackathonB844)
+
+![Post](<screens/Screenshot from 2025-09-07 17-10-02.png>)
 
 ## 📄 Licence
 
