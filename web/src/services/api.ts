@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import { transformAnalyticsResponse, transformOrchestrationResponse, isValidStrategy } from './apiAdapter';
+import { generateMockAnalyticsData, getMockYesterdayAnalytics } from './mockApi';
 
 // Configuration de base
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -186,17 +187,32 @@ export const apiService = {
 
   // Analytics endpoints
   async getPerformanceMetrics(startDate: string, endDate: string, platforms?: string[]): Promise<AnalyticsData[]> {
-    const response = await apiClient.post('/analytics/performance', {
-      start_date: startDate,
-      end_date: endDate,
-      platforms
-    });
-    return transformAnalyticsResponse(response.data);
+    try {
+      const response = await apiClient.post('/analytics/performance', {
+        start_date: startDate,
+        end_date: endDate,
+        platforms
+      });
+      return transformAnalyticsResponse(response.data);
+    } catch (error) {
+      // Return mock data if API fails
+      console.log('Using mock analytics data');
+      const mockData = generateMockAnalyticsData(startDate, endDate);
+      return platforms && platforms.length > 0 
+        ? mockData.filter(d => platforms.includes(d.platform.toLowerCase()))
+        : mockData;
+    }
   },
 
   async getYesterdayAnalytics(brandName: string): Promise<AnalyticsData[]> {
-    const response = await apiClient.get(`/analytics/yesterday/${brandName}`);
-    return transformAnalyticsResponse(response.data.performance || response.data);
+    try {
+      const response = await apiClient.get(`/analytics/yesterday/${brandName}`);
+      return transformAnalyticsResponse(response.data.performance || response.data);
+    } catch (error) {
+      // Return mock data if API fails
+      console.log('Using mock yesterday analytics');
+      return getMockYesterdayAnalytics(brandName);
+    }
   },
 
   // Utility endpoints

@@ -60,7 +60,7 @@ class DailyPost(BaseModel):
     topic: str = Field(description="Post topic")
     key_message: str = Field(description="Key message to convey")
     variation: PostVariation = Field(description="Variation rules for this post")
-    hashtags_count: int = Field(default=5, description="Number of hashtags to use")
+    hashtags: Optional[List[str]] = Field(default=None, description="List of hashtags chosen by the LLM for this post")
     image_required: bool = Field(default=True, description="Whether image is required")
     dependencies: Optional[List[str]] = Field(default=None, description="Required assets or links")
 

@@ -353,16 +353,19 @@ class StrategyAgentV2:
                 # Platform-specific adjustments with startup focus
                 if platform == Platform.TWITTER:
                     # Twitter prefers shorter, punchier content
-                    key_message = f"🚀 {topic[:80]}... #startup #innovation"
-                    hashtags_count = 3
+                    key_message = f"🚀 {topic[:80]}..."
+                    # Let LLM choose relevant hashtags for Twitter
+                    hashtags = None  # Will be chosen by LLM during content generation
                 elif platform == Platform.LINKEDIN:
                     # LinkedIn favors professional, detailed content
                     key_message = f"💡 Professional insight: {topic}\n\nWhat's your experience with similar solutions?"
-                    hashtags_count = 5
+                    # Let LLM choose relevant hashtags for LinkedIn
+                    hashtags = None  # Will be chosen by LLM during content generation
                 else:  # Facebook
                     # Facebook works well with engaging, community-focused content
                     key_message = f"🌟 Let's discuss: {topic}\n\nShare your thoughts in the comments!"
-                    hashtags_count = 4
+                    # Let LLM choose relevant hashtags for Facebook
+                    hashtags = None  # Will be chosen by LLM during content generation
 
                 # Create daily post
                 post = DailyPost(
@@ -372,7 +375,7 @@ class StrategyAgentV2:
                     topic=topic,
                     key_message=key_message,
                     variation=variation,
-                    hashtags_count=hashtags_count,
+                    hashtags=hashtags,  # Will be filled by LLM during content generation
                     image_required=(variation.format in [PostFormat.IMAGE, PostFormat.CAROUSEL, PostFormat.VIDEO]),
                     dependencies=None
                 )
