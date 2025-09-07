@@ -13,7 +13,7 @@ import AppShell from './layouts/AppShell'
 import Landing from './pages/Landing'
 import { SetupConnected } from './pages/SetupConnected'
 import StrategyEnhanced from './pages/StrategyEnhanced'
-import { AnalyticsConnected } from './pages/AnalyticsConnected'
+import AnalyticsBeautiful from './pages/AnalyticsBeautiful'
 import Integrations from './pages/Integrations'
 import Settings from './pages/Settings'
 import NotFound from './pages/NotFound'
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'analytics',
-        element: <AnalyticsConnected />,
+        element: <AnalyticsBeautiful />,
       },
       {
         path: 'integrations',
