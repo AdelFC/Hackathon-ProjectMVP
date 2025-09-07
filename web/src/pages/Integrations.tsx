@@ -1,4 +1,5 @@
-import { useState, ReactNode } from 'react'
+
+import { useState, ReactNode, useEffect } from 'react'
 import { OAuthConsentModal } from '../components/OAuthConsentModal'
 import { useToast } from '../components/ui/Toast'
 import { useLanguage } from '../components/GlobalHeader'
@@ -23,7 +24,8 @@ export default function Integrations() {
   const language = useLanguage()
   const t = translations[language]
 
-  const [integrations, setIntegrations] = useState<Integration[]>([
+  // Function to get default integrations with icons
+  const getDefaultIntegrations = (): Integration[] => [
     {
       id: 'twitter',
       name: 'Twitter / X',
@@ -113,7 +115,7 @@ export default function Integrations() {
       description: 'Collaborez avec votre équipe',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20.625 8.127q-.55 0-1.025-.205-.475-.205-.832-.563-.358-.357-.563-.832Q18 6.053 18 5.502q0-.54.205-1.02t.563-.837q.357-.358.832-.563.475-.205 1.025-.205.54 0 1.02.205t.837.563q.358.357.563.837.205.48.205 1.02 0 .551-.205 1.025-.205.475-.563.832-.357.358-.837.563-.48.205-1.02.205zm0-3.75q-.45 0-.788.337-.337.338-.337.788 0 .45.337.787.338.338.788.338.45 0 .787-.338.338-.337.338-.787 0-.45-.338-.788-.337-.337-.787-.337zM24 10.002v5.578q0 .774-.293 1.46-.293.685-.803 1.194-.51.51-1.195.803-.686.293-1.459.293-.21 0-.42-.026-.21-.025-.42-.079-.21.054-.42.079-.21.026-.42.026-.773 0-1.459-.293-.685-.293-1.194-.803-.51-.51-.803-1.194-.293-.686-.293-1.46V9.002q0-.773.293-1.459.293-.685.803-1.194.51-.51 1.194-.803.686-.293 1.46-.293h6.75q.773 0 1.459.293.685.293 1.195.803.51.51.803 1.194.293.686.293 1.46zm-1.5 0q0-.45-.169-.848-.169-.398-.47-.699-.3-.3-.698-.47-.399-.168-.848-.168h-5.25q-.45 0-.848.169-.398.169-.698.47-.3.3-.47.698-.168.399-.168.848v5.578q0 .45.169.848.169.398.47.699.3.3.698.47.398.168.848.168.45 0 .848-.168.398-.17.698-.47.3-.3.47-.699.169-.398.169-.848v-5.578q0-.45.169-.848.169-.398.47-.699.3-.3.698-.47.398-.168.848-.168.45 0 .848.169.398.169.698.47.3.3.47.698.168.399.168.848v5.578q0 .45.169.848.169.398.47.699.3.3.698.47.398.168.848.168.45 0 .848-.168.399-.17.699-.47.3-.3.47-.699.168-.398.168-.848z"/>
+          <path d="M20.625 8.127q-.55 0-1.025-.205-.475-.205-.832-.563-.358-.357-.563-.832Q18 6.053 18 5.502q0-.54.205-1.02t.563-.837q.357-.358.832-.563.475-.205 1.025-.205.54 0 1.02.205t.837.563q.358.357.563.837.205.48.205 1.02 0 .551-.205 1.025-.205.475-.563.832-.357.358-.837.563-.48.205-1.02.205zm0-3.75q-.45 0-.788.337-.337.338-.337.788 0 .45.337.787.338.338.788.338.45 0 .787-.338.338-.337.338-.787 0-.45-.338-.788-.337-.337-.787-.337zM24 10.002v5.578q0 .774-.293 1.46-.293.685-.803 1.194-.51.51-1.195.803-.686.293-1.459.293-.21 0-.42-.026-.21-.025-.42-.079-.21.054-.42.079-.21.026-.42.026-.773 0-1.459-.293-.685-.293-1.194-.803-.51-.51-.803-1.194-.293-.686-.293-1.46V9.002q0-.773.293-1.459.293-.685.803-1.194.51-.51 1.194-.803.686-.293 1.46-.293h6.75q.773 0 1.459.293.685.293 1.195.803.51.51.803 1.194.293.686.293 1.46zm-1.5 0q0-.45-.169-.848-.169-.398-.47-.699-.3-.3-.698-.47-.399-.168-.848-.168h-5.25q-.45 0-.848.169-.398.169-.698.47-.3.3-.47.698-.168.399-.168 .848v5.578q0 .45.169.848.169.398.47.699.3.3.698.47.398.168.848.168.45 0 .848-.168.398-.17.698-.47.3-.3.47-.699.169-.398.169-.848v-5.578q0-.45.169-.848.169-.398.47-.699.3-.3.698-.47.398-.168.848-.168.45 0 .848.169.398.169.698.47.3.3.47.698.168.399.168 .848v5.578q0 .45.169.848.169.398.47.699.3.3.698.47.398.168.848.168.45 0 .848-.168.399-.17.699-.47.3-.3.47-.699.168-.398.168-.848z"/>
         </svg>
       ),
       color: 'text-indigo-600',
@@ -132,7 +134,42 @@ export default function Integrations() {
       color: 'text-orange-500',
       connected: false
     }
-  ])
+  ]
+
+  const [integrations, setIntegrations] = useState<Integration[]>(() => {
+    const defaultIntegrations = getDefaultIntegrations()
+    const saved = localStorage.getItem('integrations')
+
+    if (saved) {
+      try {
+        const savedData = JSON.parse(saved)
+        // Merge saved data with default icons, ensuring icon is always from default
+        return defaultIntegrations.map(defaultItem => {
+          const savedItem = savedData.find((item: any) => item.id === defaultItem.id)
+          if (savedItem) {
+            // Only merge serializable properties, keep icon from default
+            const { icon, ...defaultRest } = defaultItem
+            return {
+              ...defaultRest,
+              ...savedItem,
+              icon // Always use the default icon
+            }
+          }
+          return defaultItem
+        })
+      } catch {
+        return defaultIntegrations
+      }
+    }
+
+    return defaultIntegrations
+  })
+
+  useEffect(() => {
+    // Only save the serializable data (exclude React elements)
+    const dataToSave = integrations.map(({ icon, ...rest }) => rest)
+    localStorage.setItem('integrations', JSON.stringify(dataToSave))
+  }, [integrations])
 
   const handleConnect = (integration: Integration) => {
     setSelectedIntegration(integration)
@@ -207,7 +244,11 @@ export default function Integrations() {
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
                         <div className={`w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center ${integration.color}`}>
-                          {integration.icon}
+                          {integration.icon || (
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                          )}
                         </div>
                         <div>
                           <h4 className="font-medium">{integration.name}</h4>
@@ -235,17 +276,12 @@ export default function Integrations() {
 
                     <div className="flex gap-2">
                       {integration.connected ? (
-                        <>
-                          <button className="btn btn-outline text-sm flex-1">
-                            Gérer
-                          </button>
-                          <button
-                            onClick={() => handleDisconnect(integration)}
-                            className="btn btn-ghost text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
-                          >
-                            Déconnecter
-                          </button>
-                        </>
+                        <button
+                          onClick={() => handleDisconnect(integration)}
+                          className="btn btn-outline text-sm w-full"
+                        >
+                          Déconnecter
+                        </button>
                       ) : (
                         <button
                           onClick={() => handleConnect(integration)}
