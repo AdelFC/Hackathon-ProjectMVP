@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useProjectStore } from '../stores/projectStore'
-import { useStrategyGeneration } from '../hooks/useApi'
+
 import { useToast } from '../components/ui/Toast'
 import { AnalyzeUrlPanelConnected } from '../components/AnalyzeUrlPanelConnected'
-import { Check, ChevronLeft, ChevronRight, Loader2, Sparkles } from 'lucide-react'
+import { Check, ChevronLeft, ChevronRight } from 'lucide-react'
 import { GlobalHeader, useLanguage } from '../components/GlobalHeader'
 import { translations } from '../utils/translations'
 
@@ -19,16 +19,11 @@ interface FormData {
   features: string[]
   audience: string
   voice: string
-  startupName: string
-  startupUrl: string
 
   // Step 3: Goals
   frequency: string
   objective: string
   platforms: string[]
-
-  // Step 4: Review
-  generateStrategy: boolean
 }
 
 export function SetupConnected() {
@@ -37,7 +32,7 @@ export function SetupConnected() {
   const t = translations[language]
   const { addToast } = useToast()
   const { setBrandIdentity, setGoals, completeSetup } = useProjectStore()
-  const { generateStrategy, loading: generatingStrategy } = useStrategyGeneration()
+
 
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<FormData>({
@@ -48,12 +43,9 @@ export function SetupConnected() {
     features: [],
     audience: '',
     voice: '',
-    startupName: '',
-    startupUrl: '',
     frequency: '3/sem.',
     objective: 'Visibilité',
-    platforms: ['LinkedIn', 'Facebook', 'Twitter'],
-    generateStrategy: true
+    platforms: ['LinkedIn', 'Facebook', 'Twitter']
   })
 
   const steps = [
@@ -87,6 +79,32 @@ export function SetupConnected() {
     }
   }
 
+  const isStepValid = (step: number): boolean => {
+    switch (step) {
+      case 1:
+        return formData.url.trim() !== ''
+      case 2:
+        return (
+          formData.brandName.trim() !== '' &&
+          formData.mission.trim() !== '' &&
+          formData.usp.trim() !== '' &&
+          formData.audience.trim() !== '' &&
+          formData.voice.trim() !== ''
+        )
+      case 3:
+        return (
+          formData.frequency.trim() !== '' &&
+          formData.objective.trim() !== '' &&
+          formData.platforms.length > 0
+        )
+      case 4:
+        // Pour la révision, vérifier que les étapes précédentes sont valides
+        return isStepValid(1) && isStepValid(2) && isStepValid(3)
+      default:
+        return false
+    }
+  }
+
   const handleFinish = async () => {
     // Sauvegarder dans le store
     setBrandIdentity({
@@ -115,31 +133,7 @@ export function SetupConnected() {
       enabledNetworks: formData.platforms.map(p => p.toLowerCase() as any)
     })
 
-    // Si l'utilisateur veut générer une stratégie automatiquement
-    if (formData.generateStrategy) {
-      try {
-        const strategy = await generateStrategy({
-          brand_name: formData.brandName,
-          positioning: formData.mission,
-          target_audience: formData.audience,
-          value_props: formData.features,
-          start_date: new Date().toISOString().split('T')[0],
-          duration_days: 30,
-          language: 'fr-FR',
-          tone: formData.voice,
-          cta_targets: ['demo', 'newsletter', 'free_trial'],
-          startup_name: formData.startupName || undefined,
-          startup_url: formData.startupUrl || undefined
-        })
-
-        if (strategy) {
-          addToast('Stratégie générée avec succès!', 'success')
-        }
-      } catch (error) {
-        console.error('Erreur lors de la génération de stratégie:', error)
-        addToast('La stratégie sera générée plus tard', 'warning')
-      }
-    }
+    // Remove automatic strategy generation logic
 
     completeSetup()
     navigate('/app/strategy')
@@ -268,29 +262,6 @@ export function SetupConnected() {
                 />
               </div>
 
-              <div>
-                <label className="label">{language === 'fr' ? 'Nom de la startup (optionnel)' : 'Startup name (optional)'}</label>
-                <input
-                  type="text"
-                  value={formData.startupName}
-                  onChange={(e) => setFormData(prev => ({ ...prev, startupName: e.target.value }))}
-                  className="field"
-                  placeholder={language === 'fr' ? 'Nom pour la génération de contenu' : 'Name for content generation'}
-                />
-                <p className="text-xs text-gray-500 mt-1">{language === 'fr' ? 'Ce nom sera utilisé dans le contenu généré' : 'This name will be used in generated content'}</p>
-              </div>
-
-              <div>
-                <label className="label">{language === 'fr' ? 'URL de la startup (optionnel)' : 'Startup URL (optional)'}</label>
-                <input
-                  type="text"
-                  value={formData.startupUrl}
-                  onChange={(e) => setFormData(prev => ({ ...prev, startupUrl: e.target.value }))}
-                  className="field"
-                  placeholder="https://mystartup.com"
-                />
-                <p className="text-xs text-gray-500 mt-1">{language === 'fr' ? "Pour l'analyse de la landing page" : 'For landing page analysis'}</p>
-              </div>
             </div>
           </div>
         )}
@@ -402,27 +373,8 @@ export function SetupConnected() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 p-4 border rounded-lg">
-                <input
-                  type="checkbox"
-                  id="generateStrategy"
-                  checked={formData.generateStrategy}
-                  onChange={(e) => setFormData(prev => ({
-                    ...prev,
-                    generateStrategy: e.target.checked
-                  }))}
-                  className="rounded"
-                />
-                <label htmlFor="generateStrategy" className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-yellow-500" />
-                    <span className="font-medium">{language === 'fr' ? 'Générer automatiquement ma stratégie' : 'Automatically generate my strategy'}</span>
-                  </div>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {language === 'fr' ? 'Une stratégie complète de 30 jours sera créée basée sur vos informations' : 'A complete 30-day strategy will be created based on your information'}
-                  </p>
-                </label>
-              </div>
+
+
             </div>
           </div>
         )}
@@ -441,6 +393,7 @@ export function SetupConnected() {
           {currentStep < 4 ? (
             <button
               onClick={handleNext}
+              disabled={!isStepValid(currentStep)}
               className="btn btn-primary"
             >
               {language === 'fr' ? 'Suivant' : 'Next'}
@@ -449,20 +402,11 @@ export function SetupConnected() {
           ) : (
             <button
               onClick={handleFinish}
-              disabled={generatingStrategy}
+              disabled={!isStepValid(4)}
               className="btn btn-primary"
             >
-              {generatingStrategy ? (
-                <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  {language === 'fr' ? 'Génération...' : 'Generating...'}
-                </>
-              ) : (
-                <>
-                  <Check className="w-4 h-4 mr-2" />
-                  {language === 'fr' ? 'Terminer' : 'Finish'}
-                </>
-              )}
+              <Check className="w-4 h-4 mr-2" />
+              {language === 'fr' ? 'Terminer' : 'Finish'}
             </button>
           )}
         </div>
