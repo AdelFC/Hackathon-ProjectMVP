@@ -1,116 +1,103 @@
-# Social Media Strategy Assistant - MVP 24h
+# StartPost Agent - Assistant IA Social Media
 
-## Vision Produit
+## 🚀 Description
 
-Plateforme SaaS permettant aux PME de générer et gérer leur stratégie de contenu social media de manière intelligente et automatisée.
+StartPost Agent est une plateforme SaaS qui utilise des **agents IA intelligents** pour aider les PME à créer et optimiser leur stratégie de contenu social media. L'IA analyse automatiquement votre marque, génère du contenu personnalisé et optimise vos publications pour maximiser l'engagement.
 
-### Parcours Utilisateur
-1. **Landing** → Introduction produit avec marquee animée
-2. **Setup** → Configuration du profil, analyse du site, connexions OAuth (mock)
-3. **App** → 
-   - Stratégie & Posts : génération, édition, calendrier éditorial
-   - Analytics : KPIs, timeline, insights (mock)
+### ✨ Fonctionnalités Clés
+- **Analyse IA** automatique de votre site web et marque
+- **Génération de contenu** personnalisé par IA
+- **Optimisation** des posts pour chaque plateforme
+- **Calendrier éditorial** intelligent
+- **Analytics** en temps réel
 
-## Structure du Projet
+## 🛠️ Technologies
 
-```
-.
-├── backend/          # API FastAPI + outils AI
-├── web/             # Frontend React + TypeScript
-├── scripts/         # Scripts de build et déploiement
-└── docker-compose.yml
-```
+- **Frontend**: React 19 + TypeScript + Vite + Tailwind CSS
+- **Backend**: FastAPI + Python
+- **IA**: Intégration BLACKBOX AI pour génération de contenu
+- **Base de données**: SQLite (développement) / PostgreSQL (production)
 
-## Scripts Disponibles
+## 🚀 Installation & Lancement
 
-```bash
-# Installation
-./scripts/install.sh
+### Prérequis
+- Node.js 18+
+- Python 3.9+
+- Git
 
-# Développement
-./scripts/dev.sh       # Lance frontend + backend + mocks
-
-# Build
-./scripts/build.sh     # Build production
-
-# Tests
-./scripts/test.sh      # Lance les tests
-```
-
-## Stack Technique
-
-### Frontend (web/)
-- **Framework**: React 19 + TypeScript + Vite
-- **Styling**: Tailwind CSS
-- **State**: Zustand
-- **Routing**: React Router
-- **DnD**: @dnd-kit
-- **HTTP**: Axios
-- **Mocks**: MSW
-
-### Backend (backend/)
-- **Framework**: FastAPI
-- **AI**: BLACKBOX API
-- **Validation**: Pydantic
-
-## Conventions de Code
-
-### Git
-- Commits atomiques avec prefixes : `feat:`, `fix:`, `chore:`, `docs:`
-- Branches : `feature/*`, `fix/*`, `chore/*`
-
-### Frontend
-- Components en PascalCase
-- Hooks custom avec prefix `use`
-- Types dans `types/`
-- Stores Zustand dans `stores/`
-
-### Structure des Composants
-```tsx
-// Component.tsx
-export function Component() {
-  // hooks
-  // state
-  // handlers
-  // render
-}
-```
-
-## Endpoints API (Mocks)
-
-- `POST /api/context/primary` → Analyse de marque
-- `POST /api/strategy/generate` → Génération stratégie
-- `POST /api/posts/generate` → Génération posts
-- `GET /api/analytics/summary` → KPIs et métriques
-- `GET /api/insights` → Insights et recommandations
-
-## Variables d'Environnement
-
-```env
-# Frontend
-VITE_API_URL=http://localhost:8000
-VITE_MOCK_MODE=true
-
-# Backend
-BLACKBOX_API_KEY=your_key
-```
-
-## Démarrage Rapide
+### Installation Rapide
 
 ```bash
-# Clone et installation
-git clone [repo]
-cd hackathon-mvp
+# 1. Cloner le repository
+git clone <repository-url>
+cd startpost-agent
+
+# 2. Installation des dépendances
 ./scripts/install.sh
 
-# Lancer en dev
+# 3. Configuration (optionnel)
+# Créer un fichier .env dans backend/ avec votre clé BLACKBOX_API_KEY
+
+# 4. Lancement en mode développement
 ./scripts/dev.sh
-
-# Accès
-# Frontend: http://localhost:5173
-# Backend: http://localhost:8000
 ```
 
-## Licence
+### Lancement Manuel
+
+```bash
+# Backend
+cd backend
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload --port 8000
+
+# Frontend (nouveau terminal)
+cd web
+npm install
+npm run dev
+```
+
+### Accès
+- **Application**: http://localhost:3001
+- **API Backend**: http://localhost:8000
+
+## 🤖 Agents IA
+
+Le projet utilise plusieurs agents IA spécialisés :
+
+### Agent d'Analyse
+- Analyse automatique des sites web
+- Extraction des valeurs de marque
+- Identification de l'audience cible
+
+### Agent de Contenu
+- Génération de posts optimisés
+- Adaptation du ton selon la plateforme
+- Optimisation SEO et engagement
+
+### Agent Stratégie
+- Création de calendriers éditoriaux
+- Recommandations de fréquence de publication
+- Analyse des meilleures pratiques
+
+## 📁 Structure du Projet
+
+```
+startpost-agent/
+├── backend/          # API FastAPI avec agents IA
+├── web/             # Interface React
+├── scripts/         # Scripts d'automatisation
+└── README.md
+```
+
+## 📊 Utilisation
+
+1. **Configuration initiale** : Analysez votre site web
+2. **Génération IA** : Laissez les agents créer votre stratégie
+3. **Personnalisation** : Ajustez le contenu selon vos préférences
+4. **Publication** : Planifiez et publiez automatiquement
+
+## 📄 Licence
 
 MIT
