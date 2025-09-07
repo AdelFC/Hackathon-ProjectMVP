@@ -8,7 +8,7 @@ import logo from '../assets/logo.png'
 export default function AppShell() {
   const navigate = useNavigate()
   const language = useLanguage()
-  const { sidebarOpen, toggleSidebar } = usePreferencesStore()
+  const { sidebarOpen, toggleSidebar, darkMode, toggleDarkMode, toggleLanguage } = usePreferencesStore()
   const [mobileOpen, setMobileOpen] = useState(false)  // mobile drawer (sm-md)
   const t = translations[language]
 
@@ -95,12 +95,10 @@ export default function AppShell() {
 
   return (
     <div className="min-h-screen">
-      {/* Global Header with language and dark mode toggles */}
-      <GlobalHeader />
-      
-      {/* Secondary navigation bar */}
-      <header className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
-        <div className="section h-14 flex items-center justify-between">
+      {/* Unified Header - Fusion des deux bandes */}
+      <header className="sticky top-0 z-50 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+          {/* Left side: Menu button, Logo, StartPost Agent */}
           <div className="flex items-center gap-2">
             <button
               onClick={() => {
@@ -116,11 +114,38 @@ export default function AppShell() {
                 <path d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <img src={logo} alt="Social Studio" className="h-8 w-auto" />
-            <span className="font-semibold">Social Studio</span>
+            <img src={logo} alt="StartPost Agent" className="h-7 w-auto" />
+            <span className="font-semibold text-base">StartPost Agent</span>
           </div>
+
+          {/* Right side: Language toggle, Dark mode toggle */}
           <div className="flex items-center gap-2">
-            <span className="hidden sm:inline text-xs text-gray-500">{new Date().toLocaleDateString()}</span>
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="btn btn-ghost px-3 py-1 text-sm font-medium"
+              aria-label="Toggle language"
+            >
+              {language === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR'}
+            </button>
+
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={toggleDarkMode}
+              className="btn btn-ghost px-2"
+              aria-label={darkMode ? 'Light mode' : 'Dark mode'}
+            >
+              {darkMode ? (
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="5"/>
+                  <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </header>
