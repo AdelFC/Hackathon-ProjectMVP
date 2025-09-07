@@ -1,13 +1,16 @@
 import { BrandForm } from '../components/forms/BrandForm';
 import { useProjectStore } from '../stores/projectStore';
 import { ToastProvider } from '../components/ui/Toast';
+import { GlobalHeader } from '../components/GlobalHeader';
 
 export default function TestBrandForm() {
   const { brandIdentity } = useProjectStore();
 
   return (
     <ToastProvider>
-      <div className="min-h-screen p-8">
+      <div className="min-h-screen">
+        <GlobalHeader />
+        <div className="p-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-8">Test du formulaire BrandForm</h1>
           
@@ -26,6 +29,7 @@ export default function TestBrandForm() {
               </pre>
             </div>
           )}
+        </div>
         </div>
       </div>
     </ToastProvider>

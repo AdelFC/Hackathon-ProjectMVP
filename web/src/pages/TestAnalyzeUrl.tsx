@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnalyzeUrlPanel } from '../components/AnalyzeUrlPanel'
 import { ToastProvider, useToast } from '../components/ui/Toast'
+import { GlobalHeader } from '../components/GlobalHeader'
 
 function TestContent() {
   const [url, setUrl] = useState('')
@@ -14,6 +15,7 @@ function TestContent() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+      <GlobalHeader />
       <div className="section py-10 max-w-3xl">
         <h1 className="text-2xl font-semibold mb-6">Test AnalyzeUrlPanel</h1>
         

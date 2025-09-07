@@ -11,6 +11,7 @@ interface PreferencesStore {
   toggleSidebar: () => void;
   setSidebarOpen: (open: boolean) => void;
   setLanguage: (language: 'fr' | 'en') => void;
+  toggleLanguage: () => void;
 }
 
 export const usePreferencesStore = create<PreferencesStore>()(
@@ -42,6 +43,7 @@ export const usePreferencesStore = create<PreferencesStore>()(
       toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
       setSidebarOpen: (sidebarOpen) => set({ sidebarOpen }),
       setLanguage: (language) => set({ language }),
+      toggleLanguage: () => set((state) => ({ language: state.language === 'fr' ? 'en' : 'fr' })),
     }),
     {
       name: 'preferences-storage',

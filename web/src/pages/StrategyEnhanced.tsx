@@ -8,6 +8,8 @@ import { Badge } from '../components/ui/Badge';
 import { Skeleton } from '../components/ui/Skeleton';
 import { EmptyState } from '../components/ui/EmptyState';
 import { DailyPost } from '../services/api';
+import { useLanguage } from '../components/GlobalHeader';
+import { translations } from '../utils/translations';
 
 interface ProposedPost extends DailyPost {
   id: string;
@@ -27,6 +29,8 @@ export function StrategyEnhanced() {
   const [proposedPosts, setProposedPosts] = useState<ProposedPost[]>([]);
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
   const [editContent, setEditContent] = useState<string>('');
+  const language = useLanguage();
+  const t = translations[language];
 
   // Hooks API
   const { strategy, loading: loadingGenerate, generateStrategy } = useStrategyGeneration();
@@ -231,7 +235,7 @@ export function StrategyEnhanced() {
             disabled={!currentStrategy}
           >
             <Download className="w-4 h-4" />
-            Exporter
+            {t.app.strategy.export}
           </button>
           <button
             onClick={handleGenerateStrategy}
@@ -243,7 +247,7 @@ export function StrategyEnhanced() {
             ) : (
               <RefreshCw className="w-4 h-4" />
             )}
-            Générer
+            {t.app.strategy.generateStrategy}
           </button>
         </div>
       </div>
@@ -253,25 +257,25 @@ export function StrategyEnhanced() {
           {/* Section Stratégie */}
           <Card className="card-hover">
             <div className="card-body">
-              <h3 className="text-lg font-medium mb-2">Stratégie générée</h3>
+              <h3 className="text-lg font-medium mb-2">{language === 'fr' ? 'Stratégie générée' : 'Generated strategy'}</h3>
 
               {currentStrategy ? (
                 <>
                   <div className="space-y-3">
                     <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Campagne</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{language === 'fr' ? 'Campagne' : 'Campaign'}</p>
                       <p className="font-medium">{currentStrategy.campaign_name}</p>
                     </div>
 
                     <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Positionnement</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{language === 'fr' ? 'Positionnement' : 'Positioning'}</p>
                       <p className="text-gray-700 dark:text-gray-300">
                         {currentStrategy.positioning}
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Audience cible</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{language === 'fr' ? 'Audience cible' : 'Target audience'}</p>
                       <p className="text-gray-700 dark:text-gray-300">
                         {currentStrategy.target_audience}
                       </p>
@@ -289,14 +293,14 @@ export function StrategyEnhanced() {
               ) : (
                 <div className="text-center py-8">
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    Votre stratégie personnalisée apparaîtra ici après génération.
+                    {language === 'fr' ? 'Votre stratégie personnalisée apparaîtra ici après génération.' : 'Your personalized strategy will appear here after generation.'}
                   </p>
                   <button
                     onClick={handleGenerateStrategy}
                     disabled={loadingGenerate}
                     className="btn btn-primary"
                   >
-                    Générer ma stratégie
+                    {t.app.strategy.generateStrategy}
                   </button>
                 </div>
               )}
@@ -308,9 +312,9 @@ export function StrategyEnhanced() {
             <div className="card-body">
               <div className="flex items-center justify-between mb-3">
                 <div>
-                  <h3 className="text-lg font-medium">Posts proposés</h3>
+                  <h3 className="text-lg font-medium">{t.app.strategy.posts}</h3>
                   <p className="text-sm text-gray-500 mt-1">
-                    {selectedDate} • {proposedPosts.length} posts • {approvedCount} approuvés
+                    {selectedDate} • {proposedPosts.length} posts • {approvedCount} {language === 'fr' ? 'approuvés' : 'approved'}
                   </p>
                 </div>
                 <button
@@ -318,7 +322,7 @@ export function StrategyEnhanced() {
                   className="btn btn-secondary"
                   disabled={proposedPosts.length === 0}
                 >
-                  Tout approuver
+                  {language === 'fr' ? 'Tout approuver' : 'Approve all'}
                 </button>
               </div>
 
@@ -355,10 +359,10 @@ export function StrategyEnhanced() {
                             post.status === 'scheduled' ? 'warning' :
                             'default'
                           }>
-                            {post.status === 'draft' ? 'Brouillon' :
-                             post.status === 'approved' ? 'Approuvé' :
-                             post.status === 'scheduled' ? 'Programmé' :
-                             'Publié'}
+                            {post.status === 'draft' ? t.app.strategy.status.draft :
+                             post.status === 'approved' ? t.app.strategy.status.approved :
+                             post.status === 'scheduled' ? t.app.strategy.status.scheduled :
+                             t.app.strategy.status.published}
                           </Badge>
                           <span className="text-xs text-gray-400">
                             <Clock className="w-3 h-3 inline mr-1" />
@@ -388,7 +392,7 @@ export function StrategyEnhanced() {
                                 className="btn btn-ghost px-2 py-1 text-xs"
                               >
                                 <Edit2 className="w-3 h-3 mr-1" />
-                                Éditer
+                                {t.app.strategy.edit}
                               </button>
                               {post.status !== 'approved' && (
                                 <button
@@ -396,7 +400,7 @@ export function StrategyEnhanced() {
                                   className="btn btn-outline px-2 py-1 text-xs"
                                 >
                                   <Check className="w-3 h-3 mr-1" />
-                                  Approuver
+                                  {t.app.strategy.approve}
                                 </button>
                               )}
                             </>
@@ -434,8 +438,8 @@ export function StrategyEnhanced() {
                   ))
                 ) : (
                   <EmptyState
-                    title="Aucun post pour cette date"
-                    description="Sélectionnez une autre date ou générez une stratégie"
+                    title={language === 'fr' ? "Aucun post pour cette date" : "No posts for this date"}
+                    description={language === 'fr' ? "Sélectionnez une autre date ou générez une stratégie" : "Select another date or generate a strategy"}
                   />
                 )}
               </div>
@@ -453,7 +457,7 @@ export function StrategyEnhanced() {
                     ) : (
                       <Send className="w-4 h-4" />
                     )}
-                    Publier {approvedCount} post{approvedCount > 1 ? 's' : ''}
+                    {language === 'fr' ? `Publier ${approvedCount} post${approvedCount > 1 ? 's' : ''}` : `Publish ${approvedCount} post${approvedCount > 1 ? 's' : ''}`}
                   </button>
                 </div>
               )}
@@ -468,15 +472,15 @@ export function StrategyEnhanced() {
             <div className="card-body">
               <h3 className="text-lg font-medium mb-4">
                 <Calendar className="w-4 h-4 inline mr-2" />
-                Calendrier éditorial
+                {t.app.strategy.calendar}
               </h3>
 
               {upcomingPosts.length > 0 ? (
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   {upcomingPosts.map((post, idx) => {
                     const postDate = new Date(post.date);
-                    const dayName = postDate.toLocaleDateString('fr-FR', { weekday: 'long' });
-                    const dateStr = postDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+                    const dayName = postDate.toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', { weekday: 'long' });
+                    const dateStr = postDate.toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'short' });
 
                     return (
                       <li
@@ -497,7 +501,7 @@ export function StrategyEnhanced() {
                 </ul>
               ) : (
                 <p className="text-sm text-gray-500">
-                  Aucun post programmé pour les 7 prochains jours
+                  {language === 'fr' ? 'Aucun post programmé pour les 7 prochains jours' : 'No posts scheduled for the next 7 days'}
                 </p>
               )}
 
@@ -506,7 +510,7 @@ export function StrategyEnhanced() {
                   className="btn btn-outline w-full text-xs"
                   onClick={() => setSelectedDate(new Date().toISOString().split('T')[0])}
                 >
-                  Voir aujourd'hui
+                  {t.app.strategy.today}
                 </button>
               </div>
             </div>
@@ -515,23 +519,23 @@ export function StrategyEnhanced() {
           {/* Statistiques rapides */}
           <Card className="card-hover">
             <div className="card-body">
-              <h3 className="text-lg font-medium mb-4">Statistiques</h3>
+              <h3 className="text-lg font-medium mb-4">{language === 'fr' ? 'Statistiques' : 'Statistics'}</h3>
 
               {currentStrategy ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Total posts</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">{language === 'fr' ? 'Total posts' : 'Total posts'}</span>
                     <span className="font-medium">{currentStrategy.calendar.total_posts}</span>
                   </div>
 
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Durée</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">{language === 'fr' ? 'Durée' : 'Duration'}</span>
                     <span className="font-medium">
                       {Math.ceil(
                         (new Date(currentStrategy.calendar.end_date).getTime() -
                          new Date(currentStrategy.calendar.start_date).getTime()) /
                         (1000 * 60 * 60 * 24)
-                      )} jours
+                      )} {language === 'fr' ? 'jours' : 'days'}
                     </span>
                   </div>
 
@@ -583,14 +587,14 @@ export function StrategyEnhanced() {
             className="btn btn-outline w-full"
             disabled={!currentStrategy}
           >
-            Exporter
+            {t.app.strategy.export}
           </button>
           <button
             onClick={handleGenerateStrategy}
             disabled={loadingGenerate}
             className="btn btn-primary w-full"
           >
-            Générer
+            {t.app.strategy.generateStrategy}
           </button>
         </div>
       </div>

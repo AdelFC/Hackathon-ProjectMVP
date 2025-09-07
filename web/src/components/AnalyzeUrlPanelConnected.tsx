@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useToast } from './ui/Toast'
 import { useLandingPageAnalysis } from '../hooks/useApi'
 import { Loader2, Globe, CheckCircle, XCircle } from 'lucide-react'
+import { useLanguage } from './GlobalHeader'
 
 interface AnalysisResult {
   mission: string
@@ -21,10 +22,11 @@ export function AnalyzeUrlPanelConnected({ url, onUrlChange, onAnalysisComplete 
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null)
   const { addToast } = useToast()
   const { loading: isAnalyzing, error, analyzePage } = useLandingPageAnalysis()
+  const language = useLanguage()
 
   const handleAnalyze = async () => {
     if (!url || !url.startsWith('http')) {
-      addToast('Veuillez entrer une URL valide', 'warning')
+      addToast(language === 'fr' ? 'Veuillez entrer une URL valide' : 'Please enter a valid URL', 'warning')
       return
     }
 
@@ -64,12 +66,12 @@ export function AnalyzeUrlPanelConnected({ url, onUrlChange, onAnalysisComplete 
     <div className="card p-6 space-y-4">
       <div className="flex items-center gap-2 mb-4">
         {getStatusIcon()}
-        <h3 className="text-lg font-semibold">Analyse de Landing Page</h3>
+        <h3 className="text-lg font-semibold">{language === 'fr' ? 'Analyse de Landing Page' : 'Landing Page Analysis'}</h3>
       </div>
 
       <div className="space-y-4">
         <div>
-          <label className="label">URL à analyser</label>
+          <label className="label">{language === 'fr' ? 'URL à analyser' : 'URL to analyze'}</label>
           <div className="flex gap-2">
             <input
               type="url"
@@ -87,10 +89,10 @@ export function AnalyzeUrlPanelConnected({ url, onUrlChange, onAnalysisComplete 
               {isAnalyzing ? (
                 <>
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Analyse...
+                  {language === 'fr' ? 'Analyse...' : 'Analyzing...'}
                 </>
               ) : (
-                'Analyser'
+                language === 'fr' ? 'Analyser' : 'Analyze'
               )}
             </button>
           </div>
@@ -99,7 +101,7 @@ export function AnalyzeUrlPanelConnected({ url, onUrlChange, onAnalysisComplete 
         {error && (
           <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
             <p className="text-sm text-red-600 dark:text-red-400">
-              Erreur lors de l'analyse. Veuillez vérifier l'URL et réessayer.
+              {language === 'fr' ? "Erreur lors de l'analyse. Veuillez vérifier l'URL et réessayer." : 'Error during analysis. Please check the URL and try again.'}
             </p>
           </div>
         )}
@@ -108,41 +110,41 @@ export function AnalyzeUrlPanelConnected({ url, onUrlChange, onAnalysisComplete 
           <div className="space-y-4 animate-fadeIn">
             <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
               <p className="text-sm text-green-600 dark:text-green-400 font-medium">
-                ✓ Analyse terminée avec succès
+                {language === 'fr' ? '✓ Analyse terminée avec succès' : '✓ Analysis completed successfully'}
               </p>
             </div>
 
             <div className="grid gap-4">
               <div>
-                <label className="label">Mission identifiée</label>
+                <label className="label">{language === 'fr' ? 'Mission identifiée' : 'Identified mission'}</label>
                 <p className="text-sm text-gray-700 dark:text-gray-300 p-3 bg-gray-50 dark:bg-gray-800 rounded">
                   {analysisResult.mission}
                 </p>
               </div>
 
               <div>
-                <label className="label">Proposition de valeur unique</label>
+                <label className="label">{language === 'fr' ? 'Proposition de valeur unique' : 'Unique value proposition'}</label>
                 <p className="text-sm text-gray-700 dark:text-gray-300 p-3 bg-gray-50 dark:bg-gray-800 rounded">
                   {analysisResult.usp}
                 </p>
               </div>
 
               <div>
-                <label className="label">Audience cible</label>
+                <label className="label">{language === 'fr' ? 'Audience cible' : 'Target audience'}</label>
                 <p className="text-sm text-gray-700 dark:text-gray-300 p-3 bg-gray-50 dark:bg-gray-800 rounded">
                   {analysisResult.audience}
                 </p>
               </div>
 
               <div>
-                <label className="label">Ton de voix</label>
+                <label className="label">{language === 'fr' ? 'Ton de voix' : 'Tone of voice'}</label>
                 <p className="text-sm text-gray-700 dark:text-gray-300 p-3 bg-gray-50 dark:bg-gray-800 rounded">
                   {analysisResult.voice}
                 </p>
               </div>
 
               <div>
-                <label className="label">Caractéristiques principales</label>
+                <label className="label">{language === 'fr' ? 'Caractéristiques principales' : 'Main features'}</label>
                 <ul className="space-y-2">
                   {analysisResult.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
@@ -156,7 +158,7 @@ export function AnalyzeUrlPanelConnected({ url, onUrlChange, onAnalysisComplete 
 
             <div className="pt-4 border-t">
               <p className="text-xs text-gray-500">
-                Ces informations ont été extraites automatiquement. Vous pouvez les modifier dans le formulaire ci-dessous.
+                {language === 'fr' ? 'Ces informations ont été extraites automatiquement. Vous pouvez les modifier dans le formulaire ci-dessous.' : 'This information was automatically extracted. You can modify it in the form below.'}
               </p>
             </div>
           </div>

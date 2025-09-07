@@ -5,6 +5,8 @@ import { useStrategyGeneration } from '../hooks/useApi'
 import { useToast } from '../components/ui/Toast'
 import { AnalyzeUrlPanelConnected } from '../components/AnalyzeUrlPanelConnected'
 import { Check, ChevronLeft, ChevronRight, Loader2, Sparkles } from 'lucide-react'
+import { GlobalHeader, useLanguage } from '../components/GlobalHeader'
+import { translations } from '../utils/translations'
 
 interface FormData {
   // Step 1: Analyse
@@ -31,6 +33,8 @@ interface FormData {
 
 export function SetupConnected() {
   const navigate = useNavigate()
+  const language = useLanguage()
+  const t = translations[language]
   const { addToast } = useToast()
   const { setBrandIdentity, setGoals, completeSetup } = useProjectStore()
   const { generateStrategy, loading: generatingStrategy } = useStrategyGeneration()
@@ -53,10 +57,10 @@ export function SetupConnected() {
   })
 
   const steps = [
-    { id: 1, title: 'Analyse', description: 'Analyser votre site web' },
-    { id: 2, title: 'Marque', description: 'Définir votre identité' },
-    { id: 3, title: 'Objectifs', description: 'Fixer vos objectifs' },
-    { id: 4, title: 'Révision', description: 'Confirmer et générer' }
+    { id: 1, title: language === 'fr' ? 'Analyse' : 'Analysis', description: language === 'fr' ? 'Analyser votre site web' : 'Analyze your website' },
+    { id: 2, title: language === 'fr' ? 'Marque' : 'Brand', description: language === 'fr' ? 'Définir votre identité' : 'Define your identity' },
+    { id: 3, title: language === 'fr' ? 'Objectifs' : 'Goals', description: language === 'fr' ? 'Fixer vos objectifs' : 'Set your goals' },
+    { id: 4, title: language === 'fr' ? 'Révision' : 'Review', description: language === 'fr' ? 'Confirmer et générer' : 'Confirm and generate' }
   ]
 
   const handleAnalysisComplete = (result: any) => {
@@ -68,7 +72,7 @@ export function SetupConnected() {
       audience: result.audience,
       voice: result.voice
     }))
-    addToast('Données pré-remplies avec succès', 'success')
+    addToast(language === 'fr' ? 'Données pré-remplies avec succès' : 'Data pre-filled successfully', 'success')
   }
 
   const handleNext = () => {
@@ -142,7 +146,11 @@ export function SetupConnected() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="min-h-screen">
+      {/* Global Header */}
+      <GlobalHeader />
+      
+      <div className="max-w-4xl mx-auto px-4 py-8">
       {/* Progress bar */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
@@ -181,9 +189,9 @@ export function SetupConnected() {
         {currentStep === 1 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold mb-2">Analysez votre site web</h2>
+              <h2 className="text-2xl font-bold mb-2">{language === 'fr' ? 'Analysez votre site web' : 'Analyze your website'}</h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Entrez l'URL de votre site pour extraire automatiquement les informations de votre marque
+                {language === 'fr' ? "Entrez l'URL de votre site pour extraire automatiquement les informations de votre marque" : "Enter your website URL to automatically extract your brand information"}
               </p>
             </div>
 
@@ -198,82 +206,82 @@ export function SetupConnected() {
         {currentStep === 2 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold mb-2">Définissez votre identité de marque</h2>
+              <h2 className="text-2xl font-bold mb-2">{language === 'fr' ? 'Définissez votre identité de marque' : 'Define your brand identity'}</h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Affinez les informations extraites ou remplissez manuellement
+                {language === 'fr' ? 'Affinez les informations extraites ou remplissez manuellement' : 'Refine extracted information or fill in manually'}
               </p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <label className="label">Nom de la marque</label>
+                <label className="label">{language === 'fr' ? 'Nom de la marque' : 'Brand name'}</label>
                 <input
                   type="text"
                   value={formData.brandName}
                   onChange={(e) => setFormData(prev => ({ ...prev, brandName: e.target.value }))}
                   className="field"
-                  placeholder="Votre entreprise"
+                  placeholder={language === 'fr' ? 'Votre entreprise' : 'Your company'}
                 />
               </div>
 
               <div>
-                <label className="label">Mission</label>
+                <label className="label">{language === 'fr' ? 'Mission' : 'Mission'}</label>
                 <textarea
                   value={formData.mission}
                   onChange={(e) => setFormData(prev => ({ ...prev, mission: e.target.value }))}
                   className="field"
                   rows={3}
-                  placeholder="Votre mission principale"
+                  placeholder={language === 'fr' ? 'Votre mission principale' : 'Your main mission'}
                 />
               </div>
 
               <div>
-                <label className="label">Proposition de valeur unique</label>
+                <label className="label">{language === 'fr' ? 'Proposition de valeur unique' : 'Unique value proposition'}</label>
                 <textarea
                   value={formData.usp}
                   onChange={(e) => setFormData(prev => ({ ...prev, usp: e.target.value }))}
                   className="field"
                   rows={2}
-                  placeholder="Ce qui vous différencie"
+                  placeholder={language === 'fr' ? 'Ce qui vous différencie' : 'What sets you apart'}
                 />
               </div>
 
               <div>
-                <label className="label">Audience cible</label>
+                <label className="label">{language === 'fr' ? 'Audience cible' : 'Target audience'}</label>
                 <input
                   type="text"
                   value={formData.audience}
                   onChange={(e) => setFormData(prev => ({ ...prev, audience: e.target.value }))}
                   className="field"
-                  placeholder="Votre public cible"
+                  placeholder={language === 'fr' ? 'Votre public cible' : 'Your target audience'}
                 />
               </div>
 
               <div>
-                <label className="label">Ton de voix</label>
+                <label className="label">{language === 'fr' ? 'Ton de voix' : 'Tone of voice'}</label>
                 <input
                   type="text"
                   value={formData.voice}
                   onChange={(e) => setFormData(prev => ({ ...prev, voice: e.target.value }))}
                   className="field"
-                  placeholder="Ex: Professionnel, amical, innovant"
+                  placeholder={language === 'fr' ? 'Ex: Professionnel, amical, innovant' : 'E.g: Professional, friendly, innovative'}
                 />
               </div>
 
               <div>
-                <label className="label">Nom de la startup (optionnel)</label>
+                <label className="label">{language === 'fr' ? 'Nom de la startup (optionnel)' : 'Startup name (optional)'}</label>
                 <input
                   type="text"
                   value={formData.startupName}
                   onChange={(e) => setFormData(prev => ({ ...prev, startupName: e.target.value }))}
                   className="field"
-                  placeholder="Nom pour la génération de contenu"
+                  placeholder={language === 'fr' ? 'Nom pour la génération de contenu' : 'Name for content generation'}
                 />
-                <p className="text-xs text-gray-500 mt-1">Ce nom sera utilisé dans le contenu généré</p>
+                <p className="text-xs text-gray-500 mt-1">{language === 'fr' ? 'Ce nom sera utilisé dans le contenu généré' : 'This name will be used in generated content'}</p>
               </div>
 
               <div>
-                <label className="label">URL de la startup (optionnel)</label>
+                <label className="label">{language === 'fr' ? 'URL de la startup (optionnel)' : 'Startup URL (optional)'}</label>
                 <input
                   type="text"
                   value={formData.startupUrl}
@@ -281,7 +289,7 @@ export function SetupConnected() {
                   className="field"
                   placeholder="https://mystartup.com"
                 />
-                <p className="text-xs text-gray-500 mt-1">Pour l'analyse de la landing page</p>
+                <p className="text-xs text-gray-500 mt-1">{language === 'fr' ? "Pour l'analyse de la landing page" : 'For landing page analysis'}</p>
               </div>
             </div>
           </div>
@@ -290,43 +298,43 @@ export function SetupConnected() {
         {currentStep === 3 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold mb-2">Définissez vos objectifs</h2>
+              <h2 className="text-2xl font-bold mb-2">{language === 'fr' ? 'Définissez vos objectifs' : 'Define your goals'}</h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Configurez votre stratégie de publication
+                {language === 'fr' ? 'Configurez votre stratégie de publication' : 'Configure your publishing strategy'}
               </p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <label className="label">Fréquence de publication</label>
+                <label className="label">{language === 'fr' ? 'Fréquence de publication' : 'Publishing frequency'}</label>
                 <select
                   value={formData.frequency}
                   onChange={(e) => setFormData(prev => ({ ...prev, frequency: e.target.value }))}
                   className="field"
                 >
-                  <option>Quotidien</option>
-                  <option>3/sem.</option>
-                  <option>1/sem.</option>
-                  <option>Perso</option>
+                  <option value="Quotidien">{language === 'fr' ? 'Quotidien' : 'Daily'}</option>
+                  <option value="3/sem.">{language === 'fr' ? '3/sem.' : '3/week'}</option>
+                  <option value="1/sem.">{language === 'fr' ? '1/sem.' : '1/week'}</option>
+                  <option value="Perso">{language === 'fr' ? 'Perso' : 'Custom'}</option>
                 </select>
               </div>
 
               <div>
-                <label className="label">Objectif principal</label>
+                <label className="label">{language === 'fr' ? 'Objectif principal' : 'Main objective'}</label>
                 <select
                   value={formData.objective}
                   onChange={(e) => setFormData(prev => ({ ...prev, objective: e.target.value }))}
                   className="field"
                 >
-                  <option>Visibilité</option>
-                  <option>Engagement</option>
-                  <option>Leads</option>
-                  <option>Conversions</option>
+                  <option value="Visibilité">{language === 'fr' ? 'Visibilité' : 'Visibility'}</option>
+                  <option value="Engagement">{language === 'fr' ? 'Engagement' : 'Engagement'}</option>
+                  <option value="Leads">{language === 'fr' ? 'Leads' : 'Leads'}</option>
+                  <option value="Conversions">{language === 'fr' ? 'Conversions' : 'Conversions'}</option>
                 </select>
               </div>
 
               <div>
-                <label className="label">Plateformes</label>
+                <label className="label">{language === 'fr' ? 'Plateformes' : 'Platforms'}</label>
                 <div className="space-y-2">
                   {['LinkedIn', 'Facebook', 'Twitter'].map(platform => (
                     <label key={platform} className="flex items-center gap-2">
@@ -360,35 +368,35 @@ export function SetupConnected() {
         {currentStep === 4 && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold mb-2">Révision et confirmation</h2>
+              <h2 className="text-2xl font-bold mb-2">{language === 'fr' ? 'Révision et confirmation' : 'Review and confirmation'}</h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Vérifiez vos informations avant de générer votre stratégie
+                {language === 'fr' ? 'Vérifiez vos informations avant de générer votre stratégie' : 'Review your information before generating your strategy'}
               </p>
             </div>
 
             <div className="space-y-4">
               <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <h3 className="font-semibold mb-3">Résumé de votre configuration</h3>
+                <h3 className="font-semibold mb-3">{language === 'fr' ? 'Résumé de votre configuration' : 'Configuration summary'}</h3>
 
                 <div className="space-y-2 text-sm">
                   <div>
-                    <span className="text-gray-500">Marque:</span>
-                    <span className="ml-2 font-medium">{formData.brandName || 'Non défini'}</span>
+                    <span className="text-gray-500">{language === 'fr' ? 'Marque:' : 'Brand:'}</span>
+                    <span className="ml-2 font-medium">{formData.brandName || (language === 'fr' ? 'Non défini' : 'Not defined')}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">Audience:</span>
-                    <span className="ml-2 font-medium">{formData.audience || 'Non défini'}</span>
+                    <span className="text-gray-500">{language === 'fr' ? 'Audience:' : 'Audience:'}</span>
+                    <span className="ml-2 font-medium">{formData.audience || (language === 'fr' ? 'Non défini' : 'Not defined')}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">Fréquence:</span>
+                    <span className="text-gray-500">{language === 'fr' ? 'Fréquence:' : 'Frequency:'}</span>
                     <span className="ml-2 font-medium">{formData.frequency}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">Objectif:</span>
+                    <span className="text-gray-500">{language === 'fr' ? 'Objectif:' : 'Objective:'}</span>
                     <span className="ml-2 font-medium">{formData.objective}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">Plateformes:</span>
+                    <span className="text-gray-500">{language === 'fr' ? 'Plateformes:' : 'Platforms:'}</span>
                     <span className="ml-2 font-medium">{formData.platforms.join(', ')}</span>
                   </div>
                 </div>
@@ -408,10 +416,10 @@ export function SetupConnected() {
                 <label htmlFor="generateStrategy" className="flex-1">
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-yellow-500" />
-                    <span className="font-medium">Générer automatiquement ma stratégie</span>
+                    <span className="font-medium">{language === 'fr' ? 'Générer automatiquement ma stratégie' : 'Automatically generate my strategy'}</span>
                   </div>
                   <p className="text-sm text-gray-500 mt-1">
-                    Une stratégie complète de 30 jours sera créée basée sur vos informations
+                    {language === 'fr' ? 'Une stratégie complète de 30 jours sera créée basée sur vos informations' : 'A complete 30-day strategy will be created based on your information'}
                   </p>
                 </label>
               </div>
@@ -427,7 +435,7 @@ export function SetupConnected() {
             className="btn btn-secondary"
           >
             <ChevronLeft className="w-4 h-4 mr-2" />
-            Précédent
+            {language === 'fr' ? 'Précédent' : 'Previous'}
           </button>
 
           {currentStep < 4 ? (
@@ -435,7 +443,7 @@ export function SetupConnected() {
               onClick={handleNext}
               className="btn btn-primary"
             >
-              Suivant
+              {language === 'fr' ? 'Suivant' : 'Next'}
               <ChevronRight className="w-4 h-4 ml-2" />
             </button>
           ) : (
@@ -447,16 +455,17 @@ export function SetupConnected() {
               {generatingStrategy ? (
                 <>
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Génération...
+                  {language === 'fr' ? 'Génération...' : 'Generating...'}
                 </>
               ) : (
                 <>
                   <Check className="w-4 h-4 mr-2" />
-                  Terminer
+                  {language === 'fr' ? 'Terminer' : 'Finish'}
                 </>
               )}
             </button>
           )}
+        </div>
         </div>
       </div>
     </div>

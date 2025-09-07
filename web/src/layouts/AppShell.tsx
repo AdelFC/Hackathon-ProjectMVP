@@ -1,12 +1,16 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { usePreferencesStore } from '../stores/preferencesStore'
+import { GlobalHeader, useLanguage } from '../components/GlobalHeader'
+import { translations } from '../utils/translations'
 import logo from '../assets/logo.png'
 
 export default function AppShell() {
   const navigate = useNavigate()
-  const { darkMode, toggleDarkMode, sidebarOpen, toggleSidebar } = usePreferencesStore()
+  const language = useLanguage()
+  const { sidebarOpen, toggleSidebar } = usePreferencesStore()
   const [mobileOpen, setMobileOpen] = useState(false)  // mobile drawer (sm-md)
+  const t = translations[language]
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -28,7 +32,7 @@ export default function AppShell() {
   const nav = [
     {
       to: '/app/strategy',
-      label: 'Stratégie',
+      label: t.nav.strategy,
       icon: (
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M4 7h16M4 12h10M4 17h7" />
@@ -38,7 +42,7 @@ export default function AppShell() {
     },
     {
       to: '/app/analytics',
-      label: 'Analytics',
+      label: t.nav.analytics,
       icon: (
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M3 3v18h18" />
@@ -49,7 +53,7 @@ export default function AppShell() {
     },
     {
       to: '/app/integrations',
-      label: 'Intégrations',
+      label: t.nav.integrations,
       icon: (
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M8 7h8M3 7h2m14 0h2M8 17h8M3 17h2m14 0h2" />
@@ -58,7 +62,7 @@ export default function AppShell() {
     },
     {
       to: '/app/settings',
-      label: 'Paramètres',
+      label: t.nav.settings,
       icon: (
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
@@ -91,7 +95,10 @@ export default function AppShell() {
 
   return (
     <div className="min-h-screen">
-      {/* Top Bar */}
+      {/* Global Header with language and dark mode toggles */}
+      <GlobalHeader />
+      
+      {/* Secondary navigation bar */}
       <header className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
         <div className="section h-14 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -114,18 +121,6 @@ export default function AppShell() {
           </div>
           <div className="flex items-center gap-2">
             <span className="hidden sm:inline text-xs text-gray-500">{new Date().toLocaleDateString()}</span>
-            <button onClick={toggleDarkMode} className="btn btn-ghost px-2" aria-label="Dark mode">
-              {darkMode ? (
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
-                  <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" />
-                  <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41m0-14.14-1.41 1.41M6.34 17.66 4.93 19.07" />
-                </svg>
-              )}
-            </button>
           </div>
         </div>
       </header>

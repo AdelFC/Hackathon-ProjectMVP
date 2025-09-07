@@ -7,6 +7,8 @@ import { Badge } from '../components/ui/Badge';
 import { Skeleton } from '../components/ui/Skeleton';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/Tabs';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useLanguage } from '../components/GlobalHeader';
+import { translations } from '../utils/translations';
 
 interface MetricCardProps {
   title: string;
@@ -51,6 +53,8 @@ export function AnalyticsConnected() {
     end: new Date().toISOString().split('T')[0]
   });
   const [selectedPlatform, setSelectedPlatform] = useState<string>('all');
+  const language = useLanguage();
+  const t = translations[language];
 
   useEffect(() => {
     // Charger les analytics au montage
@@ -144,7 +148,7 @@ export function AnalyticsConnected() {
       <Card className="p-4">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
-            <label className="label">Période</label>
+            <label className="label">{t.app.analytics.period}</label>
             <div className="flex gap-2">
               <input
                 type="date"
@@ -162,13 +166,13 @@ export function AnalyticsConnected() {
           </div>
           
           <div>
-            <label className="label">Plateforme</label>
+            <label className="label">{language === 'fr' ? 'Plateforme' : 'Platform'}</label>
             <select
               value={selectedPlatform}
               onChange={(e) => setSelectedPlatform(e.target.value)}
               className="field"
             >
-              <option value="all">Toutes</option>
+              <option value="all">{language === 'fr' ? 'Toutes' : 'All'}</option>
               <option value="linkedin">LinkedIn</option>
               <option value="facebook">Facebook</option>
               <option value="twitter">Twitter</option>
@@ -180,22 +184,22 @@ export function AnalyticsConnected() {
       {/* Métriques principales */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <MetricCard
-          title="Impressions totales"
+          title={language === 'fr' ? "Impressions totales" : "Total impressions"}
           value={metrics?.totalImpressions.toLocaleString() || 0}
           icon={<Users className="w-5 h-5" />}
         />
         <MetricCard
-          title="Engagements"
+          title={t.app.analytics.engagement}
           value={metrics?.totalEngagements.toLocaleString() || 0}
           icon={<Heart className="w-5 h-5" />}
         />
         <MetricCard
-          title="Taux d'engagement"
+          title={language === 'fr' ? "Taux d'engagement" : "Engagement rate"}
           value={`${metrics?.avgEngagementRate || 0}%`}
           icon={<TrendingUp className="w-5 h-5" />}
         />
         <MetricCard
-          title="Clics"
+          title={t.app.analytics.clicks}
           value={metrics?.totalClicks.toLocaleString() || 0}
           icon={<MessageCircle className="w-5 h-5" />}
         />
@@ -204,42 +208,42 @@ export function AnalyticsConnected() {
       {/* Graphiques */}
       <Tabs defaultValue="timeline">
         <TabsList>
-          <TabsTrigger value="timeline">Évolution temporelle</TabsTrigger>
-          <TabsTrigger value="platforms">Par plateforme</TabsTrigger>
-          <TabsTrigger value="engagement">Engagement</TabsTrigger>
+          <TabsTrigger value="timeline">{language === 'fr' ? 'Évolution temporelle' : 'Timeline'}</TabsTrigger>
+          <TabsTrigger value="platforms">{language === 'fr' ? 'Par plateforme' : 'By platform'}</TabsTrigger>
+          <TabsTrigger value="engagement">{language === 'fr' ? 'Engagement' : 'Engagement'}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="timeline">
           <Card className="p-6">
-            <h3 className="text-lg font-semibold mb-4">Évolution des métriques</h3>
+            <h3 className="text-lg font-semibold mb-4">{language === 'fr' ? 'Évolution des métriques' : 'Metrics evolution'}</h3>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis 
                   dataKey="date" 
-                  tickFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', { month: 'short', day: 'numeric' })}
+                  tickFormatter={(date) => new Date(date).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', { month: 'short', day: 'numeric' })}
                 />
                 <YAxis />
                 <Tooltip 
-                  labelFormatter={(date) => new Date(date).toLocaleDateString('fr-FR')}
+                  labelFormatter={(date) => new Date(date).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US')}
                 />
                 <Line 
                   type="monotone" 
                   dataKey="impressions" 
                   stroke="#3b82f6" 
-                  name="Impressions"
+                  name={t.app.analytics.impressions}
                 />
                 <Line 
                   type="monotone" 
                   dataKey="engagements" 
                   stroke="#10b981" 
-                  name="Engagements"
+                  name={t.app.analytics.engagement}
                 />
                 <Line 
                   type="monotone" 
                   dataKey="clicks" 
                   stroke="#f59e0b" 
-                  name="Clics"
+                  name={t.app.analytics.clicks}
                 />
               </LineChart>
             </ResponsiveContainer>
