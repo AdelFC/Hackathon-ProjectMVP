@@ -1,75 +1,101 @@
-# StartPost Agent - Assistant IA Social Media
+ 🚀 StartPost Agent – Votre Community Manager IA
 
-## 🚀 Description
+StartPost Agent est une plateforme qui utilise des **agents IA spécialisés** pour aider les startups et PME à créer, publier et optimiser leur contenu social media.  
+En quelques minutes, l’IA analyse votre marque, génère une stratégie multi-canal et propose des posts adaptés à chaque plateforme.
 
-StartPost Agent est une plateforme SaaS qui utilise des **agents IA intelligents** pour aider les PME à créer et optimiser leur stratégie de contenu social media. L'IA analyse automatiquement votre marque, génère du contenu personnalisé et optimise vos publications pour maximiser l'engagement.
+👉 Gagnez du temps, améliorez votre engagement et centralisez toute votre communication.
 
-### ✨ Fonctionnalités Clés
-- **Analyse IA** automatique de votre site web et marque
-- **Génération de contenu** personnalisé par IA
-- **Optimisation** des posts pour chaque plateforme
-- **Calendrier éditorial** intelligent
-- **Analytics** en temps réel
+---
 
-## 🛠️ Technologies
+## ✨ Fonctionnalités Clés
 
-- **Frontend**: React 19 + TypeScript + Vite + Tailwind CSS
-- **Backend**: FastAPI + Python
-- **IA**: Intégration BLACKBOX AI pour génération de contenu
-- **Base de données**: SQLite (développement) / PostgreSQL (production)
+- **Analyse IA** de votre site web et présence publique
+- **Génération automatique** de posts (X, LinkedIn, Facebook)
+- **Stratégie éditoriale personnalisée** (ton, fréquence, calendrier)
+- **Dashboard Analytics** avec KPIs clés et insights actionnables
+- **Optimisation continue** basée sur les performances réelles
 
-## 🚀 Installation & Lancement
+---
+
+## 🛠️ Stack Technique
+
+- **Frontend** : React 19 · TypeScript · Vite · Tailwind CSS  
+- **Backend** : FastAPI (Python)  
+- **IA** : Intégration **BLACKBOX AI** pour la génération de contenu  
+- **Base de données** : SQLite (dev) / PostgreSQL (prod)  
+- **Infra** : Docker, scripts de lancement rapides  
+
+---
+
+## ⚡ Démarrage Rapide
 
 ### Prérequis
-- Docker
-- Git
+- Docker  
+- Git  
 
-### Installation Rapide
-
+### Installation & Lancement
 ```bash
 # 1. Cloner le repository
-git clone <repository-url>
+git clone <repository-url> && cd startpost-agent
 
-# 4. Lancement de l'app
+# 2. Lancer l’application (frontend + backend)
 ./start.sh
-```
+````
 
 ### Accès
-- **Application**: http://localhost:3001
-- **API Backend**: http://localhost:8000
+
+* 🌐 Application : [http://localhost:3001](http://localhost:3001)
+* 🛠️ API Backend : [http://localhost:8000](http://localhost:8000)
+
+---
 
 ## 🤖 Agents IA
 
-Le projet utilise plusieurs agents IA spécialisés qui travaillent ensemble pour créer une stratégie de contenu complète :
+Le projet repose sur plusieurs **agents spécialisés** qui coopèrent pour couvrir l’ensemble du cycle de communication :
 
-![Schéma des agents IA](n8n.png)
+### 🔍 Agent Analyse
 
-### Agent d'Analyse
-- Analyse automatique des sites web
-- Extraction des valeurs de marque
-- Identification de l'audience cible
+* Scraping & analyse de site web
+* Extraction de la mission, USP et audience cible
 
-### Agent de Contenu
-- Génération de posts optimisés
-- Adaptation du ton selon la plateforme
-- Optimisation SEO et engagement
+### 📝 Agent Contenu
 
-### Agent Stratégie
-- Création de calendriers éditoriaux
-- Recommandations de fréquence de publication
-- Analyse des meilleures pratiques
+* Génération de posts multi-canal
+* Adaptation du ton et du format (LinkedIn, Twitter, Facebook)
+* Variantes et suggestions
 
-## 📊 Utilisation
+### 📅 Agent Stratégie
 
-1. **Configuration initiale** : Analysez votre site web
-2. **Génération IA** : Laissez les agents créer votre stratégie
-3. **Personnalisation** : Ajustez le contenu selon vos préférences
-4. **Publication** : Planifiez et publiez automatiquement
+* Génération de calendrier éditorial intelligent
+* Recommandations de fréquence & hashtags
+* Suivi des milestones
 
-## 🔗 Liens utiles
+### 📊 Agent Analytics
 
-- **Démo Twitter**: [https://x.com/HackathonB844](https://x.com/HackathonB844)
+* Agrégation des métriques sociales
+* Génération d’insights automatiques
+* Détection des contenus performants
 
-## 📄 Licence
+---
 
-MIT
+## 🧭 Workflow d’Utilisation
+
+1. **Analyse initiale** → entrez l’URL de votre site
+2. **Configuration rapide** → mission, audience, objectifs
+3. **Génération IA** → stratégie éditoriale + posts multi-canal
+4. **Dashboard** → suivez performances & insights
+
+---
+
+## 🛣️ Roadmap MVP
+
+* [x] Setup wizard en 4 étapes
+* [x] Génération de stratégie & posts (mock IA)
+* [x] Dashboard Analytics avec KPIs clés
+* [ ] Intégrations OAuth réelles (Twitter, LinkedIn, Facebook)
+* [ ] Amélioration des insights automatiques
+* [ ] Export PDF calendrier & stratégie
+
+---
+
+*Projet développé dans le cadre du **Agent Building Agents Hackathon** (42 AI × Blackbox AI).*
