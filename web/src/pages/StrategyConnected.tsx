@@ -53,20 +53,38 @@ export function StrategyConnected() {
   // Utiliser la stratégie du store en priorité
   const currentStrategy = storedStrategy || strategy || apiStrategy;
 
-  // Générer le contenu d'un post basé sur ses caractéristiques
+  // Générer le contenu d'un post basé sur ses caractéristiques et les données du formulaire
   const generatePostContent = (post: DailyPost): string => {
+    // Extraire les hashtags personnalisés depuis les features
+    const customHashtags = brandIdentity?.features
+      .filter(f => f.startsWith('#'))
+      .map(h => h.replace('#', ''))
+      .slice(0, 3) || [];
+    
+    // Créer des hashtags adaptés au contexte
+    const platformHashtags = {
+      LinkedIn: [...customHashtags, 'innovation', 'business'].slice(0, 5),
+      Facebook: [...customHashtags, 'startup', 'tech'].slice(0, 4),
+      Twitter: [...customHashtags, 'tech'].slice(0, 3)
+    };
+    
+    const hashtags = platformHashtags[post.platform as keyof typeof platformHashtags]
+      .map(h => `#${h}`)
+      .join(' ');
+    
+    // Templates enrichis avec les données réelles
     const templates = {
       LinkedIn: [
-        `🚀 ${post.key_message}\n\n${post.topic}\n\n#innovation #tech #startup`,
-        `Découvrez comment ${post.topic} peut transformer votre business.\n\n${post.key_message}\n\n#business #growth`
+        `🚀 ${post.key_message}\n\n${post.topic}\n\n💡 ${brandIdentity?.usp || ''}\n\n${hashtags}`,
+        `Découvrez comment ${post.topic} peut transformer votre business.\n\n${post.key_message}\n\n🎯 Pour: ${brandIdentity?.targetAudience || 'professionnels innovants'}\n\n${hashtags}`
       ],
       Facebook: [
-        `${post.key_message} 🎯\n\n${post.topic}\n\nQu'en pensez-vous ? Partagez votre avis en commentaire !`,
-        `📣 ${post.topic}\n\n${post.key_message}\n\n👉 En savoir plus sur notre site`
+        `${post.key_message} 🎯\n\n${post.topic}\n\n${brandIdentity?.mission || ''}\n\nQu'en pensez-vous ? Partagez votre avis en commentaire !\n\n${hashtags}`,
+        `📣 ${post.topic}\n\n${post.key_message}\n\n✨ ${brandIdentity?.usp || ''}\n\n👉 En savoir plus sur notre site\n\n${hashtags}`
       ],
       Twitter: [
-        `${post.key_message}\n\n${post.topic}\n\n#tech #innovation`,
-        `💡 ${post.topic}\n\n${post.key_message}`
+        `${post.key_message}\n\n${post.topic}\n\n${hashtags}`,
+        `💡 ${post.topic}\n\n${brandIdentity?.name}: ${post.key_message}\n\n${hashtags}`
       ]
     };
 
@@ -77,18 +95,39 @@ export function StrategyConnected() {
   const handleGenerateStrategy = async () => {
     if (!brandIdentity || !goals) return;
 
+    // Extraire les vraies propositions de valeur depuis l'USP
+    const valuePropositions = brandIdentity.usp 
+      ? brandIdentity.usp.split(',').map(v => v.trim()).filter(v => v)
+      : brandIdentity.features.filter(f => !f.startsWith('DO:') && !f.startsWith('DONT:') && !f.startsWith('#'));
+
+    // S'assurer que l'audience cible est bien renseignée
+    const targetAudience = brandIdentity.targetAudience || 'Entreprises innovantes et startups tech';
+    
+    // Extraire les hashtags depuis les features
+    const hashtags = brandIdentity.features.filter(f => f.startsWith('#')).join(' ');
+    
+    // Extraire les Do/Don't pour les guidelines éditoriales
+    const doList = brandIdentity.features.filter(f => f.startsWith('DO:')).map(f => f.replace('DO:', ''));
+    const dontList = brandIdentity.features.filter(f => f.startsWith('DONT:')).map(f => f.replace('DONT:', ''));
+
     await generateStrategy({
       brand_name: brandIdentity.name,
       positioning: brandIdentity.mission,
-      target_audience: brandIdentity.targetAudience,
-      value_props: brandIdentity.features,
+      target_audience: targetAudience,
+      value_props: valuePropositions.length > 0 ? valuePropositions : [
+        'Solution innovante',
+        'Gain de temps',
+        'Expertise reconnue',
+        'Support personnalisé'
+      ],
       start_date: new Date().toISOString().split('T')[0],
       duration_days: 30,
       language: 'fr-FR',
-      tone: brandIdentity.voice,
-      cta_targets: ['demo', 'newsletter', 'free_trial'],
+      tone: brandIdentity.voice + (hashtags ? `. Hashtags: ${hashtags}` : '') + (doList.length ? `. À faire: ${doList.join(', ')}` : '') + (dontList.length ? `. À éviter: ${dontList.join(', ')}` : ''),
+      cta_targets: ['demo', 'newsletter', 'free_trial', 'contact'],
       startup_name: brandIdentity.startupName || brandIdentity.name,  // Use brand name as fallback
-      startup_url: brandIdentity.startupUrl || brandIdentity.website   // Use website as fallback
+      startup_url: brandIdentity.startupUrl || brandIdentity.website,   // Use website as fallback
+      platforms: goals?.enabledNetworks?.map(n => n.charAt(0).toUpperCase() + n.slice(1)) || ['LinkedIn', 'Facebook', 'Twitter']
     });
   };
 
@@ -97,8 +136,9 @@ export function StrategyConnected() {
       company_name: brandIdentity?.name,
       execute_date: selectedDate,
       dry_run: false,
-      startup_name: brandIdentity?.startupName || brandIdentity?.name,  // Use brand name as fallback
-      startup_url: brandIdentity?.startupUrl || brandIdentity?.website   // Use website as fallback
+      startup_name: brandIdentity?.startupName || brandIdentity?.name,
+      startup_url: brandIdentity?.startupUrl || brandIdentity?.website,
+      platforms: goals?.enabledNetworks?.map(n => n.charAt(0).toUpperCase() + n.slice(1)) || ['LinkedIn', 'Facebook', 'Twitter']
     });
   };
 
@@ -107,14 +147,17 @@ export function StrategyConnected() {
       company_name: brandIdentity?.name,
       execute_date: selectedDate,
       dry_run: true,
-      startup_name: brandIdentity?.startupName || brandIdentity?.name,  // Use brand name as fallback
-      startup_url: brandIdentity?.startupUrl || brandIdentity?.website   // Use website as fallback
+      startup_name: brandIdentity?.startupName || brandIdentity?.name,
+      startup_url: brandIdentity?.startupUrl || brandIdentity?.website,
+      platforms: goals?.enabledNetworks?.map(n => n.charAt(0).toUpperCase() + n.slice(1)) || ['LinkedIn', 'Facebook', 'Twitter']
     });
   };
 
-  // Filtrer les posts pour la date sélectionnée
+  // Filtrer les posts pour la date sélectionnée ET les plateformes activées
+  const enabledPlatforms = goals?.enabledNetworks?.map(n => n.charAt(0).toUpperCase() + n.slice(1)) || [];
   const todayPosts = currentStrategy?.calendar.posts.filter(
-    post => post.date === selectedDate
+    post => post.date === selectedDate && 
+            (enabledPlatforms.length === 0 || enabledPlatforms.includes(post.platform))
   ) || [];
 
   if (loadingActive) {

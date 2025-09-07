@@ -56,7 +56,7 @@ class StrategyAgentV2:
             ("system", """You are an expert Social Media Strategy Manager creating monthly editorial calendars.
 
             Your role is to create a comprehensive monthly content plan that:
-            1. Covers exactly 30/31 days with 1 post per day per network (LinkedIn, Facebook, Twitter)
+            1. Covers exactly {total_days} days with posts ONLY for selected platforms: {selected_platforms}
             2. Balances content across 4+ editorial pillars
             3. Varies angles, hooks, CTAs, and formats for engagement
             4. Maintains brand consistency and tone of voice
@@ -69,14 +69,19 @@ class StrategyAgentV2:
             - Value Propositions: {value_props}
             - Language: {language}
             - Tone: {tone}
+            - Custom Hashtags: {custom_hashtags}
+            - Editorial Guidelines DO: {do_guidelines}
+            - Editorial Guidelines DON'T: {dont_guidelines}
 
             Requirements:
             - Generate {total_days} days of content
-            - 3 posts per day (1 per platform: LinkedIn, Facebook, Twitter)
+            - Posts per day: {posts_per_day} (ONLY for platforms: {selected_platforms})
             - Use all content pillars: education, social_proof, product, behind_the_scenes, thought_leadership, community
             - Vary post formats: text, image, video, carousel, poll, article
             - Rotate CTAs: {cta_targets}
-            - Include trending topics and seasonal events
+            - Include provided hashtags: {custom_hashtags}
+            - Follow DO guidelines: {do_guidelines}
+            - Avoid DON'T guidelines: {dont_guidelines}
 
             Current Date: {current_date}
             Campaign Start: {start_date}
@@ -277,7 +282,8 @@ class StrategyAgentV2:
         content_pillars: List[ContentPillar],
         cta_types: List[CTAType],
         startup_name: Optional[str] = None,
-        landing_page_info: Optional[str] = None
+        landing_page_info: Optional[str] = None,
+        platforms: Optional[List[str]] = None
     ) -> List[DailyPost]:
         """
         Generate daily posts for the calendar with startup focus
@@ -295,7 +301,24 @@ class StrategyAgentV2:
             List of daily posts
         """
         posts = []
-        platforms = [Platform.LINKEDIN, Platform.FACEBOOK, Platform.TWITTER]
+        # Use selected platforms or default to all three
+        if platforms:
+            # Convert string platform names to Platform enum
+            selected_platforms = []
+            for p in platforms:
+                p_upper = p.upper() if isinstance(p, str) else str(p).upper()
+                if 'LINKEDIN' in p_upper:
+                    selected_platforms.append(Platform.LINKEDIN)
+                elif 'FACEBOOK' in p_upper:
+                    selected_platforms.append(Platform.FACEBOOK)
+                elif 'TWITTER' in p_upper:
+                    selected_platforms.append(Platform.TWITTER)
+            platforms = selected_platforms if selected_platforms else [Platform.LINKEDIN, Platform.FACEBOOK, Platform.TWITTER]
+            print(f"🎯 Selected platforms: {[p.value for p in platforms]}")
+        else:
+            platforms = [Platform.LINKEDIN, Platform.FACEBOOK, Platform.TWITTER]
+            print(f"📱 Using default platforms: {[p.value for p in platforms]}")
+        
         formats = list(PostFormat)
         variations = self.generate_content_variations()
 
@@ -370,7 +393,8 @@ class StrategyAgentV2:
         tone: str = "professional",
         cta_targets: List[str] = None,
         startup_name: Optional[str] = None,
-        landing_page_info: Optional[str] = None
+        landing_page_info: Optional[str] = None,
+        platforms: Optional[List[str]] = None
     ) -> MonthlyPlan:
         """
         Create a complete monthly plan
@@ -450,7 +474,8 @@ class StrategyAgentV2:
                 content_pillars=content_pillars,
                 cta_types=cta_types if cta_types else list(CTAType),
                 startup_name=startup_name,
-                landing_page_info=landing_page_info
+                landing_page_info=landing_page_info,
+                platforms=platforms
             )
 
             # Calculate posts per platform
@@ -509,7 +534,8 @@ class StrategyAgentV2:
         cta_targets: List[str] = None,
         additional_context: str = "",
         startup_name: Optional[str] = None,
-        landing_page_info: Optional[str] = None
+        landing_page_info: Optional[str] = None,
+        platforms: Optional[List[str]] = None
     ) -> MonthlyPlan:
         """
         Create a monthly plan with AI-generated content
@@ -529,7 +555,8 @@ class StrategyAgentV2:
                 tone=tone,
                 cta_targets=cta_targets,
                 startup_name=startup_name,
-                landing_page_info=landing_page_info
+                landing_page_info=landing_page_info,
+                platforms=platforms
             )
 
             # Prepare query for AI enhancement
@@ -546,6 +573,41 @@ class StrategyAgentV2:
             Focus on creating diverse, engaging content that drives {', '.join(cta_targets or ['engagement'])}.
             """
 
+            # Extract hashtags and guidelines from tone if present
+            custom_hashtags = ""
+            do_guidelines = ""
+            dont_guidelines = ""
+            
+            # Parse tone for additional data (hashtags, do/don't)
+            if "Hashtags:" in tone:
+                parts = tone.split("Hashtags:")
+                if len(parts) > 1:
+                    hashtag_part = parts[1].split(".")[0]
+                    custom_hashtags = hashtag_part.strip()
+                    
+            if "À faire:" in tone:
+                parts = tone.split("À faire:")
+                if len(parts) > 1:
+                    do_part = parts[1].split(".")[0]
+                    do_guidelines = do_part.strip()
+                    
+            if "À éviter:" in tone:
+                parts = tone.split("À éviter:")
+                if len(parts) > 1:
+                    dont_part = parts[1].split(".")[0]
+                    dont_guidelines = dont_part.strip()
+            
+            # Get clean tone (without additional data)
+            base_tone = tone.split(".")[0] if "." in tone else tone
+            
+            # Determine selected platforms
+            if platforms:
+                selected_platforms = ", ".join(platforms)
+                posts_per_day = len(platforms)
+            else:
+                selected_platforms = "LinkedIn, Facebook, Twitter"
+                posts_per_day = 3
+            
             # Generate enhanced content using AI
             response = self.agent_executor.invoke({
                 "query": query,
@@ -554,7 +616,12 @@ class StrategyAgentV2:
                 "target_audience": target_audience,
                 "value_props": ", ".join(value_props),
                 "language": language,
-                "tone": tone,
+                "tone": base_tone,
+                "custom_hashtags": custom_hashtags or "innovation, startup, tech",
+                "do_guidelines": do_guidelines or "Be authentic, share value, engage audience",
+                "dont_guidelines": dont_guidelines or "Avoid jargon, no spam, no controversy",
+                "selected_platforms": selected_platforms,
+                "posts_per_day": posts_per_day,
                 "cta_targets": ", ".join(cta_targets or []),
                 "total_days": duration_days,
                 "current_date": datetime.now().strftime("%Y-%m-%d"),
@@ -590,7 +657,8 @@ class StrategyAgentV2:
                 tone=tone,
                 cta_targets=cta_targets,
                 startup_name=startup_name,
-                landing_page_info=landing_page_info
+                landing_page_info=landing_page_info,
+                platforms=platforms
             )
 
     def get_active_plan(self, brand_name: str) -> Optional[MonthlyPlan]:
@@ -654,7 +722,8 @@ def create_monthly_strategy(
     use_ai: bool = False,
     additional_context: str = "",
     startup_name: Optional[str] = None,
-    startup_url: Optional[str] = None
+    startup_url: Optional[str] = None,
+    platforms: Optional[List[str]] = None
 ) -> MonthlyPlan:
     """
     Create a monthly editorial strategy
@@ -713,7 +782,8 @@ def create_monthly_strategy(
             cta_targets=cta_targets,
             additional_context=additional_context,
             startup_name=startup_name,
-            landing_page_info=landing_page_info
+            landing_page_info=landing_page_info,
+            platforms=platforms
         )
     else:
         plan = agent.create_monthly_plan(
@@ -727,7 +797,8 @@ def create_monthly_strategy(
             tone=tone,
             cta_targets=cta_targets,
             startup_name=startup_name,
-            landing_page_info=landing_page_info
+            landing_page_info=landing_page_info,
+            platforms=platforms
         )
 
     # Display summary

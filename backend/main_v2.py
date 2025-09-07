@@ -25,6 +25,7 @@ from agents.models import (
     Platform
 )
 from agents.storage import get_storage
+from twitter_service import get_twitter_service
 
 # Legacy imports (kept for backward compatibility)
 
@@ -130,9 +131,10 @@ async def generate_strategy(request: StrategyRequest):
             language=request.language,
             tone=request.tone,
             cta_targets=request.cta_targets,
-            use_ai=False,  # Can be made configurable
+            use_ai=True,  # Enable AI generation with platform filtering
             startup_name=request.startup_name,
-            startup_url=request.startup_url
+            startup_url=request.startup_url,
+            platforms=request.platforms
         )
 
         # Note: startup_name and startup_url are already passed to create_monthly_strategy
@@ -172,7 +174,7 @@ async def get_active_strategy(brand_name: str):
 
         return {
             "success": True,
-            "plan": plan.dict()
+            "plan": plan.model_dump()
         }
     except HTTPException:
         raise
@@ -379,6 +381,35 @@ async def get_yesterday_performance(brand_name: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# ---------- Twitter/X Posting Endpoint ----------
+class TwitterPostRequest(BaseModel):
+    text: str
+    image_path: Optional[str] = None
+
+@app.post("/twitter/post")
+async def post_to_twitter(request: TwitterPostRequest):
+    """
+    Post content to Twitter/X
+    """
+    try:
+        twitter_service = get_twitter_service()
+        if not twitter_service:
+            raise HTTPException(
+                status_code=503,
+                detail="Twitter service not configured. Please set X_API_KEY, X_KEY_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET environment variables."
+            )
+        
+        result = twitter_service.post_tweet(request.text, request.image_path)
+        
+        return {
+            "success": True,
+            "data": result,
+            "message": "Tweet posted successfully"
+        }
+    except Exception as e:
+        logger.error(f"Failed to post to Twitter: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # ---------- Management Endpoints ----------
 @app.post("/posts/manual")
 async def create_manual_post(
@@ -473,7 +504,7 @@ async def create_sample_strategy(
             language="fr-FR",
             tone="professional yet approachable",
             cta_targets=["demo", "newsletter", "discord", "free_trial"],
-            use_ai=False,
+            use_ai=True,
             startup_name=startup_name,
             startup_url=startup_url
         )

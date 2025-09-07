@@ -1,0 +1,559 @@
+{
+  "campaign_name": "ficello September Content Campaign",
+  "brand_name": "ficello",
+  "positioning": "vendre fromage",
+  "target_audience": "familles",
+  "value_propositions": [],
+  "content_pillars": [
+    "education",
+    "social_proof",
+    "product",
+    "behind_the_scenes",
+    "thought_leadership",
+    "community"
+  ],
+  "editorial_guidelines": {
+    "tone": "drole",
+    "do_list": [
+      "Be authentic",
+      "Share value",
+      "Engage audience"
+    ],
+    "dont_list": [
+      "Avoid jargon",
+      "No spam",
+      "No controversy"
+    ],
+    "language": "fr-FR",
+    "brand_voice_attributes": [
+      "funny",
+      "family-friendly",
+      "engaging"
+    ]
+  },
+  "calendar": {
+    "start_date": "2025-09-07",
+    "end_date": "2025-10-06",
+    "posts": [
+      {
+        "date": "2025-09-07",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Les bienfaits du fromage pour les enfants",
+        "key_message": "Découvrez pourquoi le fromage est si bon pour les petits gourmands.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-08",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Avis client : Pourquoi nos clients adorent ficello",
+        "key_message": "Des témoignages qui vous feront fondre.",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "image"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-09",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Découvrez notre nouvelle gamme de fromages",
+        "key_message": "Une explosion de saveurs à ne pas manquer.",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "statistic",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-10",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Dans les coulisses de la fabrication du fromage",
+        "key_message": "Un voyage fascinant de la ferme à votre assiette.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-11",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Les tendances du fromage en 2025",
+        "key_message": "Découvrez ce que l'avenir réserve au fromage.",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "question",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-12",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Partagez votre moment fromage préféré",
+        "key_message": "Montrez-nous comment vous savourez votre ficello.",
+        "variation": {
+          "angle": "engaging",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "poll"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-13",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Comment bien conserver votre fromage",
+        "key_message": "Astuce du jour pour garder votre fromage frais plus longtemps.",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "statistic",
+          "cta_type": "newsletter",
+          "format": "article"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-14",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Vidéo témoignage de nos clients fidèles",
+        "key_message": "Voyez pourquoi tant de familles choisissent ficello.",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-15",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Focus sur notre fromage à pâte molle",
+        "key_message": "Découvrez la texture qui fond dans la bouche.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-16",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Journée type dans notre fromagerie",
+        "key_message": "Vivez une journée avec nos maîtres fromagers.",
+        "variation": {
+          "angle": "engaging",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-17",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "L'impact environnemental de la production de fromage",
+        "key_message": "Comment nous nous engageons pour un avenir durable.",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-18",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Vos recettes de fromage préférées",
+        "key_message": "Partagez vos meilleures créations fromagères.",
+        "variation": {
+          "angle": "engaging",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "poll"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-19",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Connaissez-vous l'histoire du fromage ?",
+        "key_message": "Un petit voyage dans le temps pour les amateurs de fromage.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "article"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-20",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Notre fromage élu produit de l'année",
+        "key_message": "Merci à nos clients pour cette reconnaissance.",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "image"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-21",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Les différentes variétés de ficello",
+        "key_message": "Un fromage pour chaque moment de la journée.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-22",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Le secret de notre affinage",
+        "key_message": "Découvrez ce qui rend notre fromage unique.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-23",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Innover dans le monde du fromage",
+        "key_message": "Comment ficello mène la danse.",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-24",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Défi de la semaine : créez votre plateau de fromage",
+        "key_message": "Montrez-nous vos créations et gagnez des prix !",
+        "variation": {
+          "angle": "engaging",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "poll"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-25",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Les erreurs à éviter avec le fromage",
+        "key_message": "Pour ne plus jamais gâcher un bon fromage.",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "article"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-26",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Une journée avec nos clients",
+        "key_message": "Merci de faire partie de notre famille.",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-27",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Comment choisir le bon fromage pour chaque occasion",
+        "key_message": "Un guide pratique pour les amateurs.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-28",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Notre engagement pour la qualité",
+        "key_message": "Fiers de vous offrir le meilleur.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-29",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Les innovations dans l'industrie du fromage",
+        "key_message": "Rester à la pointe avec ficello.",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-30",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Vos souvenirs d'enfance avec le fromage",
+        "key_message": "Partagez vos moments inoubliables.",
+        "variation": {
+          "angle": "engaging",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "poll"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-01",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Les bienfaits nutritionnels du fromage",
+        "key_message": "Le fromage, un allié de votre santé.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "article"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-02",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Nos moments forts avec vous",
+        "key_message": "Merci pour votre soutien indéfectible.",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "image"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-03",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "L'art de la dégustation de fromage",
+        "key_message": "Apprenez à savourer chaque bouchée.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-04",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Rencontrez notre équipe",
+        "key_message": "Ceux qui rendent tout cela possible.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "story",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-05",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Réflexions sur l'avenir du fromage",
+        "key_message": "Vers un futur plus savoureux.",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "text"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-06",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Célébrez la Journée mondiale du fromage avec nous",
+        "key_message": "Partagez votre amour du fromage avec le hashtag #JournéeDuFromage.",
+        "variation": {
+          "angle": "engaging",
+          "hook_style": "question",
+          "cta_type": "free_trial",
+          "format": "poll"
+        },
+        "hashtags_count": 5,
+        "image_required": true,
+        "dependencies": null
+      }
+    ],
+    "total_posts": 30,
+    "posts_per_platform": {
+      "Twitter": 30
+    }
+  },
+  "variation_rules": {
+    "angle": [
+      "educational",
+      "inspirational",
+      "problem-solving",
+      "engaging"
+    ],
+    "hook_style": [
+      "question",
+      "statistic",
+      "story"
+    ],
+    "cta_type": [
+      "demo",
+      "newsletter",
+      "free_trial"
+    ],
+    "format": [
+      "text",
+      "image",
+      "video",
+      "carousel",
+      "poll",
+      "article"
+    ]
+  },
+  "cta_targets": [
+    "demo",
+    "newsletter",
+    "free_trial"
+  ],
+  "created_at": "2025-09-07T00:00:00Z",
+  "version": "1.0",
+  "startup_name": null,
+  "startup_url": null
+}
