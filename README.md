@@ -30,16 +30,9 @@ StartPost Agent est une plateforme SaaS qui utilise des **agents IA intelligents
 ```bash
 # 1. Cloner le repository
 git clone <repository-url>
-cd startpost-agent
 
-# 2. Installation des dépendances
-./scripts/install.sh
-
-# 3. Configuration (optionnel)
-# Créer un fichier .env dans backend/ avec votre clé BLACKBOX_API_KEY
-
-# 4. Lancement en mode développement
-./scripts/dev.sh
+# 4. Lancement de l'app
+./start.sh
 ```
 
 ### Lancement Manuel
@@ -64,7 +57,9 @@ npm run dev
 
 ## 🤖 Agents IA
 
-Le projet utilise plusieurs agents IA spécialisés :
+Le projet utilise plusieurs agents IA spécialisés qui travaillent ensemble pour créer une stratégie de contenu complète :
+
+![Schéma des agents IA](n8n.png)
 
 ### Agent d'Analyse
 - Analyse automatique des sites web
@@ -97,6 +92,10 @@ startpost-agent/
 2. **Génération IA** : Laissez les agents créer votre stratégie
 3. **Personnalisation** : Ajustez le contenu selon vos préférences
 4. **Publication** : Planifiez et publiez automatiquement
+
+## 🔗 Liens utiles
+
+- **Démo Twitter**: [https://x.com/HackathonB844](https://x.com/HackathonB844)
 
 ## 📄 Licence
 
