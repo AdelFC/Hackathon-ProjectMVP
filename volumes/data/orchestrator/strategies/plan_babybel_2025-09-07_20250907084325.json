@@ -1,0 +1,560 @@
+{
+  "campaign_name": "Babybel September Content Campaign",
+  "brand_name": "babybel",
+  "positioning": "fromagerie du cantal",
+  "target_audience": "familles",
+  "value_propositions": [],
+  "content_pillars": [
+    "education",
+    "social_proof",
+    "product",
+    "behind_the_scenes",
+    "thought_leadership",
+    "community"
+  ],
+  "editorial_guidelines": {
+    "tone": "drole",
+    "do_list": [
+      "Be authentic",
+      "Share value",
+      "Engage audience"
+    ],
+    "dont_list": [
+      "Avoid jargon",
+      "No spam",
+      "No controversy"
+    ],
+    "language": "fr-FR",
+    "brand_voice_attributes": [
+      "Playful",
+      "Friendly",
+      "Engaging"
+    ]
+  },
+  "calendar": {
+    "start_date": "2025-09-07",
+    "end_date": "2025-10-06",
+    "posts": [
+      {
+        "date": "2025-09-07",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Fromage 101",
+        "key_message": "Découvrez les bases du fromage avec Babybel, le plaisir inoubliable des familles!",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-08",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Témoignages de Familles",
+        "key_message": "Les familles adorent Babybel! Partagez vos moments préférés avec nous! #innovation #startup",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-09",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Nouveaux Produits Babybel",
+        "key_message": "Découvrez nos dernières innovations en matière de fromage! #tech",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-10",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Dans les Coulisses de Babybel",
+        "key_message": "Découvrez comment nous créons vos fromages préférés avec amour et soin!",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-11",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "L'Art du Fromage Selon Babybel",
+        "key_message": "Rejoignez notre discussion sur les tendances du fromage et son avenir.",
+        "variation": {
+          "angle": "thought-provoking",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "poll"
+        },
+        "hashtags_count": 2,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-12",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Rassemblement des Amateurs de Fromage",
+        "key_message": "Rejoignez notre communauté passionnée par le fromage!",
+        "variation": {
+          "angle": "community-focused",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-13",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Origine du Fromage Babybel",
+        "key_message": "Découvrez comment Babybel est devenu le chouchou des familles!",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-14",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Les Avis de Nos Clients",
+        "key_message": "Voyez ce que disent les familles sur notre fromage!",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-15",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Exploration des Saveurs",
+        "key_message": "Découvrez nos nouvelles saveurs de Babybel!",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-16",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Comment Nous Innovons Chez Babybel",
+        "key_message": "Découvrez les secrets de notre innovation continue!",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-17",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "L'Innovation dans l'Industrie Fromagère",
+        "key_message": "Participez à notre discussion sur le futur du fromage.",
+        "variation": {
+          "angle": "thought-provoking",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "poll"
+        },
+        "hashtags_count": 2,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-18",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Histoires de Familles et Fromage",
+        "key_message": "Partagez votre histoire avec nous et rejoignez notre communauté!",
+        "variation": {
+          "angle": "community-focused",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-19",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Les Bienfaits du Fromage",
+        "key_message": "Apprenez pourquoi le fromage est bon pour vous et votre famille!",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-20",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Partagez Votre Expérience Babybel",
+        "key_message": "Dites-nous pourquoi vous aimez Babybel! #startup",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-21",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Les Nouveaux Emballages Babybel",
+        "key_message": "Découvrez nos emballages innovants pour plus de fraîcheur!",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-22",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Une Journée Chez Babybel",
+        "key_message": "Vivez une journée avec nous pour voir comment nous créons votre fromage préféré.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-23",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "L'Impact Environnemental du Fromage",
+        "key_message": "Explorons ensemble comment réduire l'impact environnemental de la production fromagère.",
+        "variation": {
+          "angle": "thought-provoking",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "poll"
+        },
+        "hashtags_count": 2,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-24",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Célébrons le Fromage Ensemble",
+        "key_message": "Rejoignez notre événement en ligne pour fêter le fromage!",
+        "variation": {
+          "angle": "community-focused",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-25",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Les Différents Types de Fromage",
+        "key_message": "Apprenez à connaître les différents types de fromage et comment les apprécier.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-26",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Vos Moments Babybel",
+        "key_message": "Partagez vos moments préférés avec Babybel! #innovation",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-27",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Les Nouveaux Goûts de Babybel",
+        "key_message": "Essayez nos nouvelles variétés de saveurs!",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-28",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Fabrication Artisanale de Babybel",
+        "key_message": "Découvrez comment chaque Babybel est fabriqué avec soin.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-29",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "L'Avenir du Fromage",
+        "key_message": "Participez à notre débat sur l'avenir du fromage et ses innovations.",
+        "variation": {
+          "angle": "thought-provoking",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "poll"
+        },
+        "hashtags_count": 2,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-30",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Partageons Notre Amour du Fromage",
+        "key_message": "Rejoignez notre communauté de passionnés de fromage!",
+        "variation": {
+          "angle": "community-focused",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-01",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Les Bienfaits du Fromage pour la Santé",
+        "key_message": "Découvrez les bienfaits du fromage sur votre santé et celle de votre famille.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-02",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Ce Que Disent Nos Clients",
+        "key_message": "Découvrez pourquoi les familles choisissent Babybel! #tech",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-03",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Les Nouveaux Emballages Babybel",
+        "key_message": "Découvrez nos packaging innovants pour une fraîcheur optimale!",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 2,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-04",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "L'Artisanat du Fromage Babybel",
+        "key_message": "Voyez comment nous créons chaque Babybel avec passion.",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-05",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Les Innovations dans le Fromage",
+        "key_message": "Explorez avec nous les innovations dans le monde du fromage.",
+        "variation": {
+          "angle": "thought-provoking",
+          "hook_style": "statistic",
+          "cta_type": "demo",
+          "format": "poll"
+        },
+        "hashtags_count": 2,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-06",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "La Passion du Fromage",
+        "key_message": "Rejoignez notre communauté et partagez votre passion pour le fromage!",
+        "variation": {
+          "angle": "community-focused",
+          "hook_style": "story",
+          "cta_type": "free_trial",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      }
+    ],
+    "total_posts": 30,
+    "posts_per_platform": {
+      "Twitter": 30
+    }
+  },
+  "variation_rules": {
+    "angle": [
+      "educational",
+      "inspirational",
+      "problem-solving",
+      "thought-provoking",
+      "community-focused"
+    ],
+    "hook_style": [
+      "question",
+      "story",
+      "statistic"
+    ],
+    "cta_type": [
+      "demo",
+      "newsletter",
+      "free_trial"
+    ],
+    "format": [
+      "text",
+      "image",
+      "video",
+      "carousel",
+      "poll",
+      "article"
+    ]
+  },
+  "cta_targets": [
+    "demo",
+    "newsletter",
+    "free_trial"
+  ],
+  "created_at": "2025-09-07T00:00:00Z",
+  "version": "1.0",
+  "startup_name": null,
+  "startup_url": null
+}

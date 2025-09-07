@@ -1,0 +1,577 @@
+{
+  "campaign_name": "babybel - 2025-09-07 Campaign",
+  "brand_name": "babybel",
+  "positioning": "fromagerie du cantal",
+  "target_audience": "familles",
+  "value_propositions": [],
+  "content_pillars": [
+    "education",
+    "social_proof",
+    "product",
+    "behind_the_scenes",
+    "thought_leadership",
+    "community"
+  ],
+  "editorial_guidelines": {
+    "tone": "drole",
+    "do_list": [
+      "Use data and statistics to support claims",
+      "Include clear calls-to-action",
+      "Engage with questions and polls",
+      "Share authentic stories and experiences",
+      "Provide actionable insights",
+      "Use platform-appropriate hashtags",
+      "Include visuals when possible"
+    ],
+    "dont_list": [
+      "Make unverified claims",
+      "Use excessive jargon",
+      "Post without proofreading",
+      "Ignore platform best practices",
+      "Spam with promotional content only",
+      "Use controversial or offensive language",
+      "Share confidential information"
+    ],
+    "language": "fr-FR",
+    "brand_voice_attributes": [
+      "professional",
+      "innovative",
+      "trustworthy",
+      "approachable",
+      "results-oriented"
+    ]
+  },
+  "calendar": {
+    "start_date": "2025-09-07",
+    "end_date": "2025-10-06",
+    "posts": [
+      {
+        "date": "2025-09-07",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Industry insights from babybel team",
+        "key_message": "🚀 Industry insights from babybel team... #startup #innovation",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "quote",
+          "cta_type": "demo",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-08",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Customer testimonials about babybel",
+        "key_message": "🚀 Customer testimonials about babybel... #startup #innovation",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "challenge",
+          "cta_type": "free_trial",
+          "format": "poll"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-09",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "The vision behind babybel",
+        "key_message": "🚀 The vision behind babybel... #startup #innovation",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "quote",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-10",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "A day in the life at babybel",
+        "key_message": "🚀 A day in the life at babybel... #startup #innovation",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "statistic",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-11",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "The future of the industry according to babybel",
+        "key_message": "🚀 The future of the industry according to babybel... #startup #innovation",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "announcement",
+          "cta_type": "free_trial",
+          "format": "story"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-12",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Building a community around babybel",
+        "key_message": "🚀 Building a community around babybel... #startup #innovation",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "tip",
+          "cta_type": "demo",
+          "format": "poll"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-13",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "The technology behind babybel",
+        "key_message": "🚀 The technology behind babybel... #startup #innovation",
+        "variation": {
+          "angle": "storytelling",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "story"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-14",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Success stories from babybel users",
+        "key_message": "🚀 Success stories from babybel users... #startup #innovation",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "challenge",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-15",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Behind the scenes: Building babybel",
+        "key_message": "🚀 Behind the scenes: Building babybel... #startup #innovation",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "challenge",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-16",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Our journey building babybel",
+        "key_message": "🚀 Our journey building babybel... #startup #innovation",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "quote",
+          "cta_type": "demo",
+          "format": "image"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-17",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Our CEO's vision for babybel",
+        "key_message": "🚀 Our CEO's vision for babybel... #startup #innovation",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "quote",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-18",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Join the babybel community",
+        "key_message": "🚀 Join the babybel community... #startup #innovation",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "myth-busting",
+          "cta_type": "free_trial",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-19",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Industry insights from babybel team",
+        "key_message": "🚀 Industry insights from babybel team... #startup #innovation",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "announcement",
+          "cta_type": "free_trial",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-20",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Customer testimonials about babybel",
+        "key_message": "🚀 Customer testimonials about babybel... #startup #innovation",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "tip",
+          "cta_type": "demo",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-21",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Introducing babybel's key features",
+        "key_message": "🚀 Introducing babybel's key features... #startup #innovation",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "tip",
+          "cta_type": "demo",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-22",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "Challenges we faced creating babybel",
+        "key_message": "🚀 Challenges we faced creating babybel... #startup #innovation",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "tip",
+          "cta_type": "free_trial",
+          "format": "image"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-23",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "The future of the industry according to babybel",
+        "key_message": "🚀 The future of the industry according to babybel... #startup #innovation",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "myth-busting",
+          "cta_type": "free_trial",
+          "format": "poll"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-24",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "User-generated content featuring babybel",
+        "key_message": "🚀 User-generated content featuring babybel... #startup #innovation",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "announcement",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-25",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "The technology behind babybel",
+        "key_message": "🚀 The technology behind babybel... #startup #innovation",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "announcement",
+          "cta_type": "newsletter",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-26",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Success stories from babybel users",
+        "key_message": "🚀 Success stories from babybel users... #startup #innovation",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "myth-busting",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-27",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Introducing babybel's key features",
+        "key_message": "🚀 Introducing babybel's key features... #startup #innovation",
+        "variation": {
+          "angle": "inspirational",
+          "hook_style": "myth-busting",
+          "cta_type": "free_trial",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-28",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "A day in the life at babybel",
+        "key_message": "🚀 A day in the life at babybel... #startup #innovation",
+        "variation": {
+          "angle": "storytelling",
+          "hook_style": "tip",
+          "cta_type": "newsletter",
+          "format": "article"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-29",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Trends shaping babybel's industry",
+        "key_message": "🚀 Trends shaping babybel's industry... #startup #innovation",
+        "variation": {
+          "angle": "data-driven",
+          "hook_style": "announcement",
+          "cta_type": "demo",
+          "format": "poll"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-09-30",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "Community spotlight: babybel power users",
+        "key_message": "🚀 Community spotlight: babybel power users... #startup #innovation",
+        "variation": {
+          "angle": "behind-the-scenes",
+          "hook_style": "announcement",
+          "cta_type": "free_trial",
+          "format": "story"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-01",
+        "platform": "Twitter",
+        "pillar": "education",
+        "topic": "Best practices for using babybel",
+        "key_message": "🚀 Best practices for using babybel... #startup #innovation",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "announcement",
+          "cta_type": "newsletter",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-02",
+        "platform": "Twitter",
+        "pillar": "social_proof",
+        "topic": "Success stories from babybel users",
+        "key_message": "🚀 Success stories from babybel users... #startup #innovation",
+        "variation": {
+          "angle": "problem-solving",
+          "hook_style": "myth-busting",
+          "cta_type": "free_trial",
+          "format": "video"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-03",
+        "platform": "Twitter",
+        "pillar": "product",
+        "topic": "Behind the scenes: Building babybel",
+        "key_message": "🚀 Behind the scenes: Building babybel... #startup #innovation",
+        "variation": {
+          "angle": "educational",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-04",
+        "platform": "Twitter",
+        "pillar": "behind_the_scenes",
+        "topic": "The culture and values at babybel",
+        "key_message": "🚀 The culture and values at babybel... #startup #innovation",
+        "variation": {
+          "angle": "controversial",
+          "hook_style": "myth-busting",
+          "cta_type": "free_trial",
+          "format": "carousel"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-05",
+        "platform": "Twitter",
+        "pillar": "thought_leadership",
+        "topic": "Why we built babybel: Market insights",
+        "key_message": "🚀 Why we built babybel: Market insights... #startup #innovation",
+        "variation": {
+          "angle": "behind-the-scenes",
+          "hook_style": "question",
+          "cta_type": "newsletter",
+          "format": "text"
+        },
+        "hashtags_count": 3,
+        "image_required": false,
+        "dependencies": null
+      },
+      {
+        "date": "2025-10-06",
+        "platform": "Twitter",
+        "pillar": "community",
+        "topic": "User-generated content featuring babybel",
+        "key_message": "🚀 User-generated content featuring babybel... #startup #innovation",
+        "variation": {
+          "angle": "how-to",
+          "hook_style": "story",
+          "cta_type": "demo",
+          "format": "image"
+        },
+        "hashtags_count": 3,
+        "image_required": true,
+        "dependencies": null
+      }
+    ],
+    "total_posts": 30,
+    "posts_per_platform": {
+      "LinkedIn": 0,
+      "Facebook": 0,
+      "Twitter": 30
+    }
+  },
+  "variation_rules": {
+    "angles": [
+      "problem-solving",
+      "inspirational",
+      "educational",
+      "controversial",
+      "data-driven",
+      "storytelling",
+      "how-to",
+      "behind-the-scenes"
+    ],
+    "hooks": [
+      "question",
+      "statistic",
+      "story",
+      "quote",
+      "challenge",
+      "announcement",
+      "tip",
+      "myth-busting"
+    ],
+    "formats": [
+      "short text",
+      "long-form",
+      "listicle",
+      "case study",
+      "interview",
+      "infographic",
+      "video script",
+      "carousel"
+    ]
+  },
+  "cta_targets": [
+    "demo",
+    "newsletter",
+    "free_trial"
+  ],
+  "created_at": "2025-09-07T08:42:58.531969",
+  "version": "1.0",
+  "startup_name": null,
+  "startup_url": null
+}

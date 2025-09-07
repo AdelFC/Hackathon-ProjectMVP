@@ -189,6 +189,7 @@ class StrategyRequest(BaseModel):
     cta_targets: List[str] = Field(description="CTA targets")
     startup_name: Optional[str] = Field(default=None, description="Startup name for content generation")
     startup_url: Optional[str] = Field(default=None, description="Startup URL for landing page analysis")
+    platforms: Optional[List[str]] = Field(default=None, description="Selected social media platforms")
 
 class OrchestratorRequest(BaseModel):
     """Request model for daily orchestration"""

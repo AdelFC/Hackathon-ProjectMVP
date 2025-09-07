@@ -10,9 +10,15 @@ interface BrandIdentity {
   startupUrl?: string;
   mission: string;
   targetAudience: string;
+  valueProps?: string;
   usp: string;
   voice: string;
   features: string[];
+  hashtags?: string[];
+  guidelines?: {
+    do?: string[];
+    dont?: string[];
+  };
 }
 
 interface ProjectGoals {

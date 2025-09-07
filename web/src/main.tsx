@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { ToastProvider } from './components/ui/Toast'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import './index.css'
+import './utils/debugStorage'
 
 // Layouts
 import AppShell from './layouts/AppShell'

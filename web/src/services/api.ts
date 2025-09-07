@@ -55,6 +55,7 @@ export interface StrategyRequest {
   cta_targets: string[];
   startup_name?: string;
   startup_url?: string;
+  platforms?: string[];
 }
 
 export interface MonthlyPlan {

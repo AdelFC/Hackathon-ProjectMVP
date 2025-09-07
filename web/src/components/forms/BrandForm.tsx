@@ -17,6 +17,8 @@ const brandSchema = z.object({
     'URL invalide (doit commencer par http:// ou https://)'
   ).optional(),
   oneLiner: z.string().min(10, 'La description doit contenir au moins 10 caractères'),
+  targetAudience: z.string().min(10, 'La cible doit contenir au moins 10 caractères'),
+  valueProps: z.string().min(20, 'Les propositions de valeur doivent contenir au moins 20 caractères'),
   tone: z.string().min(3, 'Le ton doit contenir au moins 3 caractères'),
   doDont: z.object({
     do: z.array(z.string()).min(1, 'Ajoutez au moins une bonne pratique'),
@@ -41,6 +43,8 @@ export function BrandForm({ onSubmit }: BrandFormProps) {
     startupName: brandIdentity?.startupName || '',
     startupUrl: brandIdentity?.startupUrl || '',
     oneLiner: brandIdentity?.mission || '',
+    targetAudience: brandIdentity?.targetAudience || '',
+    valueProps: brandIdentity?.usp || '',
     tone: brandIdentity?.voice || '',
     doDont: {
       do: brandIdentity?.features?.filter(f => f.startsWith('DO:'))?.map(f => f.replace('DO:', '')) || [''],
@@ -67,8 +71,8 @@ export function BrandForm({ onSubmit }: BrandFormProps) {
         startupName: validatedData.startupName || '',
         startupUrl: validatedData.startupUrl || '',
         mission: validatedData.oneLiner,
-        targetAudience: '',
-        usp: '',
+        targetAudience: validatedData.targetAudience,
+        usp: validatedData.valueProps,
         voice: validatedData.tone,
         features: [
           ...validatedData.doDont.do.map(d => `DO:${d}`),
@@ -222,6 +226,32 @@ export function BrandForm({ onSubmit }: BrandFormProps) {
               placeholder="Le community manager AI qui comprend votre startup"
             />
             {errors.oneLiner && <p className="text-sm text-red-500 mt-1">{errors.oneLiner}</p>}
+          </div>
+
+          <div>
+            <label className="label">Audience cible</label>
+            <input
+              type="text"
+              className={`field ${errors.targetAudience ? 'border-red-500' : ''}`}
+              value={formData.targetAudience}
+              onChange={(e) => setFormData(prev => ({ ...prev, targetAudience: e.target.value }))}
+              placeholder="Startups, PME innovantes, entrepreneurs tech"
+            />
+            {errors.targetAudience && <p className="text-sm text-red-500 mt-1">{errors.targetAudience}</p>}
+            <p className="text-xs text-gray-500 mt-1">Qui voulez-vous atteindre avec votre contenu ?</p>
+          </div>
+
+          <div>
+            <label className="label">Propositions de valeur</label>
+            <textarea
+              className={`field ${errors.valueProps ? 'border-red-500' : ''}`}
+              value={formData.valueProps}
+              onChange={(e) => setFormData(prev => ({ ...prev, valueProps: e.target.value }))}
+              placeholder="Gain de temps, expertise IA, contenu personnalisé, analytics avancés"
+              rows={2}
+            />
+            {errors.valueProps && <p className="text-sm text-red-500 mt-1">{errors.valueProps}</p>}
+            <p className="text-xs text-gray-500 mt-1">Vos points forts principaux (séparez par des virgules)</p>
           </div>
 
           <div>
